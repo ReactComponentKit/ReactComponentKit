@@ -18,15 +18,16 @@ final class Store {
     }
     
     private static let concurrentQ = ConcurrentDispatchQueueScheduler(qos: .background)
+    private static let serialQ = SerialDispatchQueueScheduler(qos: .background)
     
     var state: [String:State]
     let reducers:[String:Reducer]
-    let middlewares:[Middleware]?
+    let middlewares:[Middleware]
     let disposeBag = DisposeBag()
     let token = Token() // 이벤트를 통해서 Store에 액션을 보낼 컴포넌트들은 Store의 토큰을 알아야 한다.
     private let eventBus = EventBus<Store.Event>()
     
-    init(state: [String:State], reducers:[String:Reducer], middlewares:[Middleware]? = nil) {
+    init(state: [String:State], reducers:[String:Reducer], middlewares:[Middleware] = []) {
         self.state = state
         self.reducers = reducers
         self.middlewares = middlewares
@@ -55,18 +56,52 @@ final class Store {
          - 하면서 A_API_Reducer에서 하위 상태를 위한 리듀서를 직접 호출해야 한다. 
         */
         
+        if middlewares.isEmpty == false {
+           
+        } else {
         
-        reduce(state: state, action: action)
-            .subscribeOn(Store.concurrentQ)
-            .observeOn(Store.concurrentQ)
-            //middleware
-            .observeOn(MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] (newState) in
-                guard let strongSelf = self else { return }
-                strongSelf.state = newState
-                strongSelf.eventBus.post(event: .on(newState: newState, token: strongSelf.token))
+            reduce(state: state, action: action)
+                .subscribeOn(Store.concurrentQ)
+                .observeOn(Store.concurrentQ)
+                .observeOn(MainScheduler.asyncInstance)
+                .subscribe(onNext: { [weak self] (newState) in
+                    guard let strongSelf = self else { return }
+                    strongSelf.state = newState
+                    strongSelf.eventBus.post(event: .on(newState: newState, token: strongSelf.token))
+                })
+                .disposed(by: disposeBag)
+        }
+    }
+    
+    
+    private func middleware(state: [String:State], action: Action) -> Observable<[String:State]> {
+        var mutableState = state
+        return Single.create(subscribe: { [weak self] (single) -> Disposable in
+            guard let strongSelf = self else {
+                single(.success(mutableState))
+                return Disposables.create()
+            }
+            
+            let statedMiddlewares = strongSelf.middlewares.map({ (middleware) -> (Action) -> Observable<[String:State]> in
+                return middleware(mutableState)
             })
-            .disposed(by: disposeBag)
+            
+            return Observable.combineLatest(statedMiddlewares.map({ $0(action) }))
+                .subscribe(onNext: { (stateList) in
+                    stateList.forEach({ (state) in
+                        
+                    })
+                }, onError: <#T##((Error) -> Void)?##((Error) -> Void)?##(Error) -> Void#>, onCompleted: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>, onDisposed: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+//                .subscribe(onNext: { (reducerResultList: [ReducerResult]) in
+//                    reducerResultList.forEach({ (reducerResult: ReducerResult) in
+//                        mutableState[reducerResult.name] = reducerResult.result
+//                    })
+//                    single(.success(mutableState))
+//                }, onError: { (error) in
+//                    single(.success(mutableState))
+//                })
+            
+        }).asObservable()
     }
     
     private func reduce(state: [String:State], action: Action) -> Observable<[String:State]> {
