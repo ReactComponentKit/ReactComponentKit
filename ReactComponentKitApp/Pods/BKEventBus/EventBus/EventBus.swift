@@ -8,6 +8,14 @@
 
 import UIKit
 
+// Token for targeting
+public struct Token: Equatable {
+    private let token: String
+    public init() {
+        token = UUID().uuidString
+    }
+}
+
 // Mark as Event
 public protocol EventType {
     
@@ -18,12 +26,17 @@ public class EventBus<T: EventType> {
     private typealias EventHandler = (T) -> Void
     private var eventHandler: EventHandler? = nil
     private var isAlive: Bool = true
+    private let token: Token?
     private lazy var eventName: Notification.Name = {
         let eventTypeName = String(describing: T.self)
         return Notification.Name("NOTIFY_EVENTBUS_POST_\(eventTypeName)_EVENT")
     }()
     
-    public init() {
+    /**
+     * @param: token - broadcast if token is nil.
+     */
+    public init(token: Token? = nil) {
+        self.token = token
         NotificationCenter.default.addObserver(self, selector: #selector(processNotification(_:)), name: eventName, object: nil)
     }
     
@@ -34,13 +47,22 @@ public class EventBus<T: EventType> {
         guard let sender = notificaton.object as? EventBus<T>, sender !== self else { return }
         guard let userInfo = notificaton.userInfo else { return }
         guard let event = userInfo["event"] as? T else { return }
-        handle(event: event)
+        if let token = userInfo["token"] as? Token {
+            if token == self.token {
+                handle(event: event)
+            }
+        } else {
+            // broadcast if token is nil
+            handle(event: event)
+        }
     }
     
     public func post(event: T) {
-        NotificationCenter.default.post(name: eventName, object: self, userInfo: [
-            "event": event
-        ])
+        var userInfo: [String:Any] = ["event": event]
+        if let token = token {
+            userInfo["token"] = token
+        }
+        NotificationCenter.default.post(name: eventName, object: self, userInfo: userInfo)
     }
     
     private func handle(event: T) {

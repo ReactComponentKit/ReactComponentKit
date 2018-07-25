@@ -13,13 +13,16 @@
 		4E3E01A721056B9700DDB93C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3E01A621056B9700DDB93C /* Assets.xcassets */; };
 		4E3E01AA21056B9700DDB93C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3E01A821056B9700DDB93C /* LaunchScreen.storyboard */; };
 		4E3E01B521056B9800DDB93C /* ReactComponentKitAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E01B421056B9800DDB93C /* ReactComponentKitAppTests.swift */; };
+		4E464A322108C1C600D0C4DE /* ConsoleLogMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A312108C1C600D0C4DE /* ConsoleLogMiddleware.swift */; };
+		4E464A342108CC5400D0C4DE /* Postware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A332108CC5400D0C4DE /* Postware.swift */; };
+		4E464A372108CEB400D0C4DE /* CachePostware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A362108CEB400D0C4DE /* CachePostware.swift */; };
+		4E464A392108CF3700D0C4DE /* PrintCacheValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A382108CF3700D0C4DE /* PrintCacheValue.swift */; };
 		4E568BD12106088000652321 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BD02106088000652321 /* Store.swift */; };
 		4E568BD321060AFD00652321 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BD221060AFD00652321 /* Middleware.swift */; };
 		4E568BD62106168100652321 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BD52106168100652321 /* ViewModel.swift */; };
 		4E568BDA2106170600652321 /* IncreaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BD92106170600652321 /* IncreaseAction.swift */; };
 		4E568BDD2106173200652321 /* DecreaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BDC2106173200652321 /* DecreaseAction.swift */; };
 		4E568BDF2106175100652321 /* CountReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BDE2106175100652321 /* CountReducer.swift */; };
-		4E568BE221061C1600652321 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BE121061C1600652321 /* Token.swift */; };
 		4E6AF7AD210605C900BCF5BF /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AF7AC210605C900BCF5BF /* Action.swift */; };
 		4E6AF7AF210605FE00BCF5BF /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AF7AE210605FE00BCF5BF /* Reducer.swift */; };
 		79B9653E4885DCD51731F478 /* Pods_ReactComponentKitAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00C93DC7C8FF383E142E029 /* Pods_ReactComponentKitAppTests.framework */; };
@@ -47,13 +50,16 @@
 		4E3E01B021056B9800DDB93C /* ReactComponentKitAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactComponentKitAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E3E01B421056B9800DDB93C /* ReactComponentKitAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactComponentKitAppTests.swift; sourceTree = "<group>"; };
 		4E3E01B621056B9800DDB93C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E464A312108C1C600D0C4DE /* ConsoleLogMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogMiddleware.swift; sourceTree = "<group>"; };
+		4E464A332108CC5400D0C4DE /* Postware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Postware.swift; sourceTree = "<group>"; };
+		4E464A362108CEB400D0C4DE /* CachePostware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachePostware.swift; sourceTree = "<group>"; };
+		4E464A382108CF3700D0C4DE /* PrintCacheValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintCacheValue.swift; sourceTree = "<group>"; };
 		4E568BD02106088000652321 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		4E568BD221060AFD00652321 /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		4E568BD52106168100652321 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4E568BD92106170600652321 /* IncreaseAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseAction.swift; sourceTree = "<group>"; };
 		4E568BDC2106173200652321 /* DecreaseAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecreaseAction.swift; sourceTree = "<group>"; };
 		4E568BDE2106175100652321 /* CountReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountReducer.swift; sourceTree = "<group>"; };
-		4E568BE121061C1600652321 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		4E6AF7AC210605C900BCF5BF /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		4E6AF7AE210605FE00BCF5BF /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		59031C46F7FC4D5FF2C2ACC0 /* Pods_ReactComponentKitApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactComponentKitApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,7 +115,9 @@
 			isa = PBXGroup;
 			children = (
 				4E568BD8210616FB00652321 /* Actions */,
+				4E464A302108C1AF00D0C4DE /* Middlewares */,
 				4E568BD7210616F000652321 /* Reducers */,
+				4E464A352108CEA100D0C4DE /* Postwares */,
 				4E3E019F21056B9700DDB93C /* AppDelegate.swift */,
 				4E3E01A121056B9700DDB93C /* ViewController.swift */,
 				4E568BD52106168100652321 /* ViewModel.swift */,
@@ -130,6 +138,23 @@
 			path = ReactComponentKitAppTests;
 			sourceTree = "<group>";
 		};
+		4E464A302108C1AF00D0C4DE /* Middlewares */ = {
+			isa = PBXGroup;
+			children = (
+				4E464A312108C1C600D0C4DE /* ConsoleLogMiddleware.swift */,
+				4E464A382108CF3700D0C4DE /* PrintCacheValue.swift */,
+			);
+			path = Middlewares;
+			sourceTree = "<group>";
+		};
+		4E464A352108CEA100D0C4DE /* Postwares */ = {
+			isa = PBXGroup;
+			children = (
+				4E464A362108CEB400D0C4DE /* CachePostware.swift */,
+			);
+			path = Postwares;
+			sourceTree = "<group>";
+		};
 		4E568BD421060B9100652321 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +162,7 @@
 				4E6AF7AE210605FE00BCF5BF /* Reducer.swift */,
 				4E568BD02106088000652321 /* Store.swift */,
 				4E568BD221060AFD00652321 /* Middleware.swift */,
+				4E464A332108CC5400D0C4DE /* Postware.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -158,18 +184,9 @@
 			path = Actions;
 			sourceTree = "<group>";
 		};
-		4E568BE021061C0800652321 /* ComponentKit */ = {
-			isa = PBXGroup;
-			children = (
-				4E568BE121061C1600652321 /* Token.swift */,
-			);
-			path = ComponentKit;
-			sourceTree = "<group>";
-		};
 		4E6AF7AB2106059D00BCF5BF /* ReactComponentKit */ = {
 			isa = PBXGroup;
 			children = (
-				4E568BE021061C0800652321 /* ComponentKit */,
 				4E568BD421060B9100652321 /* Redux */,
 			);
 			path = ReactComponentKit;
@@ -362,16 +379,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E464A322108C1C600D0C4DE /* ConsoleLogMiddleware.swift in Sources */,
 				4E568BD12106088000652321 /* Store.swift in Sources */,
+				4E464A342108CC5400D0C4DE /* Postware.swift in Sources */,
 				4E3E01A221056B9700DDB93C /* ViewController.swift in Sources */,
+				4E464A392108CF3700D0C4DE /* PrintCacheValue.swift in Sources */,
 				4E568BDF2106175100652321 /* CountReducer.swift in Sources */,
 				4E6AF7AD210605C900BCF5BF /* Action.swift in Sources */,
 				4E568BD321060AFD00652321 /* Middleware.swift in Sources */,
 				4E568BDD2106173200652321 /* DecreaseAction.swift in Sources */,
 				4E6AF7AF210605FE00BCF5BF /* Reducer.swift in Sources */,
-				4E568BE221061C1600652321 /* Token.swift in Sources */,
 				4E3E01A021056B9700DDB93C /* AppDelegate.swift in Sources */,
 				4E568BD62106168100652321 /* ViewModel.swift in Sources */,
+				4E464A372108CEB400D0C4DE /* CachePostware.swift in Sources */,
 				4E568BDA2106170600652321 /* IncreaseAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
