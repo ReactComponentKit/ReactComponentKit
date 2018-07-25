@@ -13,21 +13,33 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var countLabel: UILabel!
     
-    let eventBus = EventBus<Store.Event>()
-    
-    let store = Store(state: [
-        "count": 0
-        ], reducers: [
+    // STORE
+    let store = Store(
+        state: [
+            "count": 0
+        ],
+        reducers: [
             "count": countReducer
-        ])
-
+        ],
+        middlewares: [
+            printCacheValue,
+            consoleLogMiddleware
+        ],
+        postwares: [
+            cachePostware
+        ]
+    )
+    
+    lazy var eventBus: EventBus<Store.Event> = {
+        return EventBus(token: store.token)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         eventBus.on { [weak self] (event: Store.Event) in
             guard let strongSelf = self else { return }
             switch event {
-            case let .on(newState, token):
-                guard strongSelf.store.token == token else { return }
+            case let .on(newState):
                 guard let value = newState["count"] as? Int else { return }
                 strongSelf.countLabel.text = String(value)
             default:

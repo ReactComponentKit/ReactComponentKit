@@ -13,23 +13,28 @@ import BKEventBus
 final class Store {
     
     enum Event: EventType {
-        case dispatch(action: Action, token: Token)
-        case on(newState: [String:State], token: Token)
+        case dispatch(action: Action)
+        case on(newState: [String:State])
     }
     
     private static let concurrentQ = ConcurrentDispatchQueueScheduler(qos: .background)
+    private static let serialQ = SerialDispatchQueueScheduler(qos: .background)
     
-    var state: [String:State]
-    let reducers:[String:Reducer]
-    let middlewares:[Middleware]?
+    private(set) var state: [String:State]
+    let reducers: [String:Reducer]
+    let middlewares: [Middleware]
+    let postwares: [Postware]
     let disposeBag = DisposeBag()
     let token = Token() // 이벤트를 통해서 Store에 액션을 보낼 컴포넌트들은 Store의 토큰을 알아야 한다.
-    private let eventBus = EventBus<Store.Event>()
+    private lazy var eventBus: EventBus<Store.Event> = {
+        return EventBus(token: token)
+    }()
     
-    init(state: [String:State], reducers:[String:Reducer], middlewares:[Middleware]? = nil) {
+    init(state: [String:State], reducers:[String:Reducer], middlewares:[Middleware] = [], postwares:[Postware] = []) {
         self.state = state
         self.reducers = reducers
         self.middlewares = middlewares
+        self.postwares = postwares
         setupEventBus()
     }
     
@@ -55,18 +60,62 @@ final class Store {
          - 하면서 A_API_Reducer에서 하위 상태를 위한 리듀서를 직접 호출해야 한다. 
         */
         
+        if middlewares.isEmpty == false {
+            middleware(state: state, action: action)
+                .subscribeOn(Store.concurrentQ)
+                .observeOn(Store.concurrentQ)
+                .flatMap({ [weak self] (middlewareState) -> Observable<[String:State]> in
+                    guard let strongSelf = self else { return Observable.just(middlewareState) }
+                    return strongSelf.reduce(state: middlewareState, action: action)
+                })
+                .flatMap({ [weak self] (reducesState) -> Observable<[String:State]> in
+                    guard let strongSelf = self else { return Observable.just(reducesState) }
+                    return strongSelf.postware(state: reducesState, action: action)
+                })
+                .observeOn(MainScheduler.asyncInstance)
+                .subscribe(onNext: { [weak self] (newState) in
+                    guard let strongSelf = self else { return }
+                    strongSelf.state = newState
+                    strongSelf.eventBus.post(event: .on(newState: newState))
+                })
+                .disposed(by: disposeBag)
+        } else {
         
-        reduce(state: state, action: action)
-            .subscribeOn(Store.concurrentQ)
-            .observeOn(Store.concurrentQ)
-            //middleware
-            .observeOn(MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] (newState) in
-                guard let strongSelf = self else { return }
-                strongSelf.state = newState
-                strongSelf.eventBus.post(event: .on(newState: newState, token: strongSelf.token))
+            reduce(state: state, action: action)
+                .subscribeOn(Store.concurrentQ)
+                .observeOn(Store.concurrentQ)
+                .flatMap({ [weak self] (reducesState) -> Observable<[String:State]> in
+                    guard let strongSelf = self else { return Observable.just(reducesState) }
+                    return strongSelf.postware(state: reducesState, action: action)
+                })
+                .observeOn(MainScheduler.asyncInstance)
+                .subscribe(onNext: { [weak self] (newState) in
+                    guard let strongSelf = self else { return }
+                    strongSelf.state = newState
+                    strongSelf.eventBus.post(event: .on(newState: newState))
+                })
+                .disposed(by: disposeBag)
+        }
+    }
+    
+    
+    private func middleware(state: [String:State], action: Action) -> Observable<[String:State]> {
+        
+        var mutableState = state
+        return Single.create(subscribe: { [weak self] (single) -> Disposable in
+            guard let strongSelf = self else {
+                single(.success(state))
+                return Disposables.create()
+            }
+
+            mutableState = strongSelf.middlewares.reduce(mutableState, { (nextState, m) -> [String:State] in
+                return m(nextState, action)
             })
-            .disposed(by: disposeBag)
+            
+            single(.success(mutableState))
+            return Disposables.create()
+            
+        }).asObservable()
     }
     
     private func reduce(state: [String:State], action: Action) -> Observable<[String:State]> {
@@ -97,12 +146,30 @@ final class Store {
         
     }
     
+    private func postware(state: [String:State], action: Action) -> Observable<[String:State]> {
+        
+        var mutableState = state
+        return Single.create(subscribe: { [weak self] (single) -> Disposable in
+            guard let strongSelf = self else {
+                single(.success(state))
+                return Disposables.create()
+            }
+            
+            mutableState = strongSelf.postwares.reduce(mutableState, { (nextState, p) -> [String:State] in
+                return p(nextState, action)
+            })
+            
+            single(.success(mutableState))
+            return Disposables.create()
+            
+        }).asObservable()
+    }
+    
     private func setupEventBus() {
         eventBus.on { [weak self] (event: Store.Event) in
             guard let strongSelf = self else { return }
             switch event {
-            case let .dispatch(action, token):
-                guard strongSelf.token == token else { return }
+            case let .dispatch(action):
                 strongSelf.dispatch(action: action)
             default:
                 break
