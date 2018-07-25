@@ -68,6 +68,13 @@ final class Store {
                     guard let strongSelf = self else { return Observable.just(middlewareState) }
                     return strongSelf.reduce(state: middlewareState, action: action)
                 })
+                .subscribeOn(Store.serialQ)
+                .observeOn(Store.serialQ)
+                // Needs to do some action for example, request api
+                // Action 이 비동기 람다를 갖도록 하자
+                // flatMap 으로 체인을 걸자
+                .subscribeOn(Store.concurrentQ)
+                .observeOn(Store.concurrentQ)
                 .flatMap({ [weak self] (reducesState) -> Observable<[String:State]> in
                     guard let strongSelf = self else { return Observable.just(reducesState) }
                     return strongSelf.postware(state: reducesState, action: action)
