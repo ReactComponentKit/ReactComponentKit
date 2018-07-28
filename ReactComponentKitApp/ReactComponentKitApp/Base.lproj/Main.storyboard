@@ -31,20 +31,18 @@
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVT-80-pLA">
-                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <state key="normal" title="-"/>
-                                        <connections>
-                                            <action selector="clickedDecreaseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ECJ-l6-rmY"/>
-                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITc-uM-Njz">
+                                        <rect key="frame" x="125" y="0.0" width="125" height="50"/>
+                                        <state key="normal" title="COLOR"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afn-LD-6Pb">
-                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                                        <rect key="frame" x="250" y="0.0" width="125" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <state key="normal" title="+"/>
-                                        <connections>
-                                            <action selector="clickedIncreaseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jWx-1p-cXI"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -64,11 +62,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="colorButton" destination="ITc-uM-Njz" id="R0A-OQ-g4f"/>
                         <outlet property="countLabel" destination="YRK-Lv-BL9" id="z1f-AA-5Az"/>
+                        <outlet property="minusButton" destination="BVT-80-pLA" id="ucH-dB-2WO"/>
+                        <outlet property="plusButton" destination="afn-LD-6Pb" id="7m3-tS-lIx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-502" y="-312"/>
         </scene>
     </scenes>
 </document>

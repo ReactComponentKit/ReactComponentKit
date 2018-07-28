@@ -6,7 +6,6 @@ target 'ReactComponentKitApp' do
   use_frameworks!
 
   # Pods for ReactComponentKitApp
-  pod 'BKEventBus'
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'SnapKit'

@@ -7,61 +7,47 @@
 //
 
 import UIKit
-import BKEventBus
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var colorButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
     
-    // STORE
-    let store = Store(
-        state: [
-            "count": 0
-        ],
-        reducers: [
-            "count": countReducer
-        ],
-        middlewares: [
-            printCacheValue,
-            consoleLogMiddleware
-        ],
-        postwares: [
-            cachePostware
-        ]
-    )
     
-    lazy var eventBus: EventBus<Store.Event> = {
-        return EventBus(token: store.token)
-    }()
+    private let viewModel = ViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventBus.on { [weak self] (event: Store.Event) in
-            guard let strongSelf = self else { return }
-            switch event {
-            case let .on(newState):
-                guard let value = newState["count"] as? Int else { return }
-                strongSelf.countLabel.text = String(value)
-            default:
-                break
-            }
-        }
+        
+        plusButton.rx.tap.map { IncreaseAction() }.bind(to: viewModel.rx_action).disposed(by: disposeBag)
+        minusButton.rx.tap.map { DecreaseAction() }.bind(to: viewModel.rx_action).disposed(by: disposeBag)
+        colorButton.rx.tap.map { RandomColorAction() }.bind(to: viewModel.rx_action).disposed(by: disposeBag)
+
+        viewModel.rx_color
+            .asDriver()
+            .drive(onNext: { [weak self] (color) in
+                if self?.view.backgroundColor != color {
+                    self?.view.backgroundColor = color
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.rx_count
+            .asDriver()
+            .drive(onNext: { [weak self] (countString) in
+                self?.countLabel.text = countString
+            })
+            .disposed(by: disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    
-    @IBAction func clickedDecreaseButton(_ sender: Any) {
-        store.dispatch(action: DecreaseAction())
-    }
-    
-    
-    @IBAction func clickedIncreaseButton(_ sender: Any) {
-        store.dispatch(action: IncreaseAction())
-    }
-    
-    
+        
 }
 

@@ -1,29 +1,25 @@
 PODS:
-  - BKEventBus (1.0.6)
   - RxCocoa (4.2.0):
     - RxSwift (~> 4.0)
   - RxSwift (4.2.0)
   - SnapKit (4.0.0)
 
 DEPENDENCIES:
-  - BKEventBus
   - RxCocoa
   - RxSwift
   - SnapKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - BKEventBus
     - RxCocoa
     - RxSwift
     - SnapKit
 
 SPEC CHECKSUMS:
-  BKEventBus: 7e055de48afaab6d3c802dd5c976837b2f87a825
   RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
   RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: c719e6437eeb64a2620d9a6cabd49d4370066334
+PODFILE CHECKSUM: 01d72d2f59e9e591c8ef313098a17fc0190b58e6
 
 COCOAPODS: 1.5.3

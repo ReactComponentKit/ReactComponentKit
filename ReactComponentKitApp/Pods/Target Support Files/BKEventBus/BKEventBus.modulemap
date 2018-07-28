@@ -1,6 +1,0 @@
-framework module BKEventBus {
-  umbrella header "BKEventBus-umbrella.h"
-
-  export *
-  module * { export * }
-}

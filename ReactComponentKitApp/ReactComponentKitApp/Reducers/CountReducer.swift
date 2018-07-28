@@ -9,17 +9,17 @@
 import Foundation
 import RxSwift
 
-func countReducer(state: State?) -> (Action) -> Observable<ReducerResult> {
+func countReducer(name: String, state: State?) -> (Action) -> Observable<ReducerResult> {
     return { action in
-        guard let mutableState = state as? Int else { return Observable.just(ReducerResult(name: "count", result: 0)) }
+        guard let mutableState = state as? Int else { return Observable.just(ReducerResult(name: name, result: 0)) }
         
         switch action {
         case let increaseAction as IncreaseAction:
-            return Observable.just(ReducerResult(name: "count", result: mutableState + increaseAction.payload))
+            return Observable.just(ReducerResult(name: name, result: mutableState + increaseAction.payload))
         case let decreaseAction as DecreaseAction:
-            return Observable.just(ReducerResult(name: "count", result: mutableState + decreaseAction.payload))
+            return Observable.just(ReducerResult(name: name, result: mutableState + decreaseAction.payload))
         default:
-            return Observable.just(ReducerResult(name: "count", result: mutableState))
+            return Observable.just(ReducerResult(name: name, result: mutableState))
         }
     }
 }

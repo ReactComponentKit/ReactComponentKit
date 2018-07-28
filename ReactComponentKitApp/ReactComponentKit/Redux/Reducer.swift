@@ -9,9 +9,9 @@
 import Foundation
 import RxSwift
 
-typealias State = Any
-struct ReducerResult {
-    let name: String
-    let result: State?
+public typealias State = Any
+public struct ReducerResult {
+    public let name: String
+    public let result: State?
 }
-typealias Reducer = (State?) -> (Action) -> Observable<ReducerResult>
+public typealias Reducer = (String, State?) -> (Action) -> Observable<ReducerResult>
