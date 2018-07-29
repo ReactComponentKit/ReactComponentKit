@@ -6,7 +6,7 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import Foundation
+import BKRedux
 import RxSwift
 import RxCocoa
 

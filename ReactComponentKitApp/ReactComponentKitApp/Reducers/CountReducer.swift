@@ -6,20 +6,20 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import Foundation
+import BKRedux
 import RxSwift
 
 func countReducer(name: String, state: State?) -> (Action) -> Observable<ReducerResult> {
     return { action in
-        guard let mutableState = state as? Int else { return Observable.just(ReducerResult(name: name, result: 0)) }
+        guard let prevState = state as? Int else { return Observable.just(ReducerResult(name: name, result: 0)) }
         
         switch action {
         case let increaseAction as IncreaseAction:
-            return Observable.just(ReducerResult(name: name, result: mutableState + increaseAction.payload))
+            return Observable.just(ReducerResult(name: name, result: prevState + increaseAction.payload))
         case let decreaseAction as DecreaseAction:
-            return Observable.just(ReducerResult(name: name, result: mutableState + decreaseAction.payload))
+            return Observable.just(ReducerResult(name: name, result: prevState + decreaseAction.payload))
         default:
-            return Observable.just(ReducerResult(name: name, result: mutableState))
+            return Observable.just(ReducerResult(name: name, result: prevState))
         }
     }
 }

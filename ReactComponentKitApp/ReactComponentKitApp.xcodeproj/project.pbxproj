@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E019D3A210E16A100ABD37A /* ComponentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E019D34210E16A100ABD37A /* ComponentCollectionViewCell.swift */; };
+		4E019D3B210E16A100ABD37A /* ComponentCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E019D35210E16A100ABD37A /* ComponentCollectionReusableView.swift */; };
+		4E019D3C210E16A100ABD37A /* ComponentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E019D36210E16A100ABD37A /* ComponentTableViewCell.swift */; };
+		4E019D3D210E16A100ABD37A /* ComponentNibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E019D39210E16A100ABD37A /* ComponentNibView.swift */; };
 		4E3E01A021056B9700DDB93C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E019F21056B9700DDB93C /* AppDelegate.swift */; };
 		4E3E01A221056B9700DDB93C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E01A121056B9700DDB93C /* ViewController.swift */; };
 		4E3E01A521056B9700DDB93C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3E01A321056B9700DDB93C /* Main.storyboard */; };
@@ -14,20 +18,14 @@
 		4E3E01AA21056B9700DDB93C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3E01A821056B9700DDB93C /* LaunchScreen.storyboard */; };
 		4E3E01B521056B9800DDB93C /* ReactComponentKitAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E01B421056B9800DDB93C /* ReactComponentKitAppTests.swift */; };
 		4E464A322108C1C600D0C4DE /* ConsoleLogMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A312108C1C600D0C4DE /* ConsoleLogMiddleware.swift */; };
-		4E464A342108CC5400D0C4DE /* Postware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A332108CC5400D0C4DE /* Postware.swift */; };
 		4E464A372108CEB400D0C4DE /* CachePostware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A362108CEB400D0C4DE /* CachePostware.swift */; };
 		4E464A392108CF3700D0C4DE /* PrintCacheValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A382108CF3700D0C4DE /* PrintCacheValue.swift */; };
-		4E568BD12106088000652321 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BD02106088000652321 /* Store.swift */; };
-		4E568BD321060AFD00652321 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BD221060AFD00652321 /* Middleware.swift */; };
 		4E568BD62106168100652321 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BD52106168100652321 /* ViewModel.swift */; };
 		4E568BDA2106170600652321 /* IncreaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BD92106170600652321 /* IncreaseAction.swift */; };
 		4E568BDD2106173200652321 /* DecreaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BDC2106173200652321 /* DecreaseAction.swift */; };
 		4E568BDF2106175100652321 /* CountReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BDE2106175100652321 /* CountReducer.swift */; };
-		4E6AF7AD210605C900BCF5BF /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AF7AC210605C900BCF5BF /* Action.swift */; };
-		4E6AF7AF210605FE00BCF5BF /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AF7AE210605FE00BCF5BF /* Reducer.swift */; };
 		4EBD8A8A210C70C3009CD480 /* RandomColorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */; };
 		4EBD8A8C210C7178009CD480 /* ColorReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD8A8B210C7178009CD480 /* ColorReducer.swift */; };
-		4EBD8A8E210CC4C2009CD480 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD8A8D210CC4C2009CD480 /* ViewModelType.swift */; };
 		79B9653E4885DCD51731F478 /* Pods_ReactComponentKitAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00C93DC7C8FF383E142E029 /* Pods_ReactComponentKitAppTests.framework */; };
 		84E2BBF849FCA5DB1E4F8235 /* Pods_ReactComponentKitApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59031C46F7FC4D5FF2C2ACC0 /* Pods_ReactComponentKitApp.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E019D34210E16A100ABD37A /* ComponentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewCell.swift; sourceTree = "<group>"; };
+		4E019D35210E16A100ABD37A /* ComponentCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentCollectionReusableView.swift; sourceTree = "<group>"; };
+		4E019D36210E16A100ABD37A /* ComponentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentTableViewCell.swift; sourceTree = "<group>"; };
+		4E019D39210E16A100ABD37A /* ComponentNibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentNibView.swift; sourceTree = "<group>"; };
 		4E3E019C21056B9700DDB93C /* ReactComponentKitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactComponentKitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E3E019F21056B9700DDB93C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E3E01A121056B9700DDB93C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,20 +56,14 @@
 		4E3E01B421056B9800DDB93C /* ReactComponentKitAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactComponentKitAppTests.swift; sourceTree = "<group>"; };
 		4E3E01B621056B9800DDB93C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E464A312108C1C600D0C4DE /* ConsoleLogMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogMiddleware.swift; sourceTree = "<group>"; };
-		4E464A332108CC5400D0C4DE /* Postware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Postware.swift; sourceTree = "<group>"; };
 		4E464A362108CEB400D0C4DE /* CachePostware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachePostware.swift; sourceTree = "<group>"; };
 		4E464A382108CF3700D0C4DE /* PrintCacheValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintCacheValue.swift; sourceTree = "<group>"; };
-		4E568BD02106088000652321 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		4E568BD221060AFD00652321 /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		4E568BD52106168100652321 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4E568BD92106170600652321 /* IncreaseAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseAction.swift; sourceTree = "<group>"; };
 		4E568BDC2106173200652321 /* DecreaseAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecreaseAction.swift; sourceTree = "<group>"; };
 		4E568BDE2106175100652321 /* CountReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountReducer.swift; sourceTree = "<group>"; };
-		4E6AF7AC210605C900BCF5BF /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		4E6AF7AE210605FE00BCF5BF /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColorAction.swift; sourceTree = "<group>"; };
 		4EBD8A8B210C7178009CD480 /* ColorReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorReducer.swift; sourceTree = "<group>"; };
-		4EBD8A8D210CC4C2009CD480 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		59031C46F7FC4D5FF2C2ACC0 /* Pods_ReactComponentKitApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactComponentKitApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1D52EECDA19B350342BA65 /* Pods-ReactComponentKitApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactComponentKitApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactComponentKitApp/Pods-ReactComponentKitApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9C0DDB80135374A100D59E7E /* Pods-ReactComponentKitAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactComponentKitAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactComponentKitAppTests/Pods-ReactComponentKitAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -96,10 +92,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E019D31210E16A100ABD37A /* ReactComponentKit */ = {
+			isa = PBXGroup;
+			children = (
+				4E019D32210E16A100ABD37A /* TableView */,
+				4E019D33210E16A100ABD37A /* Cells */,
+				4E019D37210E16A100ABD37A /* CollectionView */,
+				4E019D38210E16A100ABD37A /* Utils */,
+			);
+			path = ReactComponentKit;
+			sourceTree = "<group>";
+		};
+		4E019D32210E16A100ABD37A /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		4E019D33210E16A100ABD37A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4E019D34210E16A100ABD37A /* ComponentCollectionViewCell.swift */,
+				4E019D35210E16A100ABD37A /* ComponentCollectionReusableView.swift */,
+				4E019D36210E16A100ABD37A /* ComponentTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4E019D37210E16A100ABD37A /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		4E019D38210E16A100ABD37A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4E019D39210E16A100ABD37A /* ComponentNibView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		4E3E019321056B9700DDB93C = {
 			isa = PBXGroup;
 			children = (
-				4E6AF7AB2106059D00BCF5BF /* ReactComponentKit */,
+				4E019D31210E16A100ABD37A /* ReactComponentKit */,
 				4E3E019E21056B9700DDB93C /* ReactComponentKitApp */,
 				4E3E01B321056B9800DDB93C /* ReactComponentKitAppTests */,
 				4E3E019D21056B9700DDB93C /* Products */,
@@ -161,19 +200,6 @@
 			path = Postwares;
 			sourceTree = "<group>";
 		};
-		4E568BD421060B9100652321 /* Redux */ = {
-			isa = PBXGroup;
-			children = (
-				4E6AF7AC210605C900BCF5BF /* Action.swift */,
-				4E6AF7AE210605FE00BCF5BF /* Reducer.swift */,
-				4E568BD02106088000652321 /* Store.swift */,
-				4E568BD221060AFD00652321 /* Middleware.swift */,
-				4E464A332108CC5400D0C4DE /* Postware.swift */,
-				4EBD8A8D210CC4C2009CD480 /* ViewModelType.swift */,
-			);
-			path = Redux;
-			sourceTree = "<group>";
-		};
 		4E568BD7210616F000652321 /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,14 +217,6 @@
 				4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */,
 			);
 			path = Actions;
-			sourceTree = "<group>";
-		};
-		4E6AF7AB2106059D00BCF5BF /* ReactComponentKit */ = {
-			isa = PBXGroup;
-			children = (
-				4E568BD421060B9100652321 /* Redux */,
-			);
-			path = ReactComponentKit;
 			sourceTree = "<group>";
 		};
 		4FE55BCC412CB31C704CEAC5 /* Pods */ = {
@@ -364,12 +382,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ReactComponentKitApp/Pods-ReactComponentKitApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BKEventBus/BKEventBus.framework",
+				"${BUILT_PRODUCTS_DIR}/BKRedux/BKRedux.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BKEventBus.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BKRedux.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -387,22 +409,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E464A322108C1C600D0C4DE /* ConsoleLogMiddleware.swift in Sources */,
-				4E568BD12106088000652321 /* Store.swift in Sources */,
-				4E464A342108CC5400D0C4DE /* Postware.swift in Sources */,
 				4E3E01A221056B9700DDB93C /* ViewController.swift in Sources */,
 				4E464A392108CF3700D0C4DE /* PrintCacheValue.swift in Sources */,
 				4E568BDF2106175100652321 /* CountReducer.swift in Sources */,
+				4E019D3B210E16A100ABD37A /* ComponentCollectionReusableView.swift in Sources */,
 				4EBD8A8C210C7178009CD480 /* ColorReducer.swift in Sources */,
-				4E6AF7AD210605C900BCF5BF /* Action.swift in Sources */,
-				4E568BD321060AFD00652321 /* Middleware.swift in Sources */,
 				4E568BDD2106173200652321 /* DecreaseAction.swift in Sources */,
-				4EBD8A8E210CC4C2009CD480 /* ViewModelType.swift in Sources */,
-				4E6AF7AF210605FE00BCF5BF /* Reducer.swift in Sources */,
 				4E3E01A021056B9700DDB93C /* AppDelegate.swift in Sources */,
 				4E568BD62106168100652321 /* ViewModel.swift in Sources */,
 				4EBD8A8A210C70C3009CD480 /* RandomColorAction.swift in Sources */,
+				4E019D3D210E16A100ABD37A /* ComponentNibView.swift in Sources */,
 				4E464A372108CEB400D0C4DE /* CachePostware.swift in Sources */,
+				4E019D3A210E16A100ABD37A /* ComponentCollectionViewCell.swift in Sources */,
 				4E568BDA2106170600652321 /* IncreaseAction.swift in Sources */,
+				4E019D3C210E16A100ABD37A /* ComponentTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

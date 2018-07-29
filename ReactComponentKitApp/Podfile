@@ -8,8 +8,10 @@ target 'ReactComponentKitApp' do
   # Pods for ReactComponentKitApp
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'BKRedux'
+  pod 'BKEventBus'
   pod 'SnapKit'
-
+  
   target 'ReactComponentKitAppTests' do
     inherit! :search_paths
     # Pods for testing

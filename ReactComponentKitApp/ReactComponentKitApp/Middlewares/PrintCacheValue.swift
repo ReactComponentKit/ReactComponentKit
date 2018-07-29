@@ -6,7 +6,7 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import Foundation
+import BKRedux
 
 func printCacheValue(state: [String:State], action: Action) -> [String:State] {
     print("[## CACHED ##] value: \(UserDefaults.standard.integer(forKey: "count"))")

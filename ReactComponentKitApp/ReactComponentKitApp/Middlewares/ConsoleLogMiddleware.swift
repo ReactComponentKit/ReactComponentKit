@@ -6,7 +6,7 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import Foundation
+import BKRedux
 
 func consoleLogMiddleware(state: [String:State], action: Action) -> [String:State] {
     print("[## LOGGING ##] action: \(String(describing: action)) :: state: \(state)")

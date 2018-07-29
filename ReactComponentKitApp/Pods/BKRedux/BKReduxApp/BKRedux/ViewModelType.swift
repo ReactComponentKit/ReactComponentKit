@@ -10,13 +10,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-public class ViewModelType {
+open class ViewModelType {
     // rx port
     public let rx_action = PublishSubject<Action>()
     public let rx_state = BehaviorRelay<[String:State]?>(value: nil)
     
-    internal let store = Store()
-    internal let disposeBag = DisposeBag()
+    public let store = Store()
+    public let disposeBag = DisposeBag()
     
     public init() {
         setupRxStream()
@@ -40,12 +40,11 @@ public class ViewModelType {
             .disposed(by: disposeBag)
     }
     
-    internal func on(newState: [String:State]?) {
+    open func on(newState: [String:State]?) {
         
     }
     
-    internal func on(error: Error, action: Action) {
+    open func on(error: Error, action: Action) {
         
     }
 }
-

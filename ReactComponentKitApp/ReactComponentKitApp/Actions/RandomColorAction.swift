@@ -8,6 +8,7 @@
 
 
 import UIKit
+import BKRedux
 
 struct RandomColorAction: Action {
     private static let colors = [

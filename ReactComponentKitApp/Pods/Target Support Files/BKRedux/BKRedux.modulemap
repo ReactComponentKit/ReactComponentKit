@@ -1,0 +1,6 @@
+framework module BKRedux {
+  umbrella header "BKRedux-umbrella.h"
+
+  export *
+  module * { export * }
+}
