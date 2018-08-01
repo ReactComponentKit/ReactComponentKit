@@ -11,10 +11,11 @@ import UIKit
 class StackViewController: UIViewController {
     
     private var childVC: UIViewController? = nil
-
+    private let viewModel = StackViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        childVC = add(viewController: RedViewController.viewController())
+        childVC = add(viewController: RedViewController.viewController(token: viewModel.token))
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,7 +23,7 @@ class StackViewController: UIViewController {
     }
 
     @IBAction func clickedAddButton(_ sender: Any) {
-        childVC = add(viewController: RedViewController.viewController())
+        childVC = add(viewController: RedViewController.viewController(token: viewModel.token))
     }
     
 }

@@ -7,12 +7,43 @@
 //
 
 import UIKit
+import BKEventBus
 
 class RedViewModel: ComponentModel {
     
 }
 
-class RedViewController: UIViewController, Component {
+class RedViewController: UIViewController, ReactComponent {
+    
+    static func viewController(token: Token) -> UIViewController {
+        return RedViewController(token: token)
+    }
+    
+    public lazy var eventBus: EventBus<ComponentEvent> = {
+        return EventBus(token: self.token)
+    }()
+    
+    var token: Token
+    required init(token: Token) {
+        self.token = token
+        super.init(nibName: nil, bundle: nil)
+        
+        eventBus.on { [weak self] (event) in
+            guard let strongSelf = self else { return }
+            switch event {
+            case let .on(state):
+                if let newColor = state as? UIColor {
+                    strongSelf.view.backgroundColor = newColor
+                }
+            default:
+                break
+            }
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     var model: ComponentModel?
     
@@ -22,10 +53,6 @@ class RedViewController: UIViewController, Component {
     
     func update(with model: RedViewModel) {
         self.model = model
-    }
-
-    static func viewController() -> UIViewController {
-        return RedViewController(nibName: nil, bundle: nil)
     }
 
     override func viewDidLoad() {
@@ -58,7 +85,8 @@ class RedViewController: UIViewController, Component {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        removeFromSuperViewController()
+        //removeFromSuperViewController()
+        eventBus.post(event: .dispatch(action: RandomColorAction()))
     }
     
 }

@@ -8,6 +8,13 @@
 
 import Foundation
 import UIKit
+import BKEventBus
+import BKRedux
+
+public enum ComponentEvent: EventType {
+    case on(state: State?)
+    case dispatch(action: Action)
+}
 
 public protocol ComponentModel {
     
@@ -22,6 +29,12 @@ public protocol Component: UpdatableComponentModel {
     var model: ComponentModel? { get set }
 }
 
+// 이벤트를 들을 수 있는 컴포넌트
+public protocol ReactComponent: Component {
+    var token: Token { get set }
+    var eventBus: EventBus<ComponentEvent> { get }
+    init(token: Token)
+}
 
 // 업데이트할 모델 전파
 extension UpdatableComponentModel where Self: UIViewController {

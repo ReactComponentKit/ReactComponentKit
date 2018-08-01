@@ -10,9 +10,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+private struct VoidAction: Action {
+}
+
 open class ViewModelType {
     // rx port
-    public let rx_action = PublishSubject<Action>()
+    public let rx_action = BehaviorRelay<Action>(value: VoidAction())
     public let rx_state = BehaviorRelay<[String:State]?>(value: nil)
     
     public let store = Store()
@@ -24,6 +27,7 @@ open class ViewModelType {
     
     private func setupRxStream() {
         rx_action
+            .filter { type(of: $0) != VoidAction.self }
             .flatMap(store.dispatch)
             .observeOn(MainScheduler.asyncInstance)
             .bind(to: rx_state)
@@ -48,3 +52,4 @@ open class ViewModelType {
         
     }
 }
+
