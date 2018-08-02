@@ -9,9 +9,9 @@
 import UIKit
 import BKEventBus
 
-class RedViewModel: ComponentModel {
-    
-}
+//class RedViewModel: ComponentModel {
+//
+//}
 
 class RedViewController: UIViewController, ReactComponent {
     
@@ -32,7 +32,7 @@ class RedViewController: UIViewController, ReactComponent {
             guard let strongSelf = self else { return }
             switch event {
             case let .on(state):
-                if let newColor = state as? UIColor {
+                if let newColor = state?["color"] as? UIColor {
                     strongSelf.view.backgroundColor = newColor
                 }
             default:
@@ -45,15 +45,15 @@ class RedViewController: UIViewController, ReactComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var model: ComponentModel?
+//    var model: ComponentModel?
     
-    var contentSize: CGSize? {
+    var contentSize: CGSize {
         return self.view.bounds.size
     }
     
-    func update(with model: RedViewModel) {
-        self.model = model
-    }
+//    func update(with model: RedViewModel) {
+//        self.model = model
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -14,13 +14,15 @@ class StackViewModel: RootViewModelType {
     override init() {
         super.init()
         store.set(state: [
-            "color": UIColor.red
+            "color": UIColor.red,
+            "text": ""
         ], reducers: [
-            "color": colorReducer
+            "color": colorReducer,
+            "text": textReducer
         ])
     }
     
     override func on(newState: [String : State]?) {
-        eventBus.post(event: .on(state: newState?["color"]))
+        eventBus.post(event: .on(state: newState))
     }
 }
