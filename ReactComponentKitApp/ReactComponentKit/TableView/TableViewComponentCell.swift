@@ -1,5 +1,5 @@
 //
-//  ComponentCollectionReusableView.swift
+//  ComponentTableViewCell.swift
 //  ReactComponentKitApp
 //
 //  Created by burt on 2018. 7. 29..
@@ -8,14 +8,14 @@
 
 import UIKit
 
-internal class ComponentCollectionReusableView<View: UIView & Component>: UICollectionReusableView {
+internal class TableViewComponentCell<View: UIViewComponent>: UITableViewCell {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
 }

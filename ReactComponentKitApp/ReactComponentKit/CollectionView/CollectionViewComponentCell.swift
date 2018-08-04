@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-internal class ComponentCollectionViewCell<View: UIView & Component>: UICollectionViewCell {
+internal class CollectionViewComponentCell<View: UIViewComponent>: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
