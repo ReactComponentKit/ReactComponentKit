@@ -11,7 +11,7 @@ import BKRedux
 import BKEventBus
 import SnapKit
 
-class MessageViewComponent: ReactComponentView {
+class MessageViewComponent: UIViewComponent {
     
     private lazy var label: UILabel = {
         let label = UILabel(frame: .zero)
@@ -22,11 +22,7 @@ class MessageViewComponent: ReactComponentView {
     override var contentSize: CGSize {
         return label.intrinsicContentSize
     }
-    
-    override var intrinsicContentSize: CGSize {
-        return contentSize
-    }
-    
+        
     override func setupView() {
         self.addSubview(label)
         label.snp.makeConstraints { (make) in
@@ -37,7 +33,6 @@ class MessageViewComponent: ReactComponentView {
     override func on(state: [String:State]?) {
         guard let text = state?["text"] as? String else { return }
         label.text = text
-        invalidateIntrinsicContentSize()
     }
 }
 

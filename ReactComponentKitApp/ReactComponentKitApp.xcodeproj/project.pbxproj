@@ -20,6 +20,9 @@
 		4E3E05BA21134E5400D6DBB5 /* MessageViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E05B921134E5400D6DBB5 /* MessageViewComponent.swift */; };
 		4E3E05BD2113504800D6DBB5 /* TextReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E05BC2113504800D6DBB5 /* TextReducer.swift */; };
 		4E3E05C02113517100D6DBB5 /* TextAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E05BF2113517100D6DBB5 /* TextAction.swift */; };
+		4E44CDE02115E67300AB4FCF /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDDF2115E67300AB4FCF /* ComponentView.swift */; };
+		4E44CDE22115E72A00AB4FCF /* UIViewControllerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDE12115E72A00AB4FCF /* UIViewControllerComponent.swift */; };
+		4E44CDE42115E97B00AB4FCF /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDE32115E97B00AB4FCF /* ButtonComponent.swift */; };
 		4E464A322108C1C600D0C4DE /* ConsoleLogMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A312108C1C600D0C4DE /* ConsoleLogMiddleware.swift */; };
 		4E464A372108CEB400D0C4DE /* CachePostware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A362108CEB400D0C4DE /* CachePostware.swift */; };
 		4E464A392108CF3700D0C4DE /* PrintCacheValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A382108CF3700D0C4DE /* PrintCacheValue.swift */; };
@@ -68,6 +71,9 @@
 		4E3E05B921134E5400D6DBB5 /* MessageViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewComponent.swift; sourceTree = "<group>"; };
 		4E3E05BC2113504800D6DBB5 /* TextReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextReducer.swift; sourceTree = "<group>"; };
 		4E3E05BF2113517100D6DBB5 /* TextAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAction.swift; sourceTree = "<group>"; };
+		4E44CDDF2115E67300AB4FCF /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
+		4E44CDE12115E72A00AB4FCF /* UIViewControllerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerComponent.swift; sourceTree = "<group>"; };
+		4E44CDE32115E97B00AB4FCF /* ButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
 		4E464A312108C1C600D0C4DE /* ConsoleLogMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogMiddleware.swift; sourceTree = "<group>"; };
 		4E464A362108CEB400D0C4DE /* CachePostware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachePostware.swift; sourceTree = "<group>"; };
 		4E464A382108CF3700D0C4DE /* PrintCacheValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintCacheValue.swift; sourceTree = "<group>"; };
@@ -204,12 +210,13 @@
 			path = ReactComponentKitAppTests;
 			sourceTree = "<group>";
 		};
-		4E3E05B821134E3B00D6DBB5 /* MessageView */ = {
+		4E3E05B821134E3B00D6DBB5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				4E3E05B921134E5400D6DBB5 /* MessageViewComponent.swift */,
+				4E44CDE32115E97B00AB4FCF /* ButtonComponent.swift */,
 			);
-			path = MessageView;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		4E3E05BB2113503500D6DBB5 /* Reducers */ = {
@@ -249,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				4E4AD6F9211095F600973D60 /* UIViewController+Component.swift */,
+				4E44CDE12115E72A00AB4FCF /* UIViewControllerComponent.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -271,7 +279,7 @@
 			children = (
 				4E3E05BE2113515E00D6DBB5 /* Actions */,
 				4E3E05BB2113503500D6DBB5 /* Reducers */,
-				4E3E05B821134E3B00D6DBB5 /* MessageView */,
+				4E3E05B821134E3B00D6DBB5 /* Components */,
 				4E4AD6FE211097D700973D60 /* ChildViewController */,
 				4E4AD6FC2110977100973D60 /* StackViewController.swift */,
 				4E58F25F2111F232005373EF /* StackViewModel.swift */,
@@ -290,6 +298,7 @@
 		4E4AD70521109C2400973D60 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E44CDDF2115E67300AB4FCF /* ComponentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -505,6 +514,7 @@
 				4E3E05C02113517100D6DBB5 /* TextAction.swift in Sources */,
 				4E3E05BA21134E5400D6DBB5 /* MessageViewComponent.swift in Sources */,
 				4E4AD700211097FD00973D60 /* RedViewController.swift in Sources */,
+				4E44CDE22115E72A00AB4FCF /* UIViewControllerComponent.swift in Sources */,
 				4E4AD7072110A25400973D60 /* TableViewCellComponentModel.swift in Sources */,
 				4E3E05BD2113504800D6DBB5 /* TextReducer.swift in Sources */,
 				4E464A322108C1C600D0C4DE /* ConsoleLogMiddleware.swift in Sources */,
@@ -512,6 +522,7 @@
 				4E464A392108CF3700D0C4DE /* PrintCacheValue.swift in Sources */,
 				4E568BDF2106175100652321 /* CountReducer.swift in Sources */,
 				4E019D3B210E16A100ABD37A /* ComponentCollectionReusableView.swift in Sources */,
+				4E44CDE42115E97B00AB4FCF /* ButtonComponent.swift in Sources */,
 				4EBD8A8C210C7178009CD480 /* ColorReducer.swift in Sources */,
 				4E568BDD2106173200652321 /* DecreaseAction.swift in Sources */,
 				4E3E01A021056B9700DDB93C /* AppDelegate.swift in Sources */,
@@ -522,6 +533,7 @@
 				4E58F2622111F35F005373EF /* RootViewModelType.swift in Sources */,
 				4E464A372108CEB400D0C4DE /* CachePostware.swift in Sources */,
 				4E019D3A210E16A100ABD37A /* ComponentCollectionViewCell.swift in Sources */,
+				4E44CDE02115E67300AB4FCF /* ComponentView.swift in Sources */,
 				4E4AD6F421108F7500973D60 /* Component.swift in Sources */,
 				4E568BDA2106170600652321 /* IncreaseAction.swift in Sources */,
 				4E019D3C210E16A100ABD37A /* ComponentTableViewCell.swift in Sources */,
