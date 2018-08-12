@@ -20,7 +20,7 @@
 		4E3E05BA21134E5400D6DBB5 /* MessageViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E05B921134E5400D6DBB5 /* MessageViewComponent.swift */; };
 		4E3E05BD2113504800D6DBB5 /* TextReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E05BC2113504800D6DBB5 /* TextReducer.swift */; };
 		4E3E05C02113517100D6DBB5 /* TextAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E05BF2113517100D6DBB5 /* TextAction.swift */; };
-		4E44CDE02115E67300AB4FCF /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDDF2115E67300AB4FCF /* ComponentView.swift */; };
+		4E44CDE02115E67300AB4FCF /* UIViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDDF2115E67300AB4FCF /* UIViewComponent.swift */; };
 		4E44CDE22115E72A00AB4FCF /* UIViewControllerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDE12115E72A00AB4FCF /* UIViewControllerComponent.swift */; };
 		4E44CDE42115E97B00AB4FCF /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDE32115E97B00AB4FCF /* ButtonComponent.swift */; };
 		4E464A322108C1C600D0C4DE /* ConsoleLogMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A312108C1C600D0C4DE /* ConsoleLogMiddleware.swift */; };
@@ -30,6 +30,8 @@
 		4E4AD6FA211095F600973D60 /* UIViewController+Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AD6F9211095F600973D60 /* UIViewController+Component.swift */; };
 		4E4AD6FD2110977100973D60 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AD6FC2110977100973D60 /* StackViewController.swift */; };
 		4E4AD700211097FD00973D60 /* RedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AD6FF211097FD00973D60 /* RedViewController.swift */; };
+		4E4FEC2A21206FF20077924F /* UITableViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FEC2921206FF20077924F /* UITableViewComponent.swift */; };
+		4E4FEC2C212071A30077924F /* UICollectionViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FEC2B212071A30077924F /* UICollectionViewComponent.swift */; };
 		4E568BD62106168100652321 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BD52106168100652321 /* ViewModel.swift */; };
 		4E568BDA2106170600652321 /* IncreaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BD92106170600652321 /* IncreaseAction.swift */; };
 		4E568BDD2106173200652321 /* DecreaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BDC2106173200652321 /* DecreaseAction.swift */; };
@@ -70,7 +72,7 @@
 		4E3E05B921134E5400D6DBB5 /* MessageViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewComponent.swift; sourceTree = "<group>"; };
 		4E3E05BC2113504800D6DBB5 /* TextReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextReducer.swift; sourceTree = "<group>"; };
 		4E3E05BF2113517100D6DBB5 /* TextAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAction.swift; sourceTree = "<group>"; };
-		4E44CDDF2115E67300AB4FCF /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
+		4E44CDDF2115E67300AB4FCF /* UIViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewComponent.swift; sourceTree = "<group>"; };
 		4E44CDE12115E72A00AB4FCF /* UIViewControllerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerComponent.swift; sourceTree = "<group>"; };
 		4E44CDE32115E97B00AB4FCF /* ButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
 		4E464A312108C1C600D0C4DE /* ConsoleLogMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogMiddleware.swift; sourceTree = "<group>"; };
@@ -80,6 +82,8 @@
 		4E4AD6F9211095F600973D60 /* UIViewController+Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Component.swift"; sourceTree = "<group>"; };
 		4E4AD6FC2110977100973D60 /* StackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 		4E4AD6FF211097FD00973D60 /* RedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedViewController.swift; sourceTree = "<group>"; };
+		4E4FEC2921206FF20077924F /* UITableViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewComponent.swift; sourceTree = "<group>"; };
+		4E4FEC2B212071A30077924F /* UICollectionViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewComponent.swift; sourceTree = "<group>"; };
 		4E568BD52106168100652321 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4E568BD92106170600652321 /* IncreaseAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseAction.swift; sourceTree = "<group>"; };
 		4E568BDC2106173200652321 /* DecreaseAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecreaseAction.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				4E019D36210E16A100ABD37A /* TableViewComponentCell.swift */,
+				4E4FEC2921206FF20077924F /* UITableViewComponent.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 			children = (
 				4E019D34210E16A100ABD37A /* CollectionViewComponentCell.swift */,
 				4E019D35210E16A100ABD37A /* CollectionReusableComponentView.swift */,
+				4E4FEC2B212071A30077924F /* UICollectionViewComponent.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -287,7 +293,7 @@
 		4E4AD70521109C2400973D60 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4E44CDDF2115E67300AB4FCF /* ComponentView.swift */,
+				4E44CDDF2115E67300AB4FCF /* UIViewComponent.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E3E05C02113517100D6DBB5 /* TextAction.swift in Sources */,
+				4E4FEC2C212071A30077924F /* UICollectionViewComponent.swift in Sources */,
 				4E3E05BA21134E5400D6DBB5 /* MessageViewComponent.swift in Sources */,
 				4E4AD700211097FD00973D60 /* RedViewController.swift in Sources */,
 				4E44CDE22115E72A00AB4FCF /* UIViewControllerComponent.swift in Sources */,
@@ -521,10 +528,11 @@
 				4E58F2622111F35F005373EF /* RootViewModelType.swift in Sources */,
 				4E464A372108CEB400D0C4DE /* CachePostware.swift in Sources */,
 				4E019D3A210E16A100ABD37A /* CollectionViewComponentCell.swift in Sources */,
-				4E44CDE02115E67300AB4FCF /* ComponentView.swift in Sources */,
+				4E44CDE02115E67300AB4FCF /* UIViewComponent.swift in Sources */,
 				4E4AD6F421108F7500973D60 /* Component.swift in Sources */,
 				4E568BDA2106170600652321 /* IncreaseAction.swift in Sources */,
 				4E019D3C210E16A100ABD37A /* TableViewComponentCell.swift in Sources */,
+				4E4FEC2A21206FF20077924F /* UITableViewComponent.swift in Sources */,
 				4E4AD6FA211095F600973D60 /* UIViewController+Component.swift in Sources */,
 				4E4AD6FD2110977100973D60 /* StackViewController.swift in Sources */,
 			);

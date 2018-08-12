@@ -61,7 +61,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agm-jy-OVv">
                                         <rect key="frame" x="0.0" y="30" width="69" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="TableView"/>
                                     </button>
                                 </subviews>
                             </stackView>
