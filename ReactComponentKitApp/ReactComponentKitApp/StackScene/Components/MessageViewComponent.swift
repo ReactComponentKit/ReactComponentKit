@@ -20,7 +20,7 @@ class MessageViewComponent: UIViewComponent {
     }()
     
     override var contentSize: CGSize {
-        return label.intrinsicContentSize
+        return CGSize(width: label.intrinsicContentSize.width, height: label.intrinsicContentSize.height + 16)
     }
         
     override func setupView() {
@@ -33,6 +33,11 @@ class MessageViewComponent: UIViewComponent {
     override func on(state: [String:State]?) {
         guard let text = state?["text"] as? String else { return }
         label.text = text
+    }
+    
+    override func configure<Item>(item: Item) {
+        guard let todoItem = item as? TodoItem else { return }
+        label.text = todoItem.item
     }
 }
 

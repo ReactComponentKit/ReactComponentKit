@@ -22,7 +22,7 @@ class RedViewController: UIViewControllerComponent {
     }
         
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        eventBus.post(event: .dispatch(action: RandomColorAction()))
+        dispatch(action: RandomColorAction())
     }
     
     override func on(state: [String : State]?) {

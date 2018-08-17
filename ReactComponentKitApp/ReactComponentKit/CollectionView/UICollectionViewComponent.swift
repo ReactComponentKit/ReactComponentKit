@@ -19,17 +19,24 @@ class UICollectionViewComponent: UIViewComponent {
     
     private let disposeBag = DisposeBag()
     private(set) var collectionView: UICollectionView
-    public init(token: Token, collectionViewLayout: UICollectionViewLayout? = nil) {
-        if let collectionViewLayout = collectionViewLayout {
-            self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        } else {
-            self.collectionView = UICollectionView(frame: .zero)
+
+    public var collectionViewLayout: UICollectionViewLayout {
+        get {
+            return collectionView.collectionViewLayout
         }
-        super.init(token: token)
+        
+        set {
+            collectionView.collectionViewLayout = newValue
+        }
     }
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public required init(token: Token, canOnlyDispatchAction: Bool = true) {
+        self.collectionView = UICollectionView(frame: .zero)
+        super.init(token: token, canOnlyDispatchAction: canOnlyDispatchAction)
     }
     
     override func setupView() {

@@ -25,12 +25,16 @@ class ButtonComponent: UIViewComponent {
     
     private let disposeBag = DisposeBag()
     
+    override var contentSize: CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 50)
+    }
+    
     override func setupView() {
         addSubview(button)
         button.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-
+        button.backgroundColor = UIColor.red
         button.rx.tap.map { TextAction() }.bind(onNext: dispatch).disposed(by: disposeBag)
     }
     

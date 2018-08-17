@@ -9,11 +9,11 @@
 import Foundation
 import BKRedux
 import BKEventBus
+import RxCocoa
 
 class TableViewModel: RootViewModelType {
     
-    //let rx_tableViewSectionModelList =  BehaviorRelay<String>(value: "0")
-    
+    let rx_sections =  BehaviorRelay<[DefaultSectionModel]>(value: [])
     
     override init() {
         super.init()
@@ -23,18 +23,14 @@ class TableViewModel: RootViewModelType {
             reducers: [
                 "todo": todoReducer
             ],
-            middlewares: [
-                consoleLogMiddleware
-            ],
             postwares: [
+                makeTodoSectionModels,
                 consoleLogPostware
             ])
     }
     
     override func on(newState: [String : State]?) {
-        // 테이블뷰 섹션 모델을 만들어야 함
-        
-        // 컴포넌트에게 신규 이벤트를 전달함
-        eventBus.post(event: .on(state: newState))
+        guard let sections = newState?["sections"] as? [DefaultSectionModel] else { return }
+        rx_sections.accept(sections)
     }
 }

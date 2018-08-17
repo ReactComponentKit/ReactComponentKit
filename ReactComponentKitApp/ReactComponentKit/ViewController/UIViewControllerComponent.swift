@@ -12,22 +12,25 @@ import BKRedux
 
 public class UIViewControllerComponent: UIViewController, Component {
     
-    public lazy var eventBus: EventBus<ComponentEvent> = {
-        return EventBus(token: self.token)
+    public lazy var newStateEventBus: EventBus<ComponentNewStateEvent>? = {
+        EventBus(token: self.token)
+    }()
+    
+    public lazy var dispatchEventBus: EventBus<ComponentDispatchEvent> = {
+        EventBus(token: self.token)
     }()
     
     public var token: Token
-    public required init(token: Token) {
+    
+    public required init(token: Token, canOnlyDispatchAction: Bool = false) {
         self.token = token
         super.init(nibName: nil, bundle: nil)
         
-        eventBus.on { [weak self] (event) in
+        newStateEventBus?.on { [weak self] (event) in
             guard let strongSelf = self else { return }
             switch event {
             case let .on(state):
                 strongSelf.applyNew(state: state)
-            default:
-                break
             }
         }
     }
@@ -42,5 +45,9 @@ public class UIViewControllerComponent: UIViewController, Component {
     
     func on(state: [String:State]?) {
         
+    }
+    
+    func dispatch(action: Action) {
+        dispatchEventBus.post(event: .dispatch(action: action))
     }
 }

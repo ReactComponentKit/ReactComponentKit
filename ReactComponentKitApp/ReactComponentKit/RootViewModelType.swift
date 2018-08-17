@@ -13,20 +13,20 @@ import RxSwift
 
 public class RootViewModelType: ViewModelType {
     public let token: Token
-    public let eventBus: EventBus<ComponentEvent>
+    public let eventBus: EventBus<ComponentNewStateEvent>
+    private let dispatchEventBus: EventBus<ComponentDispatchEvent>
     
     public override init() {
         self.token = Token()
         self.eventBus = EventBus(token: self.token)
+        self.dispatchEventBus = EventBus(token: self.token)
         super.init()
         
-        eventBus.on { [weak self] (event) in
+        dispatchEventBus.on { [weak self] (event) in
             guard let strongSelf = self else { return }
             switch event {
             case let .dispatch(action):
                 Observable.just(action).bind(to: strongSelf.rx_action).disposed(by: strongSelf.disposeBag)
-            default:
-                break
             }
         }
     }
