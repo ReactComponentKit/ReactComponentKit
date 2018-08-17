@@ -19,6 +19,9 @@
 		4E0A6F1F2126C97E00A3E0E6 /* UIViewComponentClassProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F1E2126C97E00A3E0E6 /* UIViewComponentClassProvider.swift */; };
 		4E0A6F222126E01800A3E0E6 /* MakeTodoSectionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F212126E01800A3E0E6 /* MakeTodoSectionModels.swift */; };
 		4E0A6F252126E2A300A3E0E6 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F242126E2A300A3E0E6 /* TodoItem.swift */; };
+		4E0A6F28212700F700A3E0E6 /* SectionHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F27212700F700A3E0E6 /* SectionHeaderComponent.swift */; };
+		4E0A6F2A2127015200A3E0E6 /* TodoSectionHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F292127015200A3E0E6 /* TodoSectionHeaderModel.swift */; };
+		4E0A6F2C2127087B00A3E0E6 /* TodoSectionFooterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F2B2127087B00A3E0E6 /* TodoSectionFooterModel.swift */; };
 		4E3E01A021056B9700DDB93C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E019F21056B9700DDB93C /* AppDelegate.swift */; };
 		4E3E01A221056B9700DDB93C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E01A121056B9700DDB93C /* ViewController.swift */; };
 		4E3E01A521056B9700DDB93C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3E01A321056B9700DDB93C /* Main.storyboard */; };
@@ -80,6 +83,9 @@
 		4E0A6F1E2126C97E00A3E0E6 /* UIViewComponentClassProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewComponentClassProvider.swift; sourceTree = "<group>"; };
 		4E0A6F212126E01800A3E0E6 /* MakeTodoSectionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTodoSectionModels.swift; sourceTree = "<group>"; };
 		4E0A6F242126E2A300A3E0E6 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		4E0A6F27212700F700A3E0E6 /* SectionHeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderComponent.swift; sourceTree = "<group>"; };
+		4E0A6F292127015200A3E0E6 /* TodoSectionHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSectionHeaderModel.swift; sourceTree = "<group>"; };
+		4E0A6F2B2127087B00A3E0E6 /* TodoSectionFooterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSectionFooterModel.swift; sourceTree = "<group>"; };
 		4E3E019C21056B9700DDB93C /* ReactComponentKitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactComponentKitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E3E019F21056B9700DDB93C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E3E01A121056B9700DDB93C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -213,8 +219,18 @@
 			isa = PBXGroup;
 			children = (
 				4E0A6F242126E2A300A3E0E6 /* TodoItem.swift */,
+				4E0A6F292127015200A3E0E6 /* TodoSectionHeaderModel.swift */,
+				4E0A6F2B2127087B00A3E0E6 /* TodoSectionFooterModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4E0A6F26212700CC00A3E0E6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4E0A6F27212700F700A3E0E6 /* SectionHeaderComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		4E3E019321056B9700DDB93C = {
@@ -378,6 +394,7 @@
 		4E8A6948212661760074EBBA /* TableScene */ = {
 			isa = PBXGroup;
 			children = (
+				4E0A6F26212700CC00A3E0E6 /* Components */,
 				4E0A6F232126E29100A3E0E6 /* Models */,
 				4E0A6F202126E00A00A3E0E6 /* Postwares */,
 				4E8A694E212663FF0074EBBA /* Reducers */,
@@ -616,9 +633,11 @@
 				4E8A694C212661FE0074EBBA /* TableViewModel.swift in Sources */,
 				4E8A69522126659A0074EBBA /* AddTodoAction.swift in Sources */,
 				4E568BDD2106173200652321 /* DecreaseAction.swift in Sources */,
+				4E0A6F2C2127087B00A3E0E6 /* TodoSectionFooterModel.swift in Sources */,
 				4E3E01A021056B9700DDB93C /* AppDelegate.swift in Sources */,
 				4E568BD62106168100652321 /* ViewModel.swift in Sources */,
 				4EBD8A8A210C70C3009CD480 /* RandomColorAction.swift in Sources */,
+				4E0A6F2A2127015200A3E0E6 /* TodoSectionHeaderModel.swift in Sources */,
 				4E58F2602111F232005373EF /* StackViewModel.swift in Sources */,
 				4E0A6F1F2126C97E00A3E0E6 /* UIViewComponentClassProvider.swift in Sources */,
 				4E0A6F252126E2A300A3E0E6 /* TodoItem.swift in Sources */,
@@ -633,6 +652,7 @@
 				4E568BDA2106170600652321 /* IncreaseAction.swift in Sources */,
 				4E019D3C210E16A100ABD37A /* TableViewComponentCell.swift in Sources */,
 				4E4FEC2A21206FF20077924F /* UITableViewComponent.swift in Sources */,
+				4E0A6F28212700F700A3E0E6 /* SectionHeaderComponent.swift in Sources */,
 				4E4AD6FA211095F600973D60 /* UIViewController+Component.swift in Sources */,
 				4E4AD6FD2110977100973D60 /* StackViewController.swift in Sources */,
 			);
