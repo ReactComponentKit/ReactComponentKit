@@ -38,6 +38,11 @@
 		4E568BDF2106175100652321 /* CountReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BDE2106175100652321 /* CountReducer.swift */; };
 		4E58F2602111F232005373EF /* StackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58F25F2111F232005373EF /* StackViewModel.swift */; };
 		4E58F2622111F35F005373EF /* RootViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58F2612111F35F005373EF /* RootViewModelType.swift */; };
+		4E8A694A212661AC0074EBBA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A6949212661AC0074EBBA /* TableViewController.swift */; };
+		4E8A694C212661FE0074EBBA /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A694B212661FE0074EBBA /* TableViewModel.swift */; };
+		4E8A6950212665820074EBBA /* TodoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A694F212665820074EBBA /* TodoReducer.swift */; };
+		4E8A69522126659A0074EBBA /* AddTodoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A69512126659A0074EBBA /* AddTodoAction.swift */; };
+		4E8A6954212666FC0074EBBA /* ConsoleLogPostware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A6953212666FC0074EBBA /* ConsoleLogPostware.swift */; };
 		4EBD8A8A210C70C3009CD480 /* RandomColorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */; };
 		4EBD8A8C210C7178009CD480 /* ColorReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD8A8B210C7178009CD480 /* ColorReducer.swift */; };
 		79B9653E4885DCD51731F478 /* Pods_ReactComponentKitAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00C93DC7C8FF383E142E029 /* Pods_ReactComponentKitAppTests.framework */; };
@@ -90,6 +95,11 @@
 		4E568BDE2106175100652321 /* CountReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountReducer.swift; sourceTree = "<group>"; };
 		4E58F25F2111F232005373EF /* StackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewModel.swift; sourceTree = "<group>"; };
 		4E58F2612111F35F005373EF /* RootViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelType.swift; sourceTree = "<group>"; };
+		4E8A6949212661AC0074EBBA /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		4E8A694B212661FE0074EBBA /* TableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
+		4E8A694F212665820074EBBA /* TodoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoReducer.swift; sourceTree = "<group>"; };
+		4E8A69512126659A0074EBBA /* AddTodoAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoAction.swift; sourceTree = "<group>"; };
+		4E8A6953212666FC0074EBBA /* ConsoleLogPostware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogPostware.swift; sourceTree = "<group>"; };
 		4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColorAction.swift; sourceTree = "<group>"; };
 		4EBD8A8B210C7178009CD480 /* ColorReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorReducer.swift; sourceTree = "<group>"; };
 		59031C46F7FC4D5FF2C2ACC0 /* Pods_ReactComponentKitApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactComponentKitApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +195,7 @@
 		4E3E019E21056B9700DDB93C /* ReactComponentKitApp */ = {
 			isa = PBXGroup;
 			children = (
+				4E8A6948212661760074EBBA /* TableScene */,
 				4E4AD6FB2110974F00973D60 /* StackScene */,
 				4E4AD6F8211093F100973D60 /* CounterScene */,
 				4E3E019F21056B9700DDB93C /* AppDelegate.swift */,
@@ -243,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				4E464A362108CEB400D0C4DE /* CachePostware.swift */,
+				4E8A6953212666FC0074EBBA /* ConsoleLogPostware.swift */,
 			);
 			path = Postwares;
 			sourceTree = "<group>";
@@ -315,6 +327,33 @@
 				4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */,
 			);
 			path = Actions;
+			sourceTree = "<group>";
+		};
+		4E8A6948212661760074EBBA /* TableScene */ = {
+			isa = PBXGroup;
+			children = (
+				4E8A694E212663FF0074EBBA /* Reducers */,
+				4E8A694D212663F50074EBBA /* Actions */,
+				4E8A6949212661AC0074EBBA /* TableViewController.swift */,
+				4E8A694B212661FE0074EBBA /* TableViewModel.swift */,
+			);
+			path = TableScene;
+			sourceTree = "<group>";
+		};
+		4E8A694D212663F50074EBBA /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				4E8A69512126659A0074EBBA /* AddTodoAction.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		4E8A694E212663FF0074EBBA /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				4E8A694F212665820074EBBA /* TodoReducer.swift */,
+			);
+			path = Reducers;
 			sourceTree = "<group>";
 		};
 		4FE55BCC412CB31C704CEAC5 /* Pods */ = {
@@ -518,13 +557,18 @@
 				4E568BDF2106175100652321 /* CountReducer.swift in Sources */,
 				4E019D3B210E16A100ABD37A /* CollectionReusableComponentView.swift in Sources */,
 				4E44CDE42115E97B00AB4FCF /* ButtonComponent.swift in Sources */,
+				4E8A6950212665820074EBBA /* TodoReducer.swift in Sources */,
 				4EBD8A8C210C7178009CD480 /* ColorReducer.swift in Sources */,
+				4E8A694A212661AC0074EBBA /* TableViewController.swift in Sources */,
+				4E8A694C212661FE0074EBBA /* TableViewModel.swift in Sources */,
+				4E8A69522126659A0074EBBA /* AddTodoAction.swift in Sources */,
 				4E568BDD2106173200652321 /* DecreaseAction.swift in Sources */,
 				4E3E01A021056B9700DDB93C /* AppDelegate.swift in Sources */,
 				4E568BD62106168100652321 /* ViewModel.swift in Sources */,
 				4EBD8A8A210C70C3009CD480 /* RandomColorAction.swift in Sources */,
 				4E58F2602111F232005373EF /* StackViewModel.swift in Sources */,
 				4E019D3D210E16A100ABD37A /* ComponentNibView.swift in Sources */,
+				4E8A6954212666FC0074EBBA /* ConsoleLogPostware.swift in Sources */,
 				4E58F2622111F35F005373EF /* RootViewModelType.swift in Sources */,
 				4E464A372108CEB400D0C4DE /* CachePostware.swift in Sources */,
 				4E019D3A210E16A100ABD37A /* CollectionViewComponentCell.swift in Sources */,

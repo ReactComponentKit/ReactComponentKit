@@ -62,6 +62,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agm-jy-OVv">
                                         <rect key="frame" x="0.0" y="30" width="69" height="30"/>
                                         <state key="normal" title="TableView"/>
+                                        <connections>
+                                            <segue destination="hCh-lF-w1j" kind="show" id="VtZ-ax-3Ow"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -90,6 +93,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="40.799999999999997" y="-170.46476761619192"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="7Bc-cU-qmR">
+            <objects>
+                <viewController id="hCh-lF-w1j" customClass="TableViewController" customModule="ReactComponentKitApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZYI-6w-2iF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Jba-2j-DGN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8BV-8a-FEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="883" y="132"/>
         </scene>
         <!--Stack View Controller-->
         <scene sceneID="RrG-7k-RYn">
@@ -126,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yDa-Je-cjA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="912.79999999999995" y="-170.46476761619192"/>
+            <point key="canvasLocation" x="884" y="-537"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vaa-db-gfn">
