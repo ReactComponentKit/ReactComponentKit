@@ -31,6 +31,7 @@
 		4E3E05BA21134E5400D6DBB5 /* MessageViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E05B921134E5400D6DBB5 /* MessageViewComponent.swift */; };
 		4E3E05BD2113504800D6DBB5 /* TextReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E05BC2113504800D6DBB5 /* TextReducer.swift */; };
 		4E3E05C02113517100D6DBB5 /* TextAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E05BF2113517100D6DBB5 /* TextAction.swift */; };
+		4E43A3AD212843B000897A14 /* UICollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43A3AC212843B000897A14 /* UICollectionViewAdapter.swift */; };
 		4E44CDE02115E67300AB4FCF /* UIViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDDF2115E67300AB4FCF /* UIViewComponent.swift */; };
 		4E44CDE22115E72A00AB4FCF /* UIViewControllerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDE12115E72A00AB4FCF /* UIViewControllerComponent.swift */; };
 		4E44CDE42115E97B00AB4FCF /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDE32115E97B00AB4FCF /* ButtonComponent.swift */; };
@@ -99,6 +100,7 @@
 		4E3E05B921134E5400D6DBB5 /* MessageViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewComponent.swift; sourceTree = "<group>"; };
 		4E3E05BC2113504800D6DBB5 /* TextReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextReducer.swift; sourceTree = "<group>"; };
 		4E3E05BF2113517100D6DBB5 /* TextAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAction.swift; sourceTree = "<group>"; };
+		4E43A3AC212843B000897A14 /* UICollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewAdapter.swift; sourceTree = "<group>"; };
 		4E44CDDF2115E67300AB4FCF /* UIViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewComponent.swift; sourceTree = "<group>"; };
 		4E44CDE12115E72A00AB4FCF /* UIViewControllerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerComponent.swift; sourceTree = "<group>"; };
 		4E44CDE32115E97B00AB4FCF /* ButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				4E019D34210E16A100ABD37A /* CollectionViewComponentCell.swift */,
 				4E019D35210E16A100ABD37A /* CollectionReusableComponentView.swift */,
 				4E4FEC2B212071A30077924F /* UICollectionViewComponent.swift */,
+				4E43A3AC212843B000897A14 /* UICollectionViewAdapter.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				4E0A6F2C2127087B00A3E0E6 /* TodoSectionFooterModel.swift in Sources */,
 				4E3E01A021056B9700DDB93C /* AppDelegate.swift in Sources */,
 				4E568BD62106168100652321 /* ViewModel.swift in Sources */,
+				4E43A3AD212843B000897A14 /* UICollectionViewAdapter.swift in Sources */,
 				4EBD8A8A210C70C3009CD480 /* RandomColorAction.swift in Sources */,
 				4E0A6F2A2127015200A3E0E6 /* TodoSectionHeaderModel.swift in Sources */,
 				4E58F2602111F232005373EF /* StackViewModel.swift in Sources */,

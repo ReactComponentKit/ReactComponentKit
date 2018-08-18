@@ -17,7 +17,7 @@ import RxCocoa
 
 public class UITableViewComponent: UIViewComponent {
     
-    var headerComponent: UIViewComponent? {
+    public var headerComponent: UIViewComponent? {
         get {
             return tableView.tableHeaderView as? UIViewComponent
         }
@@ -27,7 +27,7 @@ public class UITableViewComponent: UIViewComponent {
         }
     }
     
-    var footerComponent: UIViewComponent? {
+    public var footerComponent: UIViewComponent? {
         get {
             return tableView.tableFooterView as? UIViewComponent
         }
@@ -37,7 +37,7 @@ public class UITableViewComponent: UIViewComponent {
         }
     }
     
-    var adapter: UITableViewApater? {
+    public var adapter: UITableViewApater? {
         didSet {
             tableView.delegate = adapter
             tableView.dataSource = adapter
@@ -45,7 +45,7 @@ public class UITableViewComponent: UIViewComponent {
         }
     }
     
-    var seperatorInset: UIEdgeInsets {
+    public var seperatorInset: UIEdgeInsets {
         get {
             return tableView.separatorInset
         }
@@ -55,7 +55,7 @@ public class UITableViewComponent: UIViewComponent {
         }
     }
     
-    var contentInset: UIEdgeInsets {
+    public var contentInset: UIEdgeInsets {
         get {
             return tableView.contentInset
         }
@@ -65,7 +65,7 @@ public class UITableViewComponent: UIViewComponent {
         }
     }
     
-    var seperatorColor: UIColor? {
+    public var seperatorColor: UIColor? {
         get {
             return tableView.separatorColor
         }
@@ -103,9 +103,13 @@ public class UITableViewComponent: UIViewComponent {
         tableView.separatorColor = UIColor.clear
     }
     
-    func register<UIViewComponentType: UIViewComponent>(component: UIViewComponentType.Type) {
+    public func register<UIViewComponentType: UIViewComponent>(component: UIViewComponentType.Type) {
         let cellClass = TableViewComponentCell.self
         self.tableView.register(cellClass, forCellReuseIdentifier: String(describing: component))
+    }
+    
+    public func reloadData() {
+        self.tableView.reloadData()
     }
     
 }

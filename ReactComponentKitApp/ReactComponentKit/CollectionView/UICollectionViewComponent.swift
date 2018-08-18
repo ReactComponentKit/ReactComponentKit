@@ -15,7 +15,13 @@ import BKEventBus
 import RxSwift
 import RxCocoa
 
-class UICollectionViewComponent: UIViewComponent {
+public class UICollectionViewComponent: UIViewComponent {
+    
+    public enum ViewType {
+        case cell
+        case header
+        case footer
+    }
     
     private let disposeBag = DisposeBag()
     private(set) var collectionView: UICollectionView
@@ -39,11 +45,35 @@ class UICollectionViewComponent: UIViewComponent {
         super.init(token: token, canOnlyDispatchAction: canOnlyDispatchAction)
     }
     
-    override func setupView() {
+    public override func setupView() {
         addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        collectionView.backgroundColor = .clear
+        collectionView.contentInset = .zero
     }
+    
+    public func register<UIViewComponentType: UIViewComponent>(component: UIViewComponentType.Type, viewType: ViewType = .cell) {
+        
+        
+        switch viewType {
+        case .cell:
+            let cellClass = CollectionViewComponentCell.self
+            self.collectionView.register(cellClass, forCellWithReuseIdentifier: String(describing: component))
+        case .header:
+            let viewClass = CollectionReusableComponentView.self
+            self.collectionView.register(viewClass, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: component))
+        case .footer:
+            let viewClass = CollectionReusableComponentView.self
+            self.collectionView.register(viewClass, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: String(describing: component))
+        }
+        
+    }
+    
+    public func reloadData() {
+        self.collectionView.reloadData()
+    }
+    
     
 }
