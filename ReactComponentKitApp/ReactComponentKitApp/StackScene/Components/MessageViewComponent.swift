@@ -20,7 +20,7 @@ class MessageViewComponent: UIViewComponent {
     }()
     
     override var contentSize: CGSize {
-        return CGSize(width: label.intrinsicContentSize.width, height: label.intrinsicContentSize.height + 16)
+        return CGSize(width: UIScreen.main.bounds.width, height: label.intrinsicContentSize.height + 16)
     }
         
     override func setupView() {

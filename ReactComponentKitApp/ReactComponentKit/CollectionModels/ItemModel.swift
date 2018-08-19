@@ -9,6 +9,6 @@
 import Foundation
 import BKEventBus
 
-public protocol ItemModel: UIViewComponentClassProvider {
+public protocol ItemModel: UIViewComponentClassProvider, ContentSizeProvider {
     
 }

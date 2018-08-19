@@ -6,7 +6,7 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct TodoSectionFooterModel: SectionFooterModel {
     var componentClass: UIViewComponent.Type {
@@ -17,6 +17,10 @@ struct TodoSectionFooterModel: SectionFooterModel {
     
     init(title: String) {
         self.title = title
+    }
+    
+    var contentSize: CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 30)
     }
 }
 

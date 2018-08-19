@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol SectionFooterModel: UIViewComponentClassProvider {
+public protocol SectionFooterModel: UIViewComponentClassProvider, ContentSizeProvider {
 
 }

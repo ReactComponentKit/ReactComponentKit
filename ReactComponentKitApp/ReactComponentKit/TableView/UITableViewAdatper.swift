@@ -8,27 +8,27 @@
 
 import UIKit
 
-class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSource {
+open class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSource {
     
-    weak var tableViewComponent: UITableViewComponent? = nil
+    weak private(set) var tableViewComponent: UITableViewComponent? = nil
     private var sections: [SectionModel] = []
     private var sectionHeaderInfo: [Int:UIViewComponent] = [:]
     private var sectionFooterInfo: [Int:UIViewComponent] = [:]
     
-    init(tableViewComponent: UITableViewComponent?) {
+    public init(tableViewComponent: UITableViewComponent?) {
         self.tableViewComponent = tableViewComponent
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard sections.count > section else { return 0 }
         return sections[section].itemCount
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemModel = sections[indexPath.section].items[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: itemModel.componentClass), for: indexPath)
     
@@ -47,7 +47,7 @@ class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let existHeader = sectionHeaderInfo[section] {
             return existHeader
         }
@@ -60,7 +60,7 @@ class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSource {
         return sectionHeaderView
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if let existHeader = sectionHeaderInfo[section] {
             return existHeader.contentSize.height
         }
@@ -73,7 +73,7 @@ class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSource {
         return sectionHeaderView.contentSize.height
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if let existFooter = sectionFooterInfo[section] {
             return existFooter
         }
@@ -86,7 +86,7 @@ class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSource {
         return sectionFooterView
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if let existFooter = sectionFooterInfo[section] {
             return existFooter.contentSize.height
         }
@@ -99,15 +99,17 @@ class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSource {
         return sectionFooterView.contentSize.height
     }
     
-    func set(section: SectionModel) {
+    public func set(section: SectionModel) {
         self.set(sections: [section])
     }
     
-    func set(sections: [SectionModel]) {
+    public func set(sections: [SectionModel]) {
+        // 성능상 너무 안 좋다.
+        // diff를 도입하자
         self.sections = sections
         
         // 성능상 너무 안 좋다.
         // diff를 도입하자
-        self.tableViewComponent?.tableView.reloadData()
+        self.tableViewComponent?.reloadData()
     }
 }
