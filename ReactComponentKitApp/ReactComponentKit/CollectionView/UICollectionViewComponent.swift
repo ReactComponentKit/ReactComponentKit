@@ -23,6 +23,14 @@ public class UICollectionViewComponent: UIViewComponent {
         case footer
     }
     
+    public var adapter: UICollectionViewAdapter? {
+        didSet {
+            collectionView.delegate = adapter
+            collectionView.dataSource = adapter
+            collectionView.reloadData()
+        }
+    }
+    
     private let disposeBag = DisposeBag()
     private(set) var collectionView: UICollectionView
 
@@ -41,7 +49,9 @@ public class UICollectionViewComponent: UIViewComponent {
     }
     
     public required init(token: Token, canOnlyDispatchAction: Bool = true) {
-        self.collectionView = UICollectionView(frame: .zero)
+        let defaultLayout = UICollectionViewFlowLayout()
+        defaultLayout.scrollDirection = .vertical
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: defaultLayout)
         super.init(token: token, canOnlyDispatchAction: canOnlyDispatchAction)
     }
     

@@ -6,7 +6,7 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct TodoSectionHeaderModel: SectionHeaderModel {
     var componentClass: UIViewComponent.Type {
@@ -17,5 +17,9 @@ struct TodoSectionHeaderModel: SectionHeaderModel {
     
     init(title: String) {
         self.title = title
+    }
+    
+    var contentSize: CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 30)
     }
 }

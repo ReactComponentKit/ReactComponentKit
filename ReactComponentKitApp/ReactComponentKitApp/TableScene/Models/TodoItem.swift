@@ -6,7 +6,8 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import BKEventBus
 
 struct TodoItem: ItemModel {
     var componentClass: UIViewComponent.Type {
@@ -17,5 +18,9 @@ struct TodoItem: ItemModel {
     
     init(item: String) {
         self.item = item
+    }
+    
+    var contentSize: CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 40)
     }
 }

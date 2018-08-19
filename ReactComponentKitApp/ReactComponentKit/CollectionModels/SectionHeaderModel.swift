@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol SectionHeaderModel: UIViewComponentClassProvider {
+public protocol SectionHeaderModel: UIViewComponentClassProvider, ContentSizeProvider {
 
 }

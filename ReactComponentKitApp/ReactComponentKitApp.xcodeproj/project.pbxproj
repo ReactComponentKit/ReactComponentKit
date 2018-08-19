@@ -22,6 +22,8 @@
 		4E0A6F28212700F700A3E0E6 /* SectionHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F27212700F700A3E0E6 /* SectionHeaderComponent.swift */; };
 		4E0A6F2A2127015200A3E0E6 /* TodoSectionHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F292127015200A3E0E6 /* TodoSectionHeaderModel.swift */; };
 		4E0A6F2C2127087B00A3E0E6 /* TodoSectionFooterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F2B2127087B00A3E0E6 /* TodoSectionFooterModel.swift */; };
+		4E17CBCB21299B5200F0B2A3 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E17CBCA21299B5200F0B2A3 /* CollectionViewController.swift */; };
+		4E17CBCD21299B6D00F0B2A3 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E17CBCC21299B6D00F0B2A3 /* CollectionViewModel.swift */; };
 		4E3E01A021056B9700DDB93C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E019F21056B9700DDB93C /* AppDelegate.swift */; };
 		4E3E01A221056B9700DDB93C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E01A121056B9700DDB93C /* ViewController.swift */; };
 		4E3E01A521056B9700DDB93C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3E01A321056B9700DDB93C /* Main.storyboard */; };
@@ -87,6 +89,8 @@
 		4E0A6F27212700F700A3E0E6 /* SectionHeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderComponent.swift; sourceTree = "<group>"; };
 		4E0A6F292127015200A3E0E6 /* TodoSectionHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSectionHeaderModel.swift; sourceTree = "<group>"; };
 		4E0A6F2B2127087B00A3E0E6 /* TodoSectionFooterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSectionFooterModel.swift; sourceTree = "<group>"; };
+		4E17CBCA21299B5200F0B2A3 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		4E17CBCC21299B6D00F0B2A3 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		4E3E019C21056B9700DDB93C /* ReactComponentKitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactComponentKitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E3E019F21056B9700DDB93C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E3E01A121056B9700DDB93C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +240,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		4E17CBC921299B3700F0B2A3 /* CollectionScene */ = {
+			isa = PBXGroup;
+			children = (
+				4E17CBCA21299B5200F0B2A3 /* CollectionViewController.swift */,
+				4E17CBCC21299B6D00F0B2A3 /* CollectionViewModel.swift */,
+			);
+			path = CollectionScene;
+			sourceTree = "<group>";
+		};
 		4E3E019321056B9700DDB93C = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +273,7 @@
 		4E3E019E21056B9700DDB93C /* ReactComponentKitApp */ = {
 			isa = PBXGroup;
 			children = (
+				4E17CBC921299B3700F0B2A3 /* CollectionScene */,
 				4E8A6948212661760074EBBA /* TableScene */,
 				4E4AD6FB2110974F00973D60 /* StackScene */,
 				4E4AD6F8211093F100973D60 /* CounterScene */,
@@ -614,6 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E3E05C02113517100D6DBB5 /* TextAction.swift in Sources */,
+				4E17CBCB21299B5200F0B2A3 /* CollectionViewController.swift in Sources */,
 				4E4FEC2C212071A30077924F /* UICollectionViewComponent.swift in Sources */,
 				4E3E05BA21134E5400D6DBB5 /* MessageViewComponent.swift in Sources */,
 				4E4AD700211097FD00973D60 /* RedViewController.swift in Sources */,
@@ -624,6 +639,7 @@
 				4E3E01A221056B9700DDB93C /* ViewController.swift in Sources */,
 				4E464A392108CF3700D0C4DE /* PrintCacheValue.swift in Sources */,
 				4E0A6F14212697AD00A3E0E6 /* UITableViewAdatper.swift in Sources */,
+				4E17CBCD21299B6D00F0B2A3 /* CollectionViewModel.swift in Sources */,
 				4E568BDF2106175100652321 /* CountReducer.swift in Sources */,
 				4E0A6F222126E01800A3E0E6 /* MakeTodoSectionModels.swift in Sources */,
 				4E0A6F17212698B500A3E0E6 /* SectionModel.swift in Sources */,

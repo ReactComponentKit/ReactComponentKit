@@ -50,20 +50,27 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6OY-aE-4fL">
-                                <rect key="frame" x="152.5" y="303.5" width="69" height="60"/>
+                                <rect key="frame" x="136.5" y="288.5" width="101" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3s-PN-p4t">
-                                        <rect key="frame" x="0.0" y="0.0" width="69" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="30"/>
                                         <state key="normal" title="ViewCons"/>
                                         <connections>
                                             <segue destination="mh9-Pf-0OS" kind="show" id="WLb-Ei-sWd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agm-jy-OVv">
-                                        <rect key="frame" x="0.0" y="30" width="69" height="30"/>
+                                        <rect key="frame" x="0.0" y="30" width="101" height="30"/>
                                         <state key="normal" title="TableView"/>
                                         <connections>
                                             <segue destination="hCh-lF-w1j" kind="show" id="VtZ-ax-3Ow"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytk-ST-w7O">
+                                        <rect key="frame" x="0.0" y="60" width="101" height="30"/>
+                                        <state key="normal" title="CollectionView"/>
+                                        <connections>
+                                            <segue destination="Wta-z5-Uce" kind="show" id="AVl-I1-pdT"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -108,6 +115,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8BV-8a-FEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="883" y="132"/>
+        </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="NmF-hw-XGE">
+            <objects>
+                <viewController id="Wta-z5-Uce" customClass="CollectionViewController" customModule="ReactComponentKitApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tdy-Ig-igI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="qIM-xm-sa2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fAG-sP-d9K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="883" y="797"/>
         </scene>
         <!--Stack View Controller-->
         <scene sceneID="RrG-7k-RYn">

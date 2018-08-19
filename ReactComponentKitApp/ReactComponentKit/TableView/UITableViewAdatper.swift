@@ -104,6 +104,8 @@ open class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSour
     }
     
     public func set(sections: [SectionModel]) {
+        // 성능상 너무 안 좋다.
+        // diff를 도입하자
         self.sections = sections
         
         // 성능상 너무 안 좋다.

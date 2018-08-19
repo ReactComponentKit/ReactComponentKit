@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class UICollectionViewAdapter: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
+open class UICollectionViewAdapter: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     weak private(set) var collectionViewComponent: UICollectionViewComponent? = nil
     private var sections: [SectionModel] = []
@@ -82,12 +82,32 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDelegate, UICollec
         }
     }
     
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard sections.count > indexPath.section else { return .zero }
+        guard sections[indexPath.section].items.count > indexPath.item else { return .zero }
+        let itemModel = sections[indexPath.section].items[indexPath.item]
+        return itemModel.contentSize
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        guard sections.count > section else { return .zero }
+        guard let header = sections[section].header else { return .zero }
+        return header.contentSize
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        guard sections.count > section else { return .zero }
+        guard let footer = sections[section].footer else { return .zero }
+        return footer.contentSize
+    }
     
     public func set(section: SectionModel) {
         self.set(sections: [section])
     }
     
     public func set(sections: [SectionModel]) {
+        // 성능상 너무 안 좋다.
+        // diff를 도입하자
         self.sections = sections
         
         // 성능상 너무 안 좋다.

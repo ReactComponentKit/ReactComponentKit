@@ -97,10 +97,11 @@ public class UITableViewComponent: UIViewComponent {
         }
         tableView.backgroundColor = .clear
         tableView.separatorInset = .zero
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 1
         tableView.contentInset = .zero
         tableView.separatorColor = UIColor.clear
+        // 성능상 좋지 않다.
+        // tableView.rowHeight = UITableViewAutomaticDimension
+        // tableView.estimatedRowHeight = 1
     }
     
     public func register<UIViewComponentType: UIViewComponent>(component: UIViewComponentType.Type) {
