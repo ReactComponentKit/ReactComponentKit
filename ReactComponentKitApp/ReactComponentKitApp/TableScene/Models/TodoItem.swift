@@ -10,6 +10,10 @@ import UIKit
 import BKEventBus
 
 struct TodoItem: ItemModel {
+    var id: Int {
+        return item.hashValue
+    }
+    
     var componentClass: UIViewComponent.Type {
         return MessageViewComponent.self
     }

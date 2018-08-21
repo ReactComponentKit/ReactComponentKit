@@ -9,21 +9,18 @@
 import BKRedux
 
 func makeTodoSectionModels(state: [String:State], action: Action) -> [String:State] {
-    if type(of: action) != AddTodoAction.self {
-        var newState = state
-        newState["reload"] = false
-        return newState
-    }
+    if type(of: action) != AddTodoAction.self { return state }
     
     if let todoList = state["todo"] as? [String] {
         let todoItemList = todoList.map { (todo) -> TodoItem in
             TodoItem(item: todo)
         }
         
-        let section = DefaultSectionModel(items: todoItemList, header: TodoSectionHeaderModel(title: "섹션헤더"), footer: TodoSectionFooterModel(title: "섹션푸터 ㅎㅎ"))
+        let section0 = DefaultSectionModel(items: todoItemList, header: TodoSectionHeaderModel(title: "Section Header"), footer: TodoSectionFooterModel(title: "Section Footer"))
+        let section1 = DefaultSectionModel(items: todoItemList, header: TodoSectionHeaderModel(title: "Section Header"), footer: TodoSectionFooterModel(title: "Section Footer"))
+        let section2 = DefaultSectionModel(items: todoItemList, header: TodoSectionHeaderModel(title: "Section Header"), footer: TodoSectionFooterModel(title: "Section Footer"))
         var newState = state
-        newState["sections"] = [section, section, section]
-        newState["reload"] = true
+        newState["sections"] = [section0, section1, section2]
         return newState
     }
     

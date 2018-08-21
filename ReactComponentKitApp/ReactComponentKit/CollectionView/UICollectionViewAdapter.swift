@@ -12,9 +12,11 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDelegate, UICollec
     
     weak private(set) var collectionViewComponent: UICollectionViewComponent? = nil
     private var sections: [SectionModel] = []
+    private let useDiff: Bool
     
-    public init(collectionViewComponent: UICollectionViewComponent?) {
+    public init(collectionViewComponent: UICollectionViewComponent?, useDiff: Bool = false) {
         self.collectionViewComponent = collectionViewComponent
+        self.useDiff = useDiff
     }
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -101,17 +103,51 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDelegate, UICollec
         return footer.contentSize
     }
     
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        guard sections.count > section else { return .zero }
+        let sectionModel = sections[section]
+        return sectionModel.inset
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        guard sections.count > section else { return 0 }
+        let sectionModel = sections[section]
+        return sectionModel.minimumLineSpacing
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        guard sections.count > section else { return 0 }
+        let sectionModel = sections[section]
+        return sectionModel.minimumInteritemSpacing
+    }
+    
     public func set(section: SectionModel) {
         self.set(sections: [section])
     }
     
     public func set(sections: [SectionModel]) {
-        // 성능상 너무 안 좋다.
-        // diff를 도입하자
-        self.sections = sections
-        
-        // 성능상 너무 안 좋다.
-        // diff를 도입하자
-        self.collectionViewComponent?.reloadData()
+        if useDiff == false {
+            self.sections = sections
+            self.collectionViewComponent?.reloadData()
+        } else {
+            if self.sections.count != sections.count {
+                self.sections = sections
+                self.collectionViewComponent?.reloadData()
+            } else {
+                
+                var section: Int = 0
+                let oldSections = self.sections
+                zip(oldSections, sections).forEach { (oldSection, newSection) in
+                    let oldHashable = oldSection.items.map { $0.id }
+                    let newHashable = newSection.items.map { $0.id }
+                    let changes = diff(old: oldHashable, new: newHashable)
+                    self.sections[section] = newSection
+                    self.collectionViewComponent?.collectionView.reload(changes: changes,
+                                                              section: section,
+                                                              completion: nil)
+                    section += 1
+                }
+            }
+        }
     }
 }

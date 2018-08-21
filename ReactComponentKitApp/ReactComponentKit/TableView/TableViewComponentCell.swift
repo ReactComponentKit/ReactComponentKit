@@ -32,6 +32,11 @@ internal class TableViewComponentCell: UITableViewCell {
     override var intrinsicContentSize: CGSize {
         return rootComponentView?.contentSize ?? .zero
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        rootComponentView?.prepareForReuse()
+    }
 
     private func installRootComponentView() {
         guard let rootComponentView = rootComponentView else { return }

@@ -32,6 +32,11 @@ internal class CollectionViewComponentCell: UICollectionViewCell {
         return rootComponentView?.contentSize ?? .zero
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        rootComponentView?.prepareForReuse()
+    }
+    
     private func installRootComponentView() {
         guard let rootComponentView = rootComponentView else { return }
         self.addSubview(rootComponentView)

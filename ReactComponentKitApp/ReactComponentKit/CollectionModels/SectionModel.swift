@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public protocol SectionModel {
     var items: [ItemModel] { get set }
@@ -14,6 +15,10 @@ public protocol SectionModel {
     
     var header: SectionHeaderModel? { get set }
     var footer: SectionFooterModel? { get set }
+    
+    var inset: UIEdgeInsets { get }
+    var minimumLineSpacing: CGFloat { get }
+    var minimumInteritemSpacing: CGFloat { get }
     
     init(items: [ItemModel], header: SectionHeaderModel?, footer: SectionFooterModel?)
 }
@@ -29,6 +34,10 @@ public class DefaultSectionModel: SectionModel {
     
     public var header: SectionHeaderModel?
     public var footer: SectionFooterModel?
+    
+    public var inset: UIEdgeInsets = .zero
+    public var minimumLineSpacing: CGFloat = 0
+    public var minimumInteritemSpacing: CGFloat  = 0
     
     public required init(items: [ItemModel], header: SectionHeaderModel? = nil, footer: SectionFooterModel? = nil) {
         self.items = items

@@ -10,5 +10,6 @@ import Foundation
 import BKEventBus
 
 public protocol ItemModel: UIViewComponentClassProvider, ContentSizeProvider {
-    
+    // HashValue for using diff algorithms.
+    var id: Int { get }
 }

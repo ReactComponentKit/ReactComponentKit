@@ -30,7 +30,6 @@ class TableViewModel: RootViewModelType {
     }
     
     override func on(newState: [String : State]?) {
-        guard let reload = newState?["reload"] as? Bool, reload == true else { return }
         guard let sections = newState?["sections"] as? [DefaultSectionModel] else { return }
         rx_sections.accept(sections)
     }

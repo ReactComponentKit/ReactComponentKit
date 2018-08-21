@@ -19,18 +19,20 @@ public enum ComponentDispatchEvent: EventType {
     case dispatch(action: Action)
 }
 
-// 이벤트를 들을 수 있는 컴포넌트
-public protocol Component {
+// Component that can listen to events & dispatch actions
+public protocol ReactComponent {
     var token: Token { get set }
-    // 상태를 받고자 하는 컴포넌트만 받는다.
-    // 테이블셀뷰나 컬렉션셀뷰에 포함되는 컴포넌트는 성능상 newState를 받지 않는다.(모든 셀이 새로운 상태를 받으면 상태 복사가 많이 발생하기 때문이다)
+    // ReactComponent only has newStateEventBus if it is want to receive the new state.
+    // If ReactComponent is in UITableView's cell or UICollectionView's cell,
+    // it doesn't receive new state via newStateEventBus for the performance reason.
+    // If every cell component receive new state event bus, there are many copying state.
     var newStateEventBus: EventBus<ComponentNewStateEvent>? { get }
-    // 액션 디스패치는 항상 있어야 한다.
+    // ReactComponent always has dispatchEventBus for dispatching actions.
     var dispatchEventBus: EventBus<ComponentDispatchEvent> { get }
     init(token: Token, canOnlyDispatchAction: Bool)
 }
 
-// 컴포넌트 컨텐츠 Size 프로바이더
+// Component's content size provider
 public protocol ContentSizeProvider {
     var contentSize: CGSize { get }
 }
