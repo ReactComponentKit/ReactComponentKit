@@ -99,7 +99,7 @@ public class UITableViewComponent: UIViewComponent {
         tableView.separatorInset = .zero
         tableView.contentInset = .zero
         tableView.separatorColor = UIColor.clear
-        // 성능상 좋지 않다.
+        // Performance is not good.
         // tableView.rowHeight = UITableViewAutomaticDimension
         // tableView.estimatedRowHeight = 1
     }

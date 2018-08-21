@@ -10,5 +10,5 @@ import Foundation
 import BKRedux
 
 struct AddTodoAction: Action {
-    let payload = "해야할일 : xxxxx"
+    let payload = "  Todo : \(Date().description)"
 }

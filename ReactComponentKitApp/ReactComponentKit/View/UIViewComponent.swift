@@ -10,7 +10,7 @@ import UIKit
 import BKEventBus
 import BKRedux
 
-public class UIViewComponent: UIView, Component, ContentSizeProvider {
+public class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
 
     public var token: Token
     public var newStateEventBus: EventBus<ComponentNewStateEvent>? = nil
@@ -26,9 +26,9 @@ public class UIViewComponent: UIView, Component, ContentSizeProvider {
     
     public required init(token: Token, canOnlyDispatchAction: Bool = false) {
         self.token = token
-        dispatchEventBus = EventBus(token: token)
+        self.dispatchEventBus = EventBus(token: token)
         if canOnlyDispatchAction == false {
-            newStateEventBus = EventBus(token: token)
+            self.newStateEventBus = EventBus(token: token)
         }
         super.init(frame: .zero)
         self.newStateEventBus?.on { [weak self] (event) in
@@ -47,31 +47,39 @@ public class UIViewComponent: UIView, Component, ContentSizeProvider {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Override it to layout sub views.
     public func setupView() {
         
     }
     
+    // It is only called when the component is in UITableView's cell or UICollectionView's cell.
+    public func prepareForReuse() {
+        
+    }
+    
+    // It is called when the component is standalone.
     func applyNew(state: [String:State]?) {
         on(state: state)
         invalidateIntrinsicContentSize()
     }
     
-    // UIViewComponent가 UITableViewCell이나 UICollectionViewCell 내부가 아닌
-    // 단독 뷰로 사용될 때 상태가 변경되면 호출된다.
+    // Override it to configure or update views
     public func on(state: [String:State]?) {
         
     }
     
+    // It is only called when the component is in UITableView's cell or UICollectionView's cell
     func applyNew<Item>(item: Item) {
         configure(item: item)
         invalidateIntrinsicContentSize()
     }
     
-    // UIViewComponent가 UITableViewCell이나 UICollectionViewCell 내부에서 쓰이면 이 메서드가 호출된다.
+    // Override it to configure or update views
     public func configure<Item>(item: Item) {
     
     }
     
+    // Use it to dispatch actions
     public func dispatch(action: Action) {
         dispatchEventBus.post(event: .dispatch(action: action))
     }

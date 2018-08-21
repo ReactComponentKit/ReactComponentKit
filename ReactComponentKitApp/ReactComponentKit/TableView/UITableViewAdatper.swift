@@ -14,9 +14,11 @@ open class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSour
     private var sections: [SectionModel] = []
     private var sectionHeaderInfo: [Int:UIViewComponent] = [:]
     private var sectionFooterInfo: [Int:UIViewComponent] = [:]
+    private let useDiff: Bool
     
-    public init(tableViewComponent: UITableViewComponent?) {
+    public init(tableViewComponent: UITableViewComponent?, useDiff: Bool = false) {
         self.tableViewComponent = tableViewComponent
+        self.useDiff = useDiff
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -104,12 +106,30 @@ open class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSour
     }
     
     public func set(sections: [SectionModel]) {
-        // 성능상 너무 안 좋다.
-        // diff를 도입하자
-        self.sections = sections
-        
-        // 성능상 너무 안 좋다.
-        // diff를 도입하자
-        self.tableViewComponent?.reloadData()
+        if useDiff == false {
+            self.sections = sections
+            self.tableViewComponent?.reloadData()
+        } else {
+            if self.sections.count != sections.count {
+                self.sections = sections
+                self.tableViewComponent?.reloadData()
+            } else {
+                var section: Int = 0
+                let oldSections = self.sections
+                zip(oldSections, sections).forEach { (oldSection, newSection) in
+                    let oldHashable = oldSection.items.map { $0.id }
+                    let newHashable = newSection.items.map { $0.id }
+                    let changes = diff(old: oldHashable, new: newHashable)
+                    self.sections[section] = newSection
+                    self.tableViewComponent?.tableView.reload(changes: changes,
+                                                              section: section,
+                                                              insertionAnimation: UITableViewRowAnimation.none,
+                                                              deletionAnimation: UITableViewRowAnimation.none,
+                                                              replacementAnimation: UITableViewRowAnimation.none,
+                                                              completion: nil)
+                    section += 1
+                }
+            }
+        }
     }
 }

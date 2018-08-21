@@ -65,8 +65,6 @@ public class UICollectionViewComponent: UIViewComponent {
     }
     
     public func register<UIViewComponentType: UIViewComponent>(component: UIViewComponentType.Type, viewType: ViewType = .cell) {
-        
-        
         switch viewType {
         case .cell:
             let cellClass = CollectionViewComponentCell.self
@@ -84,6 +82,4 @@ public class UICollectionViewComponent: UIViewComponent {
     public func reloadData() {
         self.collectionView.reloadData()
     }
-    
-    
 }
