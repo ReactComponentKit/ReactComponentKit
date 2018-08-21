@@ -1,6 +1,0 @@
-framework module Pods_ReactComponentKit {
-  umbrella header "Pods-ReactComponentKit-umbrella.h"
-
-  export *
-  module * { export * }
-}
