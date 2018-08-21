@@ -19,7 +19,7 @@ class ButtonComponent: UIViewComponent {
     
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("액션", for: [])
+        button.setTitle("Action Button", for: [])
         return button
     }()
     

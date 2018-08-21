@@ -105,7 +105,7 @@ open class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSour
         self.set(sections: [section])
     }
     
-    public func set(sections: [SectionModel]) {
+    public func set(sections: [SectionModel], with animation: UITableViewRowAnimation = UITableViewRowAnimation.none) {
         if useDiff == false {
             self.sections = sections
             self.tableViewComponent?.reloadData()
@@ -123,9 +123,9 @@ open class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSour
                     self.sections[section] = newSection
                     self.tableViewComponent?.tableView.reload(changes: changes,
                                                               section: section,
-                                                              insertionAnimation: UITableViewRowAnimation.none,
-                                                              deletionAnimation: UITableViewRowAnimation.none,
-                                                              replacementAnimation: UITableViewRowAnimation.none,
+                                                              insertionAnimation: animation,
+                                                              deletionAnimation: animation,
+                                                              replacementAnimation: animation,
                                                               completion: nil)
                     section += 1
                 }

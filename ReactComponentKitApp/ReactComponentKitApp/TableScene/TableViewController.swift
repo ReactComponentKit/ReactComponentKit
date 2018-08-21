@@ -22,7 +22,7 @@ class TableViewController: UIViewController {
     }()
     
     private lazy var adapter: UITableViewApater = {
-        let adapter = UITableViewApater(tableViewComponent: tableViewComponent)
+        let adapter = UITableViewApater(tableViewComponent: tableViewComponent, useDiff: true)
         let section = DefaultSectionModel(items: [])
         adapter.set(section: section)
         return adapter
@@ -57,7 +57,7 @@ class TableViewController: UIViewController {
         viewModel.rx_sections.asDriver()
             .drive(onNext: { [weak self] (sections) in
                 guard let strongSelf = self else { return }
-                strongSelf.adapter.set(sections: sections)
+                strongSelf.adapter.set(sections: sections, with: .fade)
             })
             .disposed(by: disposeBag)
     }
