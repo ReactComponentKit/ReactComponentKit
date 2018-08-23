@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "ReactComponentKit"
-  s.version      = "0.0.3"
-  s.summary      = "ReactComponentKit is library for building UIViewController based on Components."
+  s.version      = "0.0.4"
+  s.summary      = "ReactComponentKit is a library for building UIViewController based on Components."
   s.homepage     = "https://github.com/skyfe79/ReactComponentKit"
   s.license      = "MIT"
   s.author             = { "Burt.K" => "skyfe79@gmail.com" }
