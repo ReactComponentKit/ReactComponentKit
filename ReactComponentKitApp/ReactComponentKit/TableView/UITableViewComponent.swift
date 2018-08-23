@@ -90,7 +90,7 @@ open class UITableViewComponent: UIViewComponent {
         fatalError("init(token:canOnlyDispatchAction:) has not been implemented")
     }
     
-    public override func setupView() {
+    open override func setupView() {
         addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -109,7 +109,7 @@ open class UITableViewComponent: UIViewComponent {
         self.tableView.register(cellClass, forCellReuseIdentifier: String(describing: component))
     }
     
-    public func reloadData() {
+    open func reloadData() {
         self.tableView.reloadData()
     }
     

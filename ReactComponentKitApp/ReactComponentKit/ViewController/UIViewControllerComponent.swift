@@ -43,7 +43,7 @@ open class UIViewControllerComponent: UIViewController, ReactComponent {
         on(state: state)
     }
     
-    func on(state: [String:State]?) {
+    open func on(state: [String:State]?) {
         
     }
     

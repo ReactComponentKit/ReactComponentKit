@@ -16,7 +16,7 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
     public var newStateEventBus: EventBus<ComponentNewStateEvent>? = nil
     public var dispatchEventBus: EventBus<ComponentDispatchEvent>
     
-    public var contentSize: CGSize {
+    open var contentSize: CGSize {
         return .zero
     }
     
@@ -48,12 +48,12 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
     }
     
     // Override it to layout sub views.
-    public func setupView() {
+    open func setupView() {
         
     }
     
     // It is only called when the component is in UITableView's cell or UICollectionView's cell.
-    public func prepareForReuse() {
+    open func prepareForReuse() {
         
     }
     
@@ -64,7 +64,7 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
     }
     
     // Override it to configure or update views
-    public func on(state: [String:State]?) {
+    open func on(state: [String:State]?) {
         
     }
     

@@ -55,7 +55,7 @@ open class UICollectionViewComponent: UIViewComponent {
         super.init(token: token, canOnlyDispatchAction: canOnlyDispatchAction)
     }
     
-    public override func setupView() {
+    open override func setupView() {
         addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -79,7 +79,7 @@ open class UICollectionViewComponent: UIViewComponent {
         
     }
     
-    public func reloadData() {
+    open func reloadData() {
         self.collectionView.reloadData()
     }
 }

@@ -21,16 +21,16 @@ open class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSour
         self.useDiff = useDiff
     }
     
-    public func numberOfSections(in tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard sections.count > section else { return 0 }
         return sections[section].itemCount
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemModel = sections[indexPath.section].items[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: itemModel.componentClass), for: indexPath)
     
@@ -49,7 +49,7 @@ open class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let existHeader = sectionHeaderInfo[section] {
             return existHeader
         }
@@ -62,7 +62,7 @@ open class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSour
         return sectionHeaderView
     }
     
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if let existHeader = sectionHeaderInfo[section] {
             return existHeader.contentSize.height
         }
@@ -75,7 +75,7 @@ open class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSour
         return sectionHeaderView.contentSize.height
     }
     
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if let existFooter = sectionFooterInfo[section] {
             return existFooter
         }
@@ -88,7 +88,7 @@ open class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSour
         return sectionFooterView
     }
     
-    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if let existFooter = sectionFooterInfo[section] {
             return existFooter.contentSize.height
         }
@@ -101,11 +101,11 @@ open class UITableViewApater: NSObject, UITableViewDelegate, UITableViewDataSour
         return sectionFooterView.contentSize.height
     }
     
-    public func set(section: SectionModel) {
+    open func set(section: SectionModel) {
         self.set(sections: [section])
     }
     
-    public func set(sections: [SectionModel], with animation: UITableViewRowAnimation = UITableViewRowAnimation.none) {
+    open func set(sections: [SectionModel], with animation: UITableViewRowAnimation = UITableViewRowAnimation.none) {
         if useDiff == false {
             self.sections = sections
             self.tableViewComponent?.reloadData()

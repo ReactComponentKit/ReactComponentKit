@@ -19,16 +19,16 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDelegate, UICollec
         self.useDiff = useDiff
     }
     
-    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+    open func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
     }
     
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard sections.count > section else { return 0 }
         return sections[section].itemCount
     }
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let itemModel = sections[indexPath.section].items[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: itemModel.componentClass), for: indexPath)
         
@@ -47,7 +47,7 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDelegate, UICollec
         return cell
     }
     
-    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let section = indexPath.section
     
         if kind == UICollectionElementKindSectionHeader {
@@ -84,48 +84,48 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDelegate, UICollec
         }
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard sections.count > indexPath.section else { return .zero }
         guard sections[indexPath.section].items.count > indexPath.item else { return .zero }
         let itemModel = sections[indexPath.section].items[indexPath.item]
         return itemModel.contentSize
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         guard sections.count > section else { return .zero }
         guard let header = sections[section].header else { return .zero }
         return header.contentSize
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         guard sections.count > section else { return .zero }
         guard let footer = sections[section].footer else { return .zero }
         return footer.contentSize
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         guard sections.count > section else { return .zero }
         let sectionModel = sections[section]
         return sectionModel.inset
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         guard sections.count > section else { return 0 }
         let sectionModel = sections[section]
         return sectionModel.minimumLineSpacing
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         guard sections.count > section else { return 0 }
         let sectionModel = sections[section]
         return sectionModel.minimumInteritemSpacing
     }
     
-    public func set(section: SectionModel) {
+    open func set(section: SectionModel) {
         self.set(sections: [section])
     }
     
-    public func set(sections: [SectionModel]) {
+    open func set(sections: [SectionModel]) {
         if useDiff == false {
             self.sections = sections
             self.collectionViewComponent?.reloadData()
