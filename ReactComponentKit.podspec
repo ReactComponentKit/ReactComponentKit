@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "9.0"
   s.swift_version         = "4.1"
   s.source       = { :git => "https://github.com/skyfe79/ReactComponentKit.git", :tag => "#{s.version}" }
-  s.source_files  = "ReactComponentKitApp/ReactComponentKit/{*.swift}"
+  s.source_files  = "ReactComponentKitApp/ReactComponentKit/**/{*.swift}"
   s.requires_arc = true
   s.dependency "RxSwift", "~> 4.2.0"
   s.dependency "RxCocoa", "~> 4.2.0"
