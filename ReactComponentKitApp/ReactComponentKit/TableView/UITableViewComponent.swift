@@ -15,7 +15,7 @@ import BKEventBus
 import RxSwift
 import RxCocoa
 
-public class UITableViewComponent: UIViewComponent {
+open class UITableViewComponent: UIViewComponent {
     
     public var headerComponent: UIViewComponent? {
         get {

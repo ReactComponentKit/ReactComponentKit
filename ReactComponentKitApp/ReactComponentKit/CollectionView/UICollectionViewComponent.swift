@@ -15,7 +15,7 @@ import BKEventBus
 import RxSwift
 import RxCocoa
 
-public class UICollectionViewComponent: UIViewComponent {
+open class UICollectionViewComponent: UIViewComponent {
     
     public enum ViewType {
         case cell

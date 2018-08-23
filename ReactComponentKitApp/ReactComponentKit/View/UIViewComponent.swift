@@ -10,7 +10,7 @@ import UIKit
 import BKEventBus
 import BKRedux
 
-public class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
+open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
 
     public var token: Token
     public var newStateEventBus: EventBus<ComponentNewStateEvent>? = nil
@@ -20,7 +20,7 @@ public class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
         return .zero
     }
     
-    override public var intrinsicContentSize: CGSize {
+    override open var intrinsicContentSize: CGSize {
         return contentSize
     }
     
