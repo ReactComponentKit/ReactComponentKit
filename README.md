@@ -8,7 +8,7 @@ ReactComponentKit is library for UIViewController. It builds UIViewController ba
 
 The MIT License
 
-Copyright © 2018 Sungcheol Kim, https://github.com/skyfe79/ReactComponentKit
+Copyright © 2018 Sungcheol Kim, https://github.com/ReactComponentKit/ReactComponentKit
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
