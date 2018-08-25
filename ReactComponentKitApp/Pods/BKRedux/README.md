@@ -257,7 +257,7 @@ class ViewController: UIViewController {
 
 The MIT License
 
-Copyright © 2018 Sungcheol Kim, http://github.com/skyfe79/BKRedux
+Copyright © 2018 Sungcheol Kim, http://github.com/ReactComponentKit/BKRedux
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
