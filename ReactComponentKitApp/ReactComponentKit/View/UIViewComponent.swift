@@ -75,7 +75,7 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
     }
     
     // Override it to configure or update views
-    public func configure<Item>(item: Item) {
+    open func configure<Item>(item: Item) {
     
     }
     
