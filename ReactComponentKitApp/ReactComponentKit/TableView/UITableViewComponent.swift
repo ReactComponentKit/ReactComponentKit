@@ -37,7 +37,7 @@ open class UITableViewComponent: UIViewComponent {
         }
     }
     
-    public var adapter: UITableViewApadter? {
+    public var adapter: UITableViewAdapter? {
         didSet {
             tableView.delegate = adapter
             tableView.dataSource = adapter
