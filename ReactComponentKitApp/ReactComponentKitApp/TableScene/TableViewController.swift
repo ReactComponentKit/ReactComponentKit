@@ -21,8 +21,8 @@ class TableViewController: UIViewController {
         return component
     }()
     
-    private lazy var adapter: UITableViewApadter = {
-        let adapter = UITableViewApadter(tableViewComponent: tableViewComponent, useDiff: true)
+    private lazy var adapter: UITableViewAdapter = {
+        let adapter = UITableViewAdapter(tableViewComponent: tableViewComponent, useDiff: true)
         let section = DefaultSectionModel(items: [])
         adapter.set(section: section)
         return adapter

@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class UITableViewApadter: NSObject, UITableViewDelegate, UITableViewDataSource {
+open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     weak private(set) var tableViewComponent: UITableViewComponent? = nil
     private var sections: [SectionModel] = []
