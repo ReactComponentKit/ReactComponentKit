@@ -15,10 +15,11 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
     private var sectionHeaderInfo: [Int:UIViewComponent] = [:]
     private var sectionFooterInfo: [Int:UIViewComponent] = [:]
     private let useDiff: Bool
-    
-    public init(tableViewComponent: UITableViewComponent?, useDiff: Bool = false) {
+    private let useComponentContentSize: Bool // using UIViewComponent's contentSize or ItemModel's contentSize
+    public init(tableViewComponent: UITableViewComponent?, useDiff: Bool = false, useComponentContentSize: Bool = true) {
         self.tableViewComponent = tableViewComponent
         self.useDiff = useDiff
+        self.useComponentContentSize = useComponentContentSize
     }
     
     open func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,16 +64,21 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
     }
     
     open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if let existHeader = sectionHeaderInfo[section] {
-            return existHeader.contentSize.height
+        if useComponentContentSize {
+            if let existHeader = sectionHeaderInfo[section] {
+                return existHeader.contentSize.height
+            }
+            
+            guard let header = sections[section].header else { return 0 }
+            guard let token = tableViewComponent?.token else { return 0 }
+            let sectionHeaderView = header.componentClass.init(token: token, canOnlyDispatchAction: true)
+            sectionHeaderView.applyNew(item: header)
+            sectionHeaderInfo[section] = sectionHeaderView
+            return sectionHeaderView.contentSize.height
         }
         
         guard let header = sections[section].header else { return 0 }
-        guard let token = tableViewComponent?.token else { return 0 }
-        let sectionHeaderView = header.componentClass.init(token: token, canOnlyDispatchAction: true)
-        sectionHeaderView.applyNew(item: header)
-        sectionHeaderInfo[section] = sectionHeaderView
-        return sectionHeaderView.contentSize.height
+        return header.contentSize.height
     }
     
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -89,18 +95,33 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
     }
     
     open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if let existFooter = sectionFooterInfo[section] {
-            return existFooter.contentSize.height
+        if useComponentContentSize {
+            if let existFooter = sectionFooterInfo[section] {
+                return existFooter.contentSize.height
+            }
+            
+            guard let footer = sections[section].footer else { return 0 }
+            guard let token = tableViewComponent?.token else { return 0 }
+            let sectionFooterView = footer.componentClass.init(token: token, canOnlyDispatchAction: true)
+            sectionFooterView.applyNew(item: footer)
+            sectionFooterInfo[section] = sectionFooterView
+            return sectionFooterView.contentSize.height
         }
-        
         guard let footer = sections[section].footer else { return 0 }
-        guard let token = tableViewComponent?.token else { return 0 }
-        let sectionFooterView = footer.componentClass.init(token: token, canOnlyDispatchAction: true)
-        sectionFooterView.applyNew(item: footer)
-        sectionFooterInfo[section] = sectionFooterView
-        return sectionFooterView.contentSize.height
+        return footer.contentSize.height
     }
     
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if useComponentContentSize {
+            return UITableViewAutomaticDimension
+        }
+        
+        guard sections.count > indexPath.section else { return 0 }
+        guard sections[indexPath.section].items.count > indexPath.row else { return 0 }
+        let item = sections[indexPath.section].items[indexPath.row]
+        return item.contentSize.height
+    }
+        
     open func set(section: SectionModel) {
         self.set(sections: [section])
     }
