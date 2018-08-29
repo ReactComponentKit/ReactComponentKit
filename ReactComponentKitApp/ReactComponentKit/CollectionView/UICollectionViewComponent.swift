@@ -32,7 +32,7 @@ open class UICollectionViewComponent: UIViewComponent {
     }
     
     private let disposeBag = DisposeBag()
-    private(set) var collectionView: UICollectionView
+    public let collectionView: UICollectionView
 
     public var collectionViewLayout: UICollectionViewLayout {
         get {

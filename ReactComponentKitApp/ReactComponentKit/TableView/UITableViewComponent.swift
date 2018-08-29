@@ -76,8 +76,7 @@ open class UITableViewComponent: UIViewComponent {
     }
     
     private let disposeBag = DisposeBag()
-    private(set) var tableView: UITableView
-    
+    public let tableView: UITableView
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
