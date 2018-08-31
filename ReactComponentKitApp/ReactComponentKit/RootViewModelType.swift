@@ -26,15 +26,8 @@ open class RootViewModelType: ViewModelType {
             guard let strongSelf = self else { return }
             switch event {
             case let .dispatch(action):
-                strongSelf.beforeDispatch(action: action)
                 Observable.just(action).bind(to: strongSelf.rx_action).disposed(by: strongSelf.disposeBag)
             }
         }
-    }
-    
-    // It is called when before dispatching actions.
-    // You can do some additional work before dispatching actions.
-    open func beforeDispatch(action: Action) {
-        
     }
 }
