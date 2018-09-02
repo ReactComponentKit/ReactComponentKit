@@ -1,19 +1,26 @@
-<p align="center">
+<div align="center">
 	<img src="https://raw.githubusercontent.com/ReactComponentKit/ReactComponentKit/master/art/logo.png">
-</p>
+</div>
+
+<div align="center">
+	<img src="https://img.shields.io/badge/iOS-%3E%3D%209.0-green.svg" />
+	<img src="https://img.shields.io/badge/Swift-%3E%3D%204.1-orange.svg" />
+	<img src="https://img.shields.io/github/license/ReactComponentKit/ReactComponentKit.svg" />
+<div>
+
 
 # ReactComponentKit
 
 ReactComponentKit is a library for building UIViewControllers. You can make UIViewControllers based on Components. Also, It uses MVVM and Redux architectures for unidirectional data flow.
 
-![](./art/ReactComponentKit.png)
+<div align="center"><img src="https://raw.githubusercontent.com/ReactComponentKit/ReactComponentKit/master/art/ReactComponentKit.png"></div>
 
 ## Data Flow
 
- * (1) : Components dispatches actions
+ * (1) : Components dispatch actions
  * (2) : ViewModel passes the actions to the store. You can use beforeDispatch(action:) method to do some work before dispatching actions.
  * (3) : Store passed current state to the Redux pipeline. Middlewares, Reducers and Postwares make a new state.
- * (4) : Redux pipeline passes new state to the store.
+ * (4) : New State comes out from the Redux pipeline. It is passed to the store.
  * (5) : Store passes the new state to the ViewModel.
  * (6) : ViewModel passes or propagates the state to the Components.
 
