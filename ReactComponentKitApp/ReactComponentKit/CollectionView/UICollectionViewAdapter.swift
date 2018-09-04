@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class UICollectionViewAdapter: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+open class UICollectionViewAdapter: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     weak private(set) var collectionViewComponent: UICollectionViewComponent? = nil
     private var sections: [SectionModel] = []
