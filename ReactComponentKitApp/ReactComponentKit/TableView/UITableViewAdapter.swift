@@ -20,6 +20,9 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
         self.tableViewComponent = tableViewComponent
         self.useDiff = useDiff
         self.useComponentContentSize = useComponentContentSize
+        if useComponentContentSize {
+            tableViewComponent?.tableView.estimatedRowHeight = 40
+        }
     }
     
     open func numberOfSections(in tableView: UITableView) -> Int {
