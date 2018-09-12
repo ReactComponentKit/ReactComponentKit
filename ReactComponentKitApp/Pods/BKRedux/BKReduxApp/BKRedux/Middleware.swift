@@ -8,4 +8,4 @@
 
 import Foundation
 
-public typealias Middleware = ([String:State], (Action)) -> [String:State]
+public typealias Middleware = ([String:State], Action) -> [String:State]

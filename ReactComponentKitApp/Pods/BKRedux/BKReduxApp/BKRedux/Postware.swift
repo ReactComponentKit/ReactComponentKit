@@ -8,4 +8,4 @@
 
 import Foundation
 
-public typealias Postware = ([String:State], (Action)) -> [String:State]
+public typealias Postware = ([String:State], Action) -> [String:State]

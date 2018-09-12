@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-private struct VoidAction: Action {
+struct VoidAction: Action {
 }
 
 open class ViewModelType {
@@ -28,6 +28,8 @@ open class ViewModelType {
     private func setupRxStream() {
         rx_action
             .filter { type(of: $0) != VoidAction.self }
+            .map(beforeDispatch)
+            .filter { type(of: $0) != VoidAction.self }
             .flatMap(store.dispatch)
             .observeOn(MainScheduler.asyncInstance)
             .bind(to: rx_state)
@@ -42,6 +44,10 @@ open class ViewModelType {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    open func beforeDispatch(action: Action) -> Action {
+        return action
     }
     
     open func on(newState: [String:State]?) {

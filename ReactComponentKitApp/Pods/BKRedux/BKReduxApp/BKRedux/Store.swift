@@ -12,9 +12,8 @@ import RxSwift
 public final class Store {
     
     public static let concurrentQ = ConcurrentDispatchQueueScheduler(qos: .background)
-    public static let serialQ = SerialDispatchQueueScheduler(qos: .background)
     
-    private(set) var state: [String:State]
+    public private(set) var state: [String:State]
     private(set) var reducers: [String:Reducer]
     private(set) var middlewares: [Middleware]
     private(set) var postwares: [Postware]
@@ -35,33 +34,15 @@ public final class Store {
     }
     
     public func dispatch(action: Action) -> Single<[String:State]> {
-        /*
-         - 이렇게 할 경우, API를 호출했을 때, 응답을 받은 후 응답의 각 level-0 필드를 분해한 다음,
-         - 다시 리듀서를 탈 수 있는가?
-         - store(API response) -> store(각 필드를 쪼갠것)?
-         - 아니면 상태를
-         - {
-         -      response: {}, --> responseReducer
-         -      converted: {} --> convertReducer
-         - }
-         - 이렇게 정의해야 하는가?
-         - 예제를 작성해서 방법을 찾아보자
-         - 아!
-         - 스토어는 모든 상태를 가져야 하므로 모든 API에 대한 응답을 가지고 있어야 한다. 즉, 아래처럼
-         - {
-         -      A_API_response: {} --> A_API_Reducer
-         -      B_API_response: {} --> B_API_Reducer
-         -      C_API_response: {} --> C_API_Reducer
-         - }
-         - 하면서 A_API_Reducer에서 하위 상태를 위한 리듀서를 직접 호출해야 한다. 
-        */
         return Single.create(subscribe: { [weak self] (single) -> Disposable in
             guard let strongSelf = self else {
                 single(.success([:]))
                 return Disposables.create()
             }
             
-            let state = strongSelf.state
+            // remove prev error state if there is.
+            var state = strongSelf.state
+            state["error"] = nil
             let disposeBag = strongSelf.disposeBag
             if strongSelf.middlewares.isEmpty == false {
                 strongSelf.middleware(state: state, action: action)
@@ -71,11 +52,6 @@ public final class Store {
                         guard let strongSelf = self else { return Observable.just(middlewareState) }
                         return strongSelf.reduce(state: middlewareState, action: action)
                     })
-                    .observeOn(Store.serialQ)
-                    // Needs to do some action for example, request api
-                    // Action 이 비동기 람다를 갖도록 하자
-                    // flatMap 으로 체인을 걸자
-                    .observeOn(Store.concurrentQ)
                     .flatMap({ [weak self] (reducesState) -> Observable<[String:State]> in
                         guard let strongSelf = self else { return Observable.just(reducesState) }
                         return strongSelf.postware(state: reducesState, action: action)

@@ -1,6 +1,6 @@
 # BKRedux
 
-BKRedux is implementation Redux store in Swift. 
+BKRedux is implementation of Redux store in Swift. 
 
 ## How to install
 
