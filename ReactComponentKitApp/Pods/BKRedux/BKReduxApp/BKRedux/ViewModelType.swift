@@ -11,6 +11,8 @@ import RxSwift
 import RxCocoa
 
 public struct VoidAction: Action {
+    public init() {
+    }
 }
 
 open class ViewModelType {
