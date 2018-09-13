@@ -10,11 +10,26 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    
     @discardableResult
     public func add(viewController: UIViewController) -> UIViewController {
         addChildViewController(viewController)
         view.addSubview(viewController.view)
+        viewController.didMove(toParentViewController: self)
+        return viewController
+    }
+    
+    @discardableResult
+    public func add(viewController: UIViewController, belowSubview: UIView) -> UIViewController {
+        addChildViewController(viewController)
+        view.insertSubview(viewController.view, belowSubview: belowSubview)
+        viewController.didMove(toParentViewController: self)
+        return viewController
+    }
+    
+    @discardableResult
+    public func add(viewController: UIViewController, aboveSubview: UIView) -> UIViewController {
+        addChildViewController(viewController)
+        view.insertSubview(viewController.view, aboveSubview: aboveSubview)
         viewController.didMove(toParentViewController: self)
         return viewController
     }
