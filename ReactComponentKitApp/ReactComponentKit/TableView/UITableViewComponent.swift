@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 import BKRedux
 import BKEventBus
@@ -88,9 +87,12 @@ open class UITableViewComponent: UIViewComponent {
     
     open override func setupView() {
         addSubview(tableView)
-        tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+
         tableView.backgroundColor = .clear
         tableView.separatorInset = .zero
         tableView.contentInset = .zero

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 import BKRedux
 import BKEventBus
@@ -57,9 +56,12 @@ open class UICollectionViewComponent: UIViewComponent {
     
     open override func setupView() {
         addSubview(collectionView)
-        collectionView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+
         collectionView.backgroundColor = .clear
         collectionView.contentInset = .zero
     }
