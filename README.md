@@ -53,10 +53,13 @@ ReactComponentKit provides four components basically.
 pod 'ReactComponentKit'
 ```
 
-## Tutorials
+## 시작하기
+
+ * [시작하기 문서 보기](https://github.com/ReactComponentKit/ReactComponentKit/wiki/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0)
+
+## Getting Started
 
  * writing...
-
 
 
 ## MIT License
