@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ReactComponentKit"
-  s.version      = "0.2.0"
+  s.version      = "0.3.0"
   s.summary      = "ReactComponentKit is a library for building UIViewController based on Components."
   s.homepage     = "https://github.com/ReactComponentKit/ReactComponentKit"
   s.license      = "MIT"
@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.dependency "RxSwift", ">= 4.2.0"
   s.dependency "RxCocoa", ">= 4.2.0"
-  s.dependency "BKRedux", ">= 0.0.8"
+  s.dependency "BKRedux", ">= 1.0.0"
   s.dependency "BKEventBus", ">= 1.0.7"
 end
