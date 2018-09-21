@@ -25,9 +25,8 @@ class RedViewController: UIViewControllerComponent {
         dispatch(action: RandomColorAction())
     }
     
-    override func on(state: [String : State]?) {
-        if let newColor = state?["color"] as? UIColor {
-            view.backgroundColor = newColor
-        }
+    override func on(state: State) {
+        guard let stackViewState = state as? StackViewState else { return }
+        view.backgroundColor = stackViewState.color
     }
 }

@@ -7,5 +7,6 @@
 //
 
 import Foundation
+import RxSwift
 
-public typealias Middleware = ([String:State], Action) -> [String:State]
+public typealias Middleware = (State, Action) -> Observable<State>

@@ -7,5 +7,6 @@
 //
 
 import Foundation
+import RxSwift
 
-public typealias Postware = ([String:State], Action) -> [String:State]
+public typealias Postware = (State, Action) -> Observable<State>

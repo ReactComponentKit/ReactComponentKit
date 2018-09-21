@@ -11,7 +11,7 @@ import BKRedux
 import BKEventBus
 import RxSwift
 
-open class RootViewModelType: ViewModelType {
+open class RootViewModelType<S: State>: ViewModelType<S> {
     public let token: Token
     public let eventBus: EventBus<ComponentNewStateEvent>
     private let dispatchEventBus: EventBus<ComponentDispatchEvent>

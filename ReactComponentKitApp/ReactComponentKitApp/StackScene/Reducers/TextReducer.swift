@@ -9,14 +9,14 @@
 import BKRedux
 import RxSwift
 
-func textReducer(name: String, state: State?) -> (Action) -> Observable<ReducerResult> {
+func textReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
     return { action in
-        guard let prevState = state as? String else { return Observable.just(ReducerResult(name: name, result: state)) }
+        guard let prevState = state as? String else { return Observable.just((name, state)) }
         
         if let textAction = action as? TextAction {
-            return Observable.just(ReducerResult(name: name, result: prevState + " \(textAction.payload)"))
+            return Observable.just((name, prevState + " \(textAction.payload)"))
         }
         
-        return Observable.just(ReducerResult(name: name, result: prevState))
+        return Observable.just((name, prevState))
     }
 }

@@ -30,9 +30,9 @@ class MessageViewComponent: UIViewComponent {
         }
     }
     
-    override func on(state: [String:State]?) {
-        guard let text = state?["text"] as? String else { return }
-        label.text = text
+    override func on(state: State) {
+        guard let stackViewState = state as? StackViewState else { return }
+        label.text = stackViewState.text
     }
     
     override func configure<Item>(item: Item) {

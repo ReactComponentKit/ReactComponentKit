@@ -12,16 +12,17 @@ import RxCocoa
 import BKRedux
 import BKEventBus
 
-class CollectionViewModel: RootViewModelType {
+
+
+class CollectionViewModel: RootViewModelType<TableViewState> {
     let rx_sections =  BehaviorRelay<[DefaultSectionModel]>(value: [])
     
     override init() {
         super.init()
-        store.set(state: [
-            "todo": [String](),
-            ],
+        store.set(
+            initailState: TableViewState(),
             reducers: [
-                "todo": todoReducer
+                StateKeyPath(\TableViewState.todo): todoReducer
             ],
             postwares: [
                 makeTodoSectionModels,
@@ -29,8 +30,7 @@ class CollectionViewModel: RootViewModelType {
             ])
     }
     
-    override func on(newState: [String : State]?) {
-        guard let sections = newState?["sections"] as? [DefaultSectionModel] else { return }
-        rx_sections.accept(sections)
+    override func on(newState: TableViewState) {
+        rx_sections.accept(newState.sections)
     }
 }
