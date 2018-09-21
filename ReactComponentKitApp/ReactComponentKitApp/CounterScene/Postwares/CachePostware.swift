@@ -7,13 +7,16 @@
 //
 
 import BKRedux
+import RxSwift
 
-func cachePostware(state: [String:State], action: Action) -> [String:State] {
-    
-    if let count = state["count"] as? Int {
-        UserDefaults.standard.set(count, forKey: "count")
+func cachePostware(state: State, action: Action) -> Observable<State> {
+    guard let countState = state as? CounterSceneState else { return Observable.just(state) }
+    return Single.create(subscribe: { (single) -> Disposable in
+        
+        UserDefaults.standard.set(countState.count, forKey: "count")
         UserDefaults.standard.synchronize()
-    }
-    
-    return state
+        single(.success(countState))
+        
+        return Disposables.create()
+    }).asObservable()
 }

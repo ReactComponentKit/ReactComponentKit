@@ -15,12 +15,12 @@ public struct VoidAction: Action {
     }
 }
 
-open class ViewModelType {
+open class ViewModelType<S: State> {
     // rx port
     public let rx_action = BehaviorRelay<Action>(value: VoidAction())
-    public let rx_state = BehaviorRelay<[String:State]?>(value: nil)
+    public let rx_state = BehaviorRelay<S?>(value: nil)
     
-    public let store = Store()
+    public let store = Store<S>()
     public let disposeBag = DisposeBag()
     
     public init() {
@@ -34,14 +34,17 @@ open class ViewModelType {
             .filter { type(of: $0) != VoidAction.self }
             .flatMap(store.dispatch)
             .observeOn(MainScheduler.asyncInstance)
+            .map({ (state: State?) -> S? in
+                return state as? S
+            })
             .bind(to: rx_state)
             .disposed(by: disposeBag)
         
         rx_state
-            .subscribe(onNext: { [weak self] (newState) in
-                if let (error, action) = newState?["error"] as? (Error, Action) {
+            .subscribe(onNext: { [weak self] (newState: S?) in
+                if let (error, action) = newState?.error {
                     self?.on(error: error, action: action)
-                } else {
+                } else if let newState = newState {
                     self?.on(newState: newState)
                 }
             })
@@ -52,7 +55,7 @@ open class ViewModelType {
         return action
     }
     
-    open func on(newState: [String:State]?) {
+    open func on(newState: S) {
         
     }
     

@@ -1,12 +1,12 @@
 PODS:
   - BKEventBus (1.0.7)
-  - BKRedux (0.1.6):
+  - BKRedux (1.0.0):
     - RxCocoa (>= 4.2.0)
     - RxSwift (>= 4.2.0)
-  - RxCocoa (4.2.0):
+  - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
-  - RxSwift (4.2.0)
-  - SnapKit (4.0.0)
+  - RxSwift (4.3.1)
+  - SnapKit (4.0.1)
 
 DEPENDENCIES:
   - BKEventBus
@@ -25,10 +25,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   BKEventBus: 19835568d721ab6b9b6421ef7193506d8cfd6ee0
-  BKRedux: fdcf7ab54ba5278aa91098ecaac18af4e79084d0
-  RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
-  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  BKRedux: 58ca0c51e8a8c95b9fdea88a7c06c33a71f758f5
+  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
 PODFILE CHECKSUM: 85098da86cf942690ba8b1e94e4c13c63f2d16f5
 

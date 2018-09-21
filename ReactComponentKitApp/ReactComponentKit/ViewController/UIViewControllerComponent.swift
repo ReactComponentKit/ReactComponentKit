@@ -39,11 +39,11 @@ open class UIViewControllerComponent: UIViewController, ReactComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func applyNew(state: [String:State]?) {
+    private func applyNew(state: State) {
         on(state: state)
     }
     
-    open func on(state: [String:State]?) {
+    open func on(state: State) {
         
     }
     

@@ -12,7 +12,7 @@ import BKEventBus
 import BKRedux
 
 public enum ComponentNewStateEvent: EventType {
-    case on(state: [String:State]?)
+    case on(state: State)
 }
 
 public enum ComponentDispatchEvent: EventType {

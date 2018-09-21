@@ -32,12 +32,7 @@ class TodoSectionComponent: UIViewComponent {
         }
         self.backgroundColor = UIColor.brown
     }
-    
-    override func on(state: [String:State]?) {
-        guard let text = state?["sectionTitle"] as? String else { return }
-        label.text = text
-    }
-    
+        
     override func configure<Item>(item: Item) {
         if let sectionHeader = item as? TodoSectionHeaderModel {
             label.text = sectionHeader.title

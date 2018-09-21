@@ -10,7 +10,13 @@ import BKRedux
 import RxSwift
 import RxCocoa
 
-class ViewModel: ViewModelType {
+struct CounterSceneState: State {
+    var count: Int = 0
+    var color: UIColor = .white
+    var error: (Error, Action)? = nil
+}
+
+class ViewModel: ViewModelType<CounterSceneState> {
     
     let rx_count =  BehaviorRelay<String>(value: "0")
     let rx_color = BehaviorRelay<UIColor>(value: UIColor.white)
@@ -20,17 +26,14 @@ class ViewModel: ViewModelType {
 
         // STORE
         store.set(
-            state: [
-                "count": 0,
-                "color": UIColor.white
-            ],
-            reducers: [
-                "count": countReducer,
-                "color": colorReducer
-            ],
+            initailState: CounterSceneState(),
             middlewares: [
                 printCacheValue,
                 consoleLogMiddleware
+            ],
+            reducers: [
+                StateKeyPath(\CounterSceneState.count): countReducer,
+                StateKeyPath(\CounterSceneState.color): colorReducer
             ],
             postwares: [
                 cachePostware
@@ -38,14 +41,9 @@ class ViewModel: ViewModelType {
         )
     }
     
-    override func on(newState: [String : State]?) {
-        if let count = newState?["count"] as? Int {
-            rx_count.accept(String(count))
-        }
-        
-        if let color = newState?["color"] as? UIColor {
-            rx_color.accept(color)
-        }
+    override func on(newState: CounterSceneState) {
+        rx_count.accept(String(newState.count))
+        rx_color.accept(newState.color)
     }
     
     override func on(error: Error, action: Action) {

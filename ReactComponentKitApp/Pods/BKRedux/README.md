@@ -14,27 +14,16 @@ pod 'BKRedux'
 
 ### Define State
  
-You should define state as [String:State]. State is typealias of Any.
+You should confirm State protocol to define your state.
 
 ```swift
- store.set(
-    state: [
-        "count": 0,
-        "color": UIColor.white
-    ],
-    reducers: [
-        "count": countReducer,
-        "color": colorReducer
-    ],
-    middlewares: [
-        printCacheValue,
-        consoleLogMiddleware
-    ],
-    postwares: [
-        cachePostware
-    ]
-)
+struct MyState: State {
+    var count: Int = 0
+    var color: UIColor = UIColor.white
+    var error: (Error, Action)? = nil
+}
 ```
+
 
 ### Deine Actions
 
@@ -71,17 +60,17 @@ struct RandomColorAction: Action {
 import Foundation
 import RxSwift
 
-func countReducer(name: String, state: State?) -> (Action) -> Observable<ReducerResult> {
+func countReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
     return { action in
-        guard let prevState = state as? Int else { return Observable.just(ReducerResult(name: name, result: 0)) }
+        guard let prevState = state as? Int else { return Observable.just((name, 0)) }
         
         switch action {
         case let increaseAction as IncreaseAction:
-            return Observable.just(ReducerResult(name: name, result: prevState + increaseAction.payload))
+            return Observable.just((name, prevState + increaseAction.payload))
         case let decreaseAction as DecreaseAction:
-            return Observable.just(ReducerResult(name: name, result: prevState + decreaseAction.payload))
+            return Observable.just((name, prevState + decreaseAction.payload))
         default:
-            return Observable.just(ReducerResult(name: name, result: prevState))
+            return Observable.just((name, prevState))
         }
     }
 }
@@ -93,17 +82,16 @@ func countReducer(name: String, state: State?) -> (Action) -> Observable<Reducer
 import RxSwift
 import UIKit
 
-func colorReducer(name: String, state: State?) -> (Action) -> Observable<ReducerResult> {
+func colorReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
     return { action in
-        guard let prevState = state as? UIColor else { return Observable.just(ReducerResult(name: name, result: UIColor.white)) }
+        guard let prevState = state as? UIColor else { return Observable.just((name: name, result: UIColor.white)) }
         
         if let colorAction = action as? RandomColorAction {
-            return Observable.just(ReducerResult(name: name, result: colorAction.payload))
+            return Observable.just((name, colorAction.payload))
         }
-        return Observable.just(ReducerResult(name: name, result: prevState))
+        return Observable.just((name, prevState))
     }
-}
-```
+}```
 
 ### Define Middlewares if you needed.
 
@@ -111,10 +99,11 @@ func colorReducer(name: String, state: State?) -> (Action) -> Observable<Reducer
 
 ```swift
 import Foundation
+import RxSwift
 
-func consoleLogMiddleware(state: [String:State], action: Action) -> [String:State] {
+func consoleLogMiddleware(state: State, action: Action) -> Observable<State> {
     print("[## LOGGING ##] action: \(String(describing: action)) :: state: \(state)")
-    return state
+    return Observable.just(state)
 }
 ```
 
@@ -122,10 +111,11 @@ func consoleLogMiddleware(state: [String:State], action: Action) -> [String:Stat
 
 ```swift
 import Foundation
+import RxSwift
 
-func printCacheValue(state: [String:State], action: Action) -> [String:State] {
+func printCacheValue(state: State, action: Action) -> Observable<State> {
     print("[## CACHED ##] value: \(UserDefaults.standard.integer(forKey: "count"))")
-    return state
+    return  Observable.just(state)
 }
 ```
 
@@ -135,15 +125,21 @@ func printCacheValue(state: [String:State], action: Action) -> [String:State] {
 
 ```swift
 import Foundation
+import RxSwift
 
-func cachePostware(state: [String:State], action: Action) -> [String:State] {
-    
-    if let count = state["count"] as? Int {
-        UserDefaults.standard.set(count, forKey: "count")
+func cachePostware(state: State, action: Action) -> Observable<State> {
+    return Single.create(subscribe: { (single) -> Disposable in
+        guard let mystate = state as? MyState else {
+            single(.success(state))
+            return Disposables.create()
+        }
+        
+        UserDefaults.standard.set(mystate.count, forKey: "count")
         UserDefaults.standard.synchronize()
-    }
-    
-    return state
+        single(.success(mystate))
+        
+        return Disposables.create()
+    }).asObservable()
 }
 ```
 
@@ -156,7 +152,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class ViewModel: ViewModelType {
+struct MyState: State {
+    var count: Int = 0
+    var color: UIColor = UIColor.white
+    var error: (Error, Action)? = nil
+}
+
+class ViewModel: ViewModelType<MyState> {
     
     let rx_count =  BehaviorRelay<String>(value: "0")
     let rx_color = BehaviorRelay<UIColor>(value: UIColor.white)
@@ -166,17 +168,14 @@ class ViewModel: ViewModelType {
 
         // STORE
         store.set(
-            state: [
-                "count": 0,
-                "color": UIColor.white
-            ],
-            reducers: [
-                "count": countReducer,
-                "color": colorReducer
-            ],
+            initailState: MyState(),
             middlewares: [
                 printCacheValue,
                 consoleLogMiddleware
+            ],
+            reducers: [
+                StateKeyPath(\MyState.count): countReducer,
+                StateKeyPath(\MyState.color): colorReducer
             ],
             postwares: [
                 cachePostware
@@ -184,14 +183,9 @@ class ViewModel: ViewModelType {
         )
     }
     
-    override func on(newState: [String : State]?) {
-        if let count = newState?["count"] as? Int {
-            rx_count.accept(String(count))
-        }
-        
-        if let color = newState?["color"] as? UIColor {
-            rx_color.accept(color)
-        }
+    override func on(newState: MyState) {
+        rx_count.accept(String(newState.count))
+        rx_color.accept(newState.color)
     }
     
     override func on(error: Error, action: Action) {

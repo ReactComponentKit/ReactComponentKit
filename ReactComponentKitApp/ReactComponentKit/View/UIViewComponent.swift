@@ -58,13 +58,13 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
     }
     
     // It is called when the component is standalone.
-    func applyNew(state: [String:State]?) {
+    func applyNew(state: State) {
         on(state: state)
         invalidateIntrinsicContentSize()
     }
     
     // Override it to configure or update views
-    open func on(state: [String:State]?) {
+    open func on(state: State) {
         
     }
     
