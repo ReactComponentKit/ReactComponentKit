@@ -47,7 +47,7 @@ open class UIViewControllerComponent: UIViewController, ReactComponent {
         
     }
     
-    func dispatch(action: Action) {
+    public func dispatch(action: Action) {
         dispatchEventBus.post(event: .dispatch(action: action))
     }
 }
