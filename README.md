@@ -46,6 +46,8 @@ ReactComponentKit provides four components basically.
  	* EmojiCollection is a example for using UICollectionView and Diff algorithms.
  * [UserList](https://github.com/ReactComponentKit/UserList)
 	* UserList is focus on requesting api asynchronously.
+ * [GitHubSearch](https://github.com/ReactComponentKit/GitHubSearch)
+ 	* GitHubSearch is an example for ReactComponentKit. It searches repositories or users on Github.com.
 
 ## How to install
 
