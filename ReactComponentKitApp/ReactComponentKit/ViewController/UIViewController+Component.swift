@@ -12,32 +12,32 @@ import UIKit
 extension UIViewController {
     @discardableResult
     public func add(viewController: UIViewController) -> UIViewController {
-        addChildViewController(viewController)
+        addChild(viewController)
         view.addSubview(viewController.view)
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
         return viewController
     }
     
     @discardableResult
     public func add(viewController: UIViewController, belowSubview: UIView) -> UIViewController {
-        addChildViewController(viewController)
+        addChild(viewController)
         view.insertSubview(viewController.view, belowSubview: belowSubview)
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
         return viewController
     }
     
     @discardableResult
     public func add(viewController: UIViewController, aboveSubview: UIView) -> UIViewController {
-        addChildViewController(viewController)
+        addChild(viewController)
         view.insertSubview(viewController.view, aboveSubview: aboveSubview)
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
         return viewController
     }
         
     public func removeFromSuperViewController() {
         guard parent != nil else { return }
-        willMove(toParentViewController: nil)
-        removeFromParentViewController()
+        willMove(toParent: nil)
+        removeFromParent()
         view.removeFromSuperview()
     }
 }

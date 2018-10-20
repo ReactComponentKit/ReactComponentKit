@@ -50,7 +50,7 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDataSource, UIColl
     open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let section = indexPath.section
     
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
             guard let header = sections[section].header else { return UICollectionReusableView(frame: .zero) }
             guard let token = collectionViewComponent?.token else { return UICollectionReusableView(frame: .zero) }
             

@@ -40,10 +40,11 @@ internal class CollectionReusableComponentView: UICollectionReusableView {
         guard let rootComponentView = rootComponentView else { return }
         self.addSubview(rootComponentView)
         rootComponentView.translatesAutoresizingMaskIntoConstraints = false
-        rootComponentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        rootComponentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        rootComponentView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        rootComponentView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            rootComponentView.topAnchor.constraint(equalTo: self.topAnchor),
+            rootComponentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            rootComponentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            rootComponentView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
     }
-    
 }

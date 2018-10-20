@@ -116,7 +116,7 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if useComponentContentSize {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
         
         guard sections.count > indexPath.section else { return 0 }
@@ -129,7 +129,7 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
         self.set(sections: [section])
     }
     
-    open func set(sections: [SectionModel], with animation: UITableViewRowAnimation = UITableViewRowAnimation.none) {
+    open func set(sections: [SectionModel], with animation: UITableView.RowAnimation = UITableView.RowAnimation.none) {
         if useDiff == false {
             self.sections = sections
             self.tableViewComponent?.reloadData()

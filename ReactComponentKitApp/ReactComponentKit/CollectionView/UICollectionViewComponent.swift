@@ -57,11 +57,12 @@ open class UICollectionViewComponent: UIViewComponent {
     open override func setupView() {
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
         collectionView.backgroundColor = .clear
         collectionView.contentInset = .zero
     }
@@ -73,10 +74,10 @@ open class UICollectionViewComponent: UIViewComponent {
             self.collectionView.register(cellClass, forCellWithReuseIdentifier: String(describing: component))
         case .header:
             let viewClass = CollectionReusableComponentView.self
-            self.collectionView.register(viewClass, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: component))
+            self.collectionView.register(viewClass, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: component))
         case .footer:
             let viewClass = CollectionReusableComponentView.self
-            self.collectionView.register(viewClass, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: String(describing: component))
+            self.collectionView.register(viewClass, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: String(describing: component))
         }
         
     }

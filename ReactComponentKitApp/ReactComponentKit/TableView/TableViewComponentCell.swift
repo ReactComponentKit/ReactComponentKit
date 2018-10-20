@@ -18,7 +18,7 @@ internal class TableViewComponentCell: UITableViewCell {
         }
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         backgroundColor = .clear
@@ -41,9 +41,11 @@ internal class TableViewComponentCell: UITableViewCell {
         guard let rootComponentView = rootComponentView else { return }
         self.addSubview(rootComponentView)
         rootComponentView.translatesAutoresizingMaskIntoConstraints = false
-        rootComponentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        rootComponentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        rootComponentView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        rootComponentView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            rootComponentView.topAnchor.constraint(equalTo: self.topAnchor),
+            rootComponentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            rootComponentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            rootComponentView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
     }
 }
