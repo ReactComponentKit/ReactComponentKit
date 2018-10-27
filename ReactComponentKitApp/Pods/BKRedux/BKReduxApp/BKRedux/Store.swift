@@ -45,57 +45,39 @@ public final class Store<S: State> {
             
             state.error = nil
             let disposeBag = strongSelf.disposeBag
-            if strongSelf.middlewares.isEmpty == false {
-                strongSelf.middleware(state: state, action: action)
-                    .subscribeOn(Q.concurrentQ)
-                    .observeOn(Q.concurrentQ)
-                    .flatMap({ [weak self] (middlewareState) -> Observable<State> in
-                        guard let strongSelf = self else { return Observable.just(middlewareState) }
-                        return strongSelf.reduce(state: middlewareState, action: action)
-                    })
-                    .flatMap({ [weak self] (reducesState) -> Observable<State> in
-                        guard let strongSelf = self else { return Observable.just(reducesState) }
-                        return strongSelf.postware(state: reducesState, action: action)
-                    })
-                    .observeOn(MainScheduler.asyncInstance)
-                    .subscribe(onNext: { [weak self] (newState) in
-                        guard let strongSelf = self else { return }
-                        strongSelf.state = newState
-                        single(.success(newState))
-                    }, onError: { (error) in
-                        // 오류 발생시에는 액션에 따라 오류를 처리할지 말지 결정하기 위해서 오류와 액션을 동시에 넣어준다.
-                        var mutableState = state
-                        mutableState.error = (error, action)
-                        single(.success(mutableState))
-                    })
-                    .disposed(by: disposeBag)
-            } else {
-                
-                strongSelf.reduce(state: state, action: action)
-                    .subscribeOn(Q.concurrentQ)
-                    .observeOn(Q.concurrentQ)
-                    .flatMap({ [weak self] (reducesState) -> Observable<State> in
-                        guard let strongSelf = self else { return Observable.just(reducesState) }
-                        return strongSelf.postware(state: reducesState, action: action)
-                    })
-                    .observeOn(MainScheduler.asyncInstance)
-                    .subscribe(onNext: { [weak self] (newState) in
-                        guard let strongSelf = self else { return }
-                        strongSelf.state = newState
-                        single(.success(newState))
-                    }, onError: { (error) in
-                        // 오류 발생시에는 액션에 따라 오류를 처리할지 말지 결정하기 위해서 오류와 액션을 동시에 넣어준다.
-                        var mutableState = state
-                        mutableState.error = (error, action)
-                        single(.success(mutableState))
-                    })
-                    .disposed(by: disposeBag)
-            }
+            
+            strongSelf.middleware(state: state, action: action)
+                .subscribeOn(Q.concurrentQ)
+                .observeOn(Q.concurrentQ)
+                .flatMap({ [weak self] (middlewareState) -> Observable<State> in
+                    guard let strongSelf = self else { return Observable.just(middlewareState) }
+                    return strongSelf.reduce(state: middlewareState, action: action)
+                })
+                .flatMap({ [weak self] (reducesState) -> Observable<State> in
+                    guard let strongSelf = self else { return Observable.just(reducesState) }
+                    return strongSelf.postware(state: reducesState, action: action)
+                })
+                .observeOn(MainScheduler.asyncInstance)
+                .subscribe(onNext: { [weak self] (newState) in
+                    guard let strongSelf = self else { return }
+                    strongSelf.state = newState
+                    single(.success(newState))
+                }, onError: { (error) in
+                    // 오류 발생시에는 액션에 따라 오류를 처리할지 말지 결정하기 위해서 오류와 액션을 동시에 넣어준다.
+                    var mutableState = state
+                    mutableState.error = (error, action)
+                    strongSelf.state = mutableState
+                    single(.success(mutableState))
+                })
+                .disposed(by: disposeBag)
+            
             return Disposables.create()
         })
     }    
     
     private func middleware(state: State, action: Action) -> Observable<State> {
+        guard middlewares.isEmpty == false else { return .just(state) }
+        
         return Single.create(subscribe: { [weak self] (single) -> Disposable in
             guard let strongSelf = self else {
                 single(.success(state))
@@ -125,6 +107,8 @@ public final class Store<S: State> {
     }
     
     private func reduce(state: State, action: Action) -> Observable<State> {
+        guard reducers.isEmpty == false else { return .just(state) }
+        
         return Single.create(subscribe: { [weak self] (single) -> Disposable in
             guard let strongSelf = self, var mutableState = state as? S else {
                 single(.success(state))
@@ -155,6 +139,8 @@ public final class Store<S: State> {
     }
     
     private func postware(state: State, action: Action) -> Observable<State> {
+        guard postwares.isEmpty == false else { return .just(state) }
+        
         return Single.create(subscribe: { [weak self] (single) -> Disposable in
             guard let strongSelf = self else {
                 single(.success(state))

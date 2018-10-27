@@ -6,7 +6,7 @@
 //  Copyright © 2018년 skyfe79. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 // Token for targeting
 public struct Token: Equatable {

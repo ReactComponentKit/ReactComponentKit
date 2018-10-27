@@ -651,7 +651,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ReactComponentKitApp/Pods-ReactComponentKitApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ReactComponentKitApp/Pods-ReactComponentKitApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BKEventBus/BKEventBus.framework",
 				"${BUILT_PRODUCTS_DIR}/BKRedux/BKRedux.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -668,7 +668,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactComponentKitApp/Pods-ReactComponentKitApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReactComponentKitApp/Pods-ReactComponentKitApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

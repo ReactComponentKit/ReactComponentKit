@@ -42,9 +42,10 @@ open class ViewModelType<S: State> {
         
         rx_state
             .subscribe(onNext: { [weak self] (newState: S?) in
-                if let (error, action) = newState?.error {
-                    self?.on(error: error, action: action)
-                } else if let newState = newState {
+                guard let newState = newState else { return }
+                if let (error, action) = newState.error {
+                    self?.on(error: error, action: action, onState: newState)
+                } else {
                     self?.on(newState: newState)
                 }
             })
@@ -59,7 +60,7 @@ open class ViewModelType<S: State> {
         
     }
     
-    open func on(error: Error, action: Action) {
+    open func on(error: Error, action: Action, onState: S) {
         
     }
 }
