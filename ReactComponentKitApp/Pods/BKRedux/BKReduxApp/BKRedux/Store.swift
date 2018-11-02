@@ -29,8 +29,8 @@ public final class Store<S: State> {
         self.postwares = []
     }
     
-    public func set(initailState: State, middlewares:[Middleware] = [], reducers:[StateKeyPath<S>:Reducer<S>], postwares:[Postware] = []) {
-        self.state = initailState
+    public func set(initialState: State, middlewares:[Middleware] = [], reducers:[StateKeyPath<S>:Reducer<S>], postwares:[Postware] = []) {
+        self.state = initialState
         self.reducers = reducers
         self.middlewares = middlewares
         self.postwares = postwares

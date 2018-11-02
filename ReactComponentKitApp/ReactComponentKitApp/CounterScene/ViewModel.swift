@@ -26,7 +26,7 @@ class ViewModel: ViewModelType<CounterSceneState> {
 
         // STORE
         store.set(
-            initailState: CounterSceneState(),
+            initialState: CounterSceneState(),
             middlewares: [
                 printCacheValue,
                 consoleLogMiddleware

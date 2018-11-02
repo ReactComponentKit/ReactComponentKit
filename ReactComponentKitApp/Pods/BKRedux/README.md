@@ -168,7 +168,7 @@ class ViewModel: ViewModelType<MyState> {
 
         // STORE
         store.set(
-            initailState: MyState(),
+            initialState: MyState(),
             middlewares: [
                 printCacheValue,
                 consoleLogMiddleware

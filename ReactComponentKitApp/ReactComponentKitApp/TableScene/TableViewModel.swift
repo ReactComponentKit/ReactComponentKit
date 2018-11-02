@@ -24,7 +24,7 @@ class TableViewModel: RootViewModelType<TableViewState> {
     override init() {
         super.init()
         store.set(
-            initailState: TableViewState(),
+            initialState: TableViewState(),
             reducers: [
                 StateKeyPath(\TableViewState.todo): todoReducer
             ],

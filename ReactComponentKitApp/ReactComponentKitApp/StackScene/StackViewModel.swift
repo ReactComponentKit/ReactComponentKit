@@ -20,7 +20,7 @@ class StackViewModel: RootViewModelType<StackViewState> {
     override init() {
         super.init()
         store.set(
-            initailState: StackViewState(),
+            initialState: StackViewState(),
             reducers: [
                 StateKeyPath(\StackViewState.color): colorReducer,
                 StateKeyPath(\StackViewState.text): textReducer
