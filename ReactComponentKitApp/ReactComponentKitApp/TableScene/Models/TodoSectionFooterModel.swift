@@ -8,7 +8,12 @@
 
 import UIKit
 
-struct TodoSectionFooterModel: SectionFooterModel {
+struct TodoSectionFooterModel: ItemModel {
+    
+    var id: Int {
+        return title.hashValue
+    }
+    
     var componentClass: UIViewComponent.Type {
         return TodoSectionComponent.self
     }

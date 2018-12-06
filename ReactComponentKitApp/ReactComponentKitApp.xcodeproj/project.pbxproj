@@ -13,8 +13,6 @@
 		4E0A6F14212697AD00A3E0E6 /* UITableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F13212697AD00A3E0E6 /* UITableViewAdapter.swift */; };
 		4E0A6F17212698B500A3E0E6 /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F16212698B500A3E0E6 /* SectionModel.swift */; };
 		4E0A6F19212698F600A3E0E6 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F18212698F600A3E0E6 /* ItemModel.swift */; };
-		4E0A6F1B2126990100A3E0E6 /* SectionHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F1A2126990100A3E0E6 /* SectionHeaderModel.swift */; };
-		4E0A6F1D2126990A00A3E0E6 /* SectionFooterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F1C2126990A00A3E0E6 /* SectionFooterModel.swift */; };
 		4E0A6F1F2126C97E00A3E0E6 /* UIViewComponentClassProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F1E2126C97E00A3E0E6 /* UIViewComponentClassProvider.swift */; };
 		4E0A6F222126E01800A3E0E6 /* MakeTodoSectionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F212126E01800A3E0E6 /* MakeTodoSectionModels.swift */; };
 		4E0A6F252126E2A300A3E0E6 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F242126E2A300A3E0E6 /* TodoItem.swift */; };
@@ -89,8 +87,6 @@
 		4E0A6F13212697AD00A3E0E6 /* UITableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewAdapter.swift; sourceTree = "<group>"; };
 		4E0A6F16212698B500A3E0E6 /* SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModel.swift; sourceTree = "<group>"; };
 		4E0A6F18212698F600A3E0E6 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
-		4E0A6F1A2126990100A3E0E6 /* SectionHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderModel.swift; sourceTree = "<group>"; };
-		4E0A6F1C2126990A00A3E0E6 /* SectionFooterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionFooterModel.swift; sourceTree = "<group>"; };
 		4E0A6F1E2126C97E00A3E0E6 /* UIViewComponentClassProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewComponentClassProvider.swift; sourceTree = "<group>"; };
 		4E0A6F212126E01800A3E0E6 /* MakeTodoSectionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTodoSectionModels.swift; sourceTree = "<group>"; };
 		4E0A6F242126E2A300A3E0E6 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
@@ -216,10 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				4E0A6F16212698B500A3E0E6 /* SectionModel.swift */,
-				4E0A6F1E2126C97E00A3E0E6 /* UIViewComponentClassProvider.swift */,
-				4E0A6F1A2126990100A3E0E6 /* SectionHeaderModel.swift */,
-				4E0A6F1C2126990A00A3E0E6 /* SectionFooterModel.swift */,
 				4E0A6F18212698F600A3E0E6 /* ItemModel.swift */,
+				4E0A6F1E2126C97E00A3E0E6 /* UIViewComponentClassProvider.swift */,
 			);
 			path = CollectionModels;
 			sourceTree = "<group>";
@@ -687,7 +681,6 @@
 				4E3E05BA21134E5400D6DBB5 /* MessageViewComponent.swift in Sources */,
 				4E4AD700211097FD00973D60 /* RedViewController.swift in Sources */,
 				4E44CDE22115E72A00AB4FCF /* UIViewControllerComponent.swift in Sources */,
-				4E0A6F1D2126990A00A3E0E6 /* SectionFooterModel.swift in Sources */,
 				4E3E05BD2113504800D6DBB5 /* TextReducer.swift in Sources */,
 				4E464A322108C1C600D0C4DE /* ConsoleLogMiddleware.swift in Sources */,
 				4E5CFC1C212BFD35002261F6 /* WagnerFischer.swift in Sources */,
@@ -702,7 +695,6 @@
 				4E44CDE42115E97B00AB4FCF /* ButtonComponent.swift in Sources */,
 				4E8A6950212665820074EBBA /* TodoReducer.swift in Sources */,
 				4EBD8A8C210C7178009CD480 /* ColorReducer.swift in Sources */,
-				4E0A6F1B2126990100A3E0E6 /* SectionHeaderModel.swift in Sources */,
 				4E8A694A212661AC0074EBBA /* TableViewController.swift in Sources */,
 				4E8A694C212661FE0074EBBA /* TableViewModel.swift in Sources */,
 				4E8A69522126659A0074EBBA /* AddTodoAction.swift in Sources */,

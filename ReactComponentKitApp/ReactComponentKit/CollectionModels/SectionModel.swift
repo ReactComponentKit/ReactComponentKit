@@ -13,14 +13,14 @@ public protocol SectionModel {
     var items: [ItemModel] { get set }
     var itemCount: Int { get }
     
-    var header: SectionHeaderModel? { get set }
-    var footer: SectionFooterModel? { get set }
+    var header: ItemModel? { get set }
+    var footer: ItemModel? { get set }
     
     var inset: UIEdgeInsets { get }
     var minimumLineSpacing: CGFloat { get }
     var minimumInteritemSpacing: CGFloat { get }
     
-    init(items: [ItemModel], header: SectionHeaderModel?, footer: SectionFooterModel?)
+    init(items: [ItemModel], header: ItemModel?, footer: ItemModel?)
 }
 
 extension SectionModel {
@@ -32,14 +32,14 @@ extension SectionModel {
 public class DefaultSectionModel: SectionModel {
     public var items: [ItemModel]
     
-    public var header: SectionHeaderModel?
-    public var footer: SectionFooterModel?
+    public var header: ItemModel?
+    public var footer: ItemModel?
     
     public var inset: UIEdgeInsets = .zero
     public var minimumLineSpacing: CGFloat = 0
     public var minimumInteritemSpacing: CGFloat  = 0
     
-    public required init(items: [ItemModel], header: SectionHeaderModel? = nil, footer: SectionFooterModel? = nil) {
+    public required init(items: [ItemModel], header: ItemModel? = nil, footer: ItemModel? = nil) {
         self.items = items
         self.header = header
         self.footer = footer
