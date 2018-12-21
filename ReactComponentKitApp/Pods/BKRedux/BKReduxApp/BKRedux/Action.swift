@@ -11,3 +11,8 @@ import Foundation
 public protocol Action {
     
 }
+
+public struct VoidAction: Action {
+    public init() {
+    }
+}

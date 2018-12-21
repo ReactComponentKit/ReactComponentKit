@@ -16,7 +16,7 @@ private enum Q {
 
 public final class Store<S: State> {
     
-    public private(set) var state: State?
+    public private(set) var state: S?
     private(set) var reducers: [StateKeyPath<S>:Reducer<S>]
     private(set) var middlewares: [Middleware]
     private(set) var postwares: [Postware]
@@ -24,12 +24,19 @@ public final class Store<S: State> {
     
     public init() {
         self.state = nil
-        self.reducers = [:]
         self.middlewares = []
+        self.reducers = [:]
         self.postwares = []
     }
     
-    public func set(initialState: State, middlewares:[Middleware] = [], reducers:[StateKeyPath<S>:Reducer<S>], postwares:[Postware] = []) {
+    public func deinitialize() {
+        self.state = nil
+        self.middlewares.removeAll()
+        self.reducers.removeAll()
+        self.postwares.removeAll()
+    }
+    
+    public func set(initialState: S, middlewares:[Middleware] = [], reducers:[StateKeyPath<S>:Reducer<S>], postwares:[Postware] = []) {
         self.state = initialState
         self.reducers = reducers
         self.middlewares = middlewares
@@ -60,7 +67,7 @@ public final class Store<S: State> {
                 .observeOn(MainScheduler.asyncInstance)
                 .subscribe(onNext: { [weak self] (newState) in
                     guard let strongSelf = self else { return }
-                    strongSelf.state = newState
+                    strongSelf.state = newState as? S
                     single(.success(newState))
                 }, onError: { (error) in
                     // 오류 발생시에는 액션에 따라 오류를 처리할지 말지 결정하기 위해서 오류와 액션을 동시에 넣어준다.
