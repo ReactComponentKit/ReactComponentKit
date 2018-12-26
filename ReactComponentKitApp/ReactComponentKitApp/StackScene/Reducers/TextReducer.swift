@@ -9,14 +9,12 @@
 import BKRedux
 import RxSwift
 
-func textReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
-    return { action in
-        guard let prevState = state as? String else { return Observable.just((name, state)) }
-        
-        if let textAction = action as? TextAction {
-            return Observable.just((name, prevState + " \(textAction.payload)"))
-        }
-        
-        return Observable.just((name, prevState))
+func textReducer(state: State, action: Action) -> Observable<State> {
+    guard var mutableState = state as? StackViewState else { return .just(state) }
+    
+    if let act = action as? TextAction {
+        mutableState.text += " \(act.payload)"
     }
+    
+    return .just(mutableState)
 }

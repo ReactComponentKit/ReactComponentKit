@@ -56,7 +56,7 @@ class CollectionViewController: UIViewController {
     }
     
     @objc func clickedAddTodoButton(sender: UIBarButtonItem) {
-        viewModel.rx_action.accept(AddTodoAction())
+        viewModel.dispatch(action: AddTodoAction())
     }
 }
 

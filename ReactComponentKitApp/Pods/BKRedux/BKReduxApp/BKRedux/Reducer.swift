@@ -9,4 +9,4 @@
 //
 import RxSwift
 
-public typealias Reducer<S: State> = (StateKeyPath<S>, StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)>
+public typealias Reducer = (State, Action) -> Observable<State>

@@ -11,5 +11,3 @@ import Foundation
 public protocol State {
     var error: (Error, Action)? { get set }
 }
-
-public typealias StateValue = Any

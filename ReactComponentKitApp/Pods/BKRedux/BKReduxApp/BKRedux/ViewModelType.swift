@@ -12,13 +12,14 @@ import RxCocoa
 
 open class ViewModelType<S: State> {
     // rx port
-    public let rx_action = BehaviorRelay<Action>(value: VoidAction())
-    public let rx_state = BehaviorRelay<S?>(value: nil)
+    private let rx_action = BehaviorRelay<Action>(value: VoidAction())
+    private let rx_state = BehaviorRelay<S?>(value: nil)
     
     public let store = Store<S>()
     public let disposeBag = DisposeBag()
     private var nextAction: Action? = nil
     private var applyNewState: Bool = false
+    private var actionQueue = Queue<(Action, Bool)>()
     
     public init() {
         setupRxStream()
@@ -60,12 +61,11 @@ open class ViewModelType<S: State> {
                 if let (error, action) = newState.error {
                     self?.on(error: error, action: action, onState: newState)
                 } else {
-                    if let nextAction = self?.nextAction {
-                        if self?.applyNewState == true {
+                    if let (nextAction, apply) = self?.actionQueue.dequeue() {
+                        if apply == true {
                             self?.on(newState: newState)
                         }
-                        self?.dispatch(action: nextAction)
-                        self?.nextAction = nil
+                        self?.rx_action.accept(nextAction)
                     } else {
                         self?.on(newState: newState)
                     }
@@ -75,12 +75,15 @@ open class ViewModelType<S: State> {
     }
     
     public func dispatch(action: Action) {
-        rx_action.accept(action)
+        if actionQueue.isEmpty {
+            rx_action.accept(action)
+        } else {
+            actionQueue.enqueue(item: (action, true))
+        }
     }
     
-    public func nextDispatch(action: Action?, applyNewState: Bool = false) {
-        self.nextAction = action
-        self.applyNewState = applyNewState
+    public func nextDispatch(action: Action, applyNewState: Bool = false) {
+        actionQueue.enqueue(item: (action, applyNewState))
     }
     
     open func beforeDispatch(action: Action) -> Action {

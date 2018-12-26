@@ -60,19 +60,19 @@ struct RandomColorAction: Action {
 import Foundation
 import RxSwift
 
-func countReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
-    return { action in
-        guard let prevState = state as? Int else { return Observable.just((name, 0)) }
+func countReducer(state: State, action: Action) -> Observable<State> {
+    guard var mutableState = state as? MyState else { return .just(state) }
         
-        switch action {
-        case let increaseAction as IncreaseAction:
-            return Observable.just((name, prevState + increaseAction.payload))
-        case let decreaseAction as DecreaseAction:
-            return Observable.just((name, prevState + decreaseAction.payload))
-        default:
-            return Observable.just((name, prevState))
-        }
+    switch action {
+    case let act as IncreaseAction:
+        mutableState.count += act.payload
+    case let act as DecreaseAction:
+        mutableState.count += act.payload
+    default:
+        break
     }
+    
+    return .just(mutableState)
 }
 ```
 
@@ -82,16 +82,15 @@ func countReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> O
 import RxSwift
 import UIKit
 
-func colorReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
-    return { action in
-        guard let prevState = state as? UIColor else { return Observable.just((name: name, result: UIColor.white)) }
-        
-        if let colorAction = action as? RandomColorAction {
-            return Observable.just((name, colorAction.payload))
-        }
-        return Observable.just((name, prevState))
+func colorReducer(state: State, action: Action) -> Observable<State> {
+    guard var mutableState = state as? MyState else { return .just(state) }
+    
+    if let act = action as? RandomColorAction {
+        mutableState.color = act.payload
     }
-}```
+    return .just(mutableState)
+}
+```
 
 ### Define Middlewares if you needed.
 
@@ -174,8 +173,8 @@ class ViewModel: ViewModelType<MyState> {
                 consoleLogMiddleware
             ],
             reducers: [
-                StateKeyPath(\MyState.count): countReducer,
-                StateKeyPath(\MyState.color): colorReducer
+                countReducer,
+                colorReducer
             ],
             postwares: [
                 cachePostware

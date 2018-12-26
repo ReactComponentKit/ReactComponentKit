@@ -9,16 +9,12 @@
 import BKRedux
 import RxSwift
 
-func todoReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
-    return { action in
-        guard let prevState = state as? [String] else { return Observable.just((name, state)) }
-        
-        if let addTodoAction = action as? AddTodoAction {
-            var newState = prevState
-            newState.append(addTodoAction.payload)
-            return Observable.just((name, newState))
-        }
-        
-        return Observable.just((name, prevState))
+func todoReducer(state: State, action: Action) -> Observable<State> {
+    guard var mutableState = state as? TableViewState else { return .just(state) }
+    
+    if let act = action as? AddTodoAction {
+        mutableState.todo.append(act.payload)
     }
+    
+    return .just(mutableState)
 }

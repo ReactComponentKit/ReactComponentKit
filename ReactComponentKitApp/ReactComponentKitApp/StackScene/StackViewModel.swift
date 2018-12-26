@@ -22,8 +22,8 @@ class StackViewModel: RootViewModelType<StackViewState> {
         store.set(
             initialState: StackViewState(),
             reducers: [
-                StateKeyPath(\StackViewState.color): colorReducer,
-                StateKeyPath(\StackViewState.text): textReducer
+                colorReducer,
+                textReducer
             ])
     }
     

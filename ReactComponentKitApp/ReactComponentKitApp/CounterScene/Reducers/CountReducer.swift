@@ -9,17 +9,17 @@
 import BKRedux
 import RxSwift
 
-func countReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
-    return { action in
-        guard let prevState = state as? Int else { return Observable.just((name, 0)) }
-        
-        switch action {
-        case let increaseAction as IncreaseAction:
-            return Observable.just((name, prevState + increaseAction.payload))
-        case let decreaseAction as DecreaseAction:
-            return Observable.just((name, prevState + decreaseAction.payload))
-        default:
-            return Observable.just((name, prevState))
-        }
+func countReducer(state: State, action: Action) -> Observable<State> {
+    guard var mutableState = state as? CounterSceneState else { return .just(state) }
+    
+    switch action {
+    case let act as IncreaseAction:
+        mutableState.count += act.payload
+    case let act as DecreaseAction:
+        mutableState.count += act.payload
+    default:
+        break
     }
+    
+    return .just(mutableState)
 }

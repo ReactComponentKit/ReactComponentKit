@@ -32,8 +32,8 @@ class ViewModel: ViewModelType<CounterSceneState> {
                 consoleLogMiddleware
             ],
             reducers: [
-                StateKeyPath(\CounterSceneState.count): countReducer,
-                StateKeyPath(\CounterSceneState.color): colorReducer
+                countReducer,
+                colorReducer
             ],
             postwares: [
                 cachePostware

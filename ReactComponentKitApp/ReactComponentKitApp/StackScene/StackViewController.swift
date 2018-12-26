@@ -47,7 +47,7 @@ class StackViewController: UIViewController {
 
     @IBAction func clickedAddButton(_ sender: Any) {
         //childVC = add(viewController: RedViewController.viewController(token: viewModel.token))
-        self.viewModel.rx_action.accept(TextAction())
+        self.viewModel.dispatch(action: TextAction())
     }
     
 }
