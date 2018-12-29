@@ -34,11 +34,11 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDataSource, UIColl
         
         if let componentCell = cell as? CollectionViewComponentCell {
             if let rootComponentView = componentCell.rootComponentView {
-                rootComponentView.applyNew(item: itemModel)
+                rootComponentView.applyNew(item: itemModel, at: indexPath)
             } else {
                 if let token = collectionViewComponent?.token {
                     let component = itemModel.componentClass.init(token: token, canOnlyDispatchAction: true)
-                    component.applyNew(item: itemModel)
+                    component.applyNew(item: itemModel, at: indexPath)
                     componentCell.rootComponentView = component
                 }
             }
@@ -57,10 +57,10 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDataSource, UIColl
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: header.componentClass), for: indexPath)
             if let componentView = view as? CollectionReusableComponentView {
                 if let rootComponentView = componentView.rootComponentView {
-                    rootComponentView.applyNew(item: header)
+                    rootComponentView.applyNew(item: header, at: indexPath)
                 } else {
                     let rootComponentView = header.componentClass.init(token: token, canOnlyDispatchAction: true)
-                    rootComponentView.applyNew(item: header)
+                    rootComponentView.applyNew(item: header, at: indexPath)
                     componentView.rootComponentView = rootComponentView
                 }
             }
@@ -73,10 +73,10 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDataSource, UIColl
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: footer.componentClass), for: indexPath)
             if let componentView = view as? CollectionReusableComponentView {
                 if let rootComponentView = componentView.rootComponentView {
-                    rootComponentView.applyNew(item: footer)
+                    rootComponentView.applyNew(item: footer, at: indexPath)
                 } else {
                     let rootComponentView = footer.componentClass.init(token: token, canOnlyDispatchAction: true)
-                    rootComponentView.applyNew(item: footer)
+                    rootComponentView.applyNew(item: footer, at: indexPath)
                     componentView.rootComponentView = rootComponentView
                 }
             }

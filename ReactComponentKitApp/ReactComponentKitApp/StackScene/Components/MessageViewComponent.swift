@@ -35,7 +35,7 @@ class MessageViewComponent: UIViewComponent {
         label.text = stackViewState.text
     }
     
-    override func configure<Item>(item: Item) {
+    override func configure<Item>(item: Item, at indexPath: IndexPath) {
         guard let todoItem = item as? TodoItem else { return }
         label.text = todoItem.item
     }

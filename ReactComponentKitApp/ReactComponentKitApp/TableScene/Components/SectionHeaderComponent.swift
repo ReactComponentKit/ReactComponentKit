@@ -33,7 +33,7 @@ class TodoSectionComponent: UIViewComponent {
         self.backgroundColor = UIColor.brown
     }
         
-    override func configure<Item>(item: Item) {
+    override func configure<Item>(item: Item, at indexPath: IndexPath) {
         if let sectionHeader = item as? TodoSectionHeaderModel {
             label.text = sectionHeader.title
         } else if let sectionFooter = item as? TodoSectionFooterModel {

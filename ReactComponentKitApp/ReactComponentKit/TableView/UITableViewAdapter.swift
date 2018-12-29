@@ -40,11 +40,11 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
     
         if let componentCell = cell as? TableViewComponentCell {
             if let rootComponentView = componentCell.rootComponentView {
-                rootComponentView.applyNew(item: itemModel)
+                rootComponentView.applyNew(item: itemModel, at: indexPath)
             } else {
                 if let token = tableViewComponent?.token {
                     let component = itemModel.componentClass.init(token: token, canOnlyDispatchAction: true)
-                    component.applyNew(item: itemModel)
+                    component.applyNew(item: itemModel, at: indexPath)
                     componentCell.rootComponentView = component
                 }
             }
@@ -61,7 +61,7 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
         guard let header = sections[section].header else { return nil }
         guard let token = tableViewComponent?.token else { return nil }
         let sectionHeaderView = header.componentClass.init(token: token, canOnlyDispatchAction: true)
-        sectionHeaderView.applyNew(item: header)
+        sectionHeaderView.applyNew(item: header, at: IndexPath(row: 0, section: section))
         sectionHeaderInfo[section] = sectionHeaderView
         return sectionHeaderView
     }
@@ -75,7 +75,7 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
             guard let header = sections[section].header else { return 0 }
             guard let token = tableViewComponent?.token else { return 0 }
             let sectionHeaderView = header.componentClass.init(token: token, canOnlyDispatchAction: true)
-            sectionHeaderView.applyNew(item: header)
+            sectionHeaderView.applyNew(item: header, at: IndexPath(row: 0, section: section))
             sectionHeaderInfo[section] = sectionHeaderView
             return sectionHeaderView.contentSize.height
         }
@@ -92,7 +92,7 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
         guard let footer = sections[section].footer else { return nil }
         guard let token = tableViewComponent?.token else { return nil }
         let sectionFooterView = footer.componentClass.init(token: token, canOnlyDispatchAction: true)
-        sectionFooterView.applyNew(item: footer)
+        sectionFooterView.applyNew(item: footer, at: IndexPath(row: 0, section: section))
         sectionFooterInfo[section] = sectionFooterView
         return sectionFooterView
     }
@@ -106,7 +106,7 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
             guard let footer = sections[section].footer else { return 0 }
             guard let token = tableViewComponent?.token else { return 0 }
             let sectionFooterView = footer.componentClass.init(token: token, canOnlyDispatchAction: true)
-            sectionFooterView.applyNew(item: footer)
+            sectionFooterView.applyNew(item: footer, at: IndexPath(row: 0, section: section))
             sectionFooterInfo[section] = sectionFooterView
             return sectionFooterView.contentSize.height
         }
