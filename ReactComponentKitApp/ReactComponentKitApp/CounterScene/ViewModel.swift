@@ -16,7 +16,7 @@ struct CounterSceneState: State {
     var error: (Error, Action)? = nil
 }
 
-class ViewModel: ViewModelType<CounterSceneState> {
+class ViewModel: RootViewModelType<CounterSceneState> {
     
     let rx_count =  BehaviorRelay<String>(value: "0")
     let rx_color = BehaviorRelay<UIColor>(value: UIColor.white)
@@ -44,6 +44,7 @@ class ViewModel: ViewModelType<CounterSceneState> {
     override func on(newState: CounterSceneState) {
         rx_count.accept(String(newState.count))
         rx_color.accept(newState.color)
+        send(newState)
     }
     
     override func on(error: Error, action: Action, onState: CounterSceneState) {

@@ -2238,6 +2238,80 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		08CFF84FE342734DB7E1935AE7942D3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2732BB86A06AD056B0F68C91EF6F5C34 /* BKEventBus.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BKEventBus/BKEventBus-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BKEventBus/BKEventBus-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/BKEventBus/BKEventBus.modulemap";
+				PRODUCT_MODULE_NAME = BKEventBus;
+				PRODUCT_NAME = BKEventBus;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1176F37782C3B75D96AECAB20DD34482 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2732BB86A06AD056B0F68C91EF6F5C34 /* BKEventBus.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BKEventBus/BKEventBus-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BKEventBus/BKEventBus-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/BKEventBus/BKEventBus.modulemap";
+				PRODUCT_MODULE_NAME = BKEventBus;
+				PRODUCT_NAME = BKEventBus;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		1CEBCC85869382687C4C89972EF45E24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 79148542D1B13696FDBCB6E1D3296C48 /* SnapKit.xcconfig */;
@@ -2637,44 +2711,6 @@
 			};
 			name = Debug;
 		};
-		7FF6C919F3337D5274064FA70DB8470D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2732BB86A06AD056B0F68C91EF6F5C34 /* BKEventBus.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BKEventBus/BKEventBus-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BKEventBus/BKEventBus-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/BKEventBus/BKEventBus.modulemap";
-				PRODUCT_MODULE_NAME = BKEventBus;
-				PRODUCT_NAME = BKEventBus;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		9EF1EE4EB72E263848B6CE4D9C3D87FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 174681CA236FDA62157AC7D1047D600F /* BKRedux.xcconfig */;
@@ -2712,42 +2748,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		AE05226B4CE3378FDB7BA38971847FD2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2732BB86A06AD056B0F68C91EF6F5C34 /* BKEventBus.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BKEventBus/BKEventBus-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BKEventBus/BKEventBus-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/BKEventBus/BKEventBus.modulemap";
-				PRODUCT_MODULE_NAME = BKEventBus;
-				PRODUCT_NAME = BKEventBus;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		B692CE3E9E0F031FA6B28754F23B8623 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2980,8 +2980,8 @@
 		28A69F869EFED1A16E47D087D84A6F8F /* Build configuration list for PBXNativeTarget "BKEventBus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AE05226B4CE3378FDB7BA38971847FD2 /* Debug */,
-				7FF6C919F3337D5274064FA70DB8470D /* Release */,
+				1176F37782C3B75D96AECAB20DD34482 /* Debug */,
+				08CFF84FE342734DB7E1935AE7942D3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

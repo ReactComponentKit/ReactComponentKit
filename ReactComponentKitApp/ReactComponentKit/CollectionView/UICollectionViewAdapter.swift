@@ -37,7 +37,7 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDataSource, UIColl
                 rootComponentView.applyNew(item: itemModel, at: indexPath)
             } else {
                 if let token = collectionViewComponent?.token {
-                    let component = itemModel.componentClass.init(token: token, canOnlyDispatchAction: true)
+                    let component = itemModel.componentClass.init(token: token, receiveState: false)
                     component.applyNew(item: itemModel, at: indexPath)
                     componentCell.rootComponentView = component
                 }
@@ -59,7 +59,7 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDataSource, UIColl
                 if let rootComponentView = componentView.rootComponentView {
                     rootComponentView.applyNew(item: header, at: indexPath)
                 } else {
-                    let rootComponentView = header.componentClass.init(token: token, canOnlyDispatchAction: true)
+                    let rootComponentView = header.componentClass.init(token: token, receiveState: false)
                     rootComponentView.applyNew(item: header, at: indexPath)
                     componentView.rootComponentView = rootComponentView
                 }
@@ -75,7 +75,7 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDataSource, UIColl
                 if let rootComponentView = componentView.rootComponentView {
                     rootComponentView.applyNew(item: footer, at: indexPath)
                 } else {
-                    let rootComponentView = footer.componentClass.init(token: token, canOnlyDispatchAction: true)
+                    let rootComponentView = footer.componentClass.init(token: token, receiveState: false)
                     rootComponentView.applyNew(item: footer, at: indexPath)
                     componentView.rootComponentView = rootComponentView
                 }

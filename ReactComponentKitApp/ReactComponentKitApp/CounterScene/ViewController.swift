@@ -16,14 +16,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var colorButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
-    
+    @IBOutlet weak var colorNibComponent: ColorNibComponent!
     
     private let viewModel = ViewModel()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        colorNibComponent.reset(token: viewModel.token)
         plusButton.rx.tap.map { IncreaseAction() }.bind(onNext: viewModel.dispatch).disposed(by: disposeBag)
         minusButton.rx.tap.map { DecreaseAction() }.bind(onNext: viewModel.dispatch).disposed(by: disposeBag)
         colorButton.rx.tap.map { RandomColorAction() }.bind(onNext: viewModel.dispatch).disposed(by: disposeBag)

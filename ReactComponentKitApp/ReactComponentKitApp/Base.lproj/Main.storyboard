@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JH2-bc-5cH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JH2-bc-5cH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +50,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6OY-aE-4fL">
-                                <rect key="frame" x="136.5" y="288.5" width="101" height="90"/>
+                                <rect key="frame" x="137" y="288.5" width="101" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3s-PN-p4t">
                                         <rect key="frame" x="0.0" y="0.0" width="101" height="30"/>
@@ -75,6 +75,10 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GrD-jZ-U4A" customClass="ColorNibComponent" customModule="ReactComponentKitApp" customModuleProvider="target">
+                                <rect key="frame" x="16" y="172" width="343" height="108.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -82,16 +86,21 @@
                             <constraint firstItem="b5U-FT-QmJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9Ug-K4-pur"/>
                             <constraint firstItem="6OY-aE-4fL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AAP-4U-vKB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b5U-FT-QmJ" secondAttribute="bottom" id="D1p-Sm-jjd"/>
+                            <constraint firstItem="GrD-jZ-U4A" firstAttribute="top" secondItem="YRK-Lv-BL9" secondAttribute="bottom" constant="8" id="IxO-OZ-Psk"/>
+                            <constraint firstItem="6OY-aE-4fL" firstAttribute="top" secondItem="GrD-jZ-U4A" secondAttribute="bottom" constant="8" id="N6H-kj-QqS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YRK-Lv-BL9" secondAttribute="trailing" id="NHD-vI-4N7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b5U-FT-QmJ" secondAttribute="trailing" id="R0g-Lj-qN6"/>
                             <constraint firstItem="YRK-Lv-BL9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UTU-G8-SgB"/>
                             <constraint firstItem="6OY-aE-4fL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="V3C-ae-dt1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GrD-jZ-U4A" secondAttribute="trailing" constant="16" id="WOw-ys-ttY"/>
+                            <constraint firstItem="GrD-jZ-U4A" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vMc-8j-1zX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="5L8-fu-vCY"/>
                     <connections>
                         <outlet property="colorButton" destination="ITc-uM-Njz" id="R0A-OQ-g4f"/>
+                        <outlet property="colorNibComponent" destination="GrD-jZ-U4A" id="Chl-3E-7lc"/>
                         <outlet property="countLabel" destination="YRK-Lv-BL9" id="z1f-AA-5Az"/>
                         <outlet property="minusButton" destination="BVT-80-pLA" id="ucH-dB-2WO"/>
                         <outlet property="plusButton" destination="afn-LD-6Pb" id="7m3-tS-lIx"/>

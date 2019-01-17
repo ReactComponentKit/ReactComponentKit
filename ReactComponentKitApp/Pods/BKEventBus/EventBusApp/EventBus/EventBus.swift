@@ -12,8 +12,12 @@ import Foundation
 public struct Token: Equatable {
     private let token: String
     public init() {
-        token = UUID().uuidString
+        self.init(value: UUID().uuidString)
     }
+    private init(value: String) {
+        token = value
+    }
+    public static let empty = Token(value: "")
 }
 
 // Mark as Event
@@ -37,7 +41,11 @@ public class EventBus<T: EventType> {
      */
     public init(token: Token? = nil) {
         self.token = token
-        NotificationCenter.default.addObserver(self, selector: #selector(processNotification(_:)), name: eventName, object: nil)
+        if let token = token, token == Token.empty {
+            // ignore empty token
+        } else {
+            NotificationCenter.default.addObserver(self, selector: #selector(processNotification(_:)), name: eventName, object: nil)
+        }
     }
     
     @objc private func processNotification(_ notificaton: Notification) {
