@@ -47,7 +47,7 @@ open class UICollectionViewComponent: UIViewComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public required init(token: Token, receiveState: Bool = true) {
+    public required init(token: Token, receiveState: Bool = false) {
         let defaultLayout = UICollectionViewFlowLayout()
         defaultLayout.scrollDirection = .vertical
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: defaultLayout)

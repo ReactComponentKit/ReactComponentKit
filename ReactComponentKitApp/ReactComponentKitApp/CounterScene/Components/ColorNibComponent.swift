@@ -23,7 +23,5 @@ class ColorNibComponent: UIViewComponent {
         colorA.backgroundColor = state.color.withAlphaComponent(0.9)
         colorB.backgroundColor = state.color.withAlphaComponent(0.7)
         colorC.backgroundColor = state.color.withAlphaComponent(0.5)
-        
-        print(contentView)
     }
 }

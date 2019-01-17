@@ -80,7 +80,7 @@ open class UITableViewComponent: UIViewComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public required init(token: Token, receiveState: Bool = true) {
+    public required init(token: Token, receiveState: Bool = false) {
         self.tableView = UITableView(frame: .zero, style: .plain)
         super.init(token: token, receiveState: receiveState)
     }
