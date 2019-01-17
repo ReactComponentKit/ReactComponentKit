@@ -47,11 +47,11 @@ open class UICollectionViewComponent: UIViewComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public required init(token: Token, canOnlyDispatchAction: Bool = true) {
+    public required init(token: Token, receiveState: Bool = true) {
         let defaultLayout = UICollectionViewFlowLayout()
         defaultLayout.scrollDirection = .vertical
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: defaultLayout)
-        super.init(token: token, canOnlyDispatchAction: canOnlyDispatchAction)
+        super.init(token: token, receiveState: receiveState)
     }
     
     open override func setupView() {

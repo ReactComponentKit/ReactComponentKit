@@ -12,20 +12,18 @@ import BKRedux
 
 open class UIViewControllerComponent: UIViewController, ReactComponent {
     
-    public lazy var newStateEventBus: EventBus<ComponentNewStateEvent>? = {
-        EventBus(token: self.token)
-    }()
-    
-    public lazy var dispatchEventBus: EventBus<ComponentDispatchEvent> = {
-        EventBus(token: self.token)
-    }()
+    public var newStateEventBus: EventBus<ComponentNewStateEvent>? = nil
+    public var dispatchEventBus: EventBus<ComponentDispatchEvent>
     
     public var token: Token
     
-    public required init(token: Token, canOnlyDispatchAction: Bool = false) {
+    public required init(token: Token, receiveState: Bool = true) {
         self.token = token
+        self.dispatchEventBus = EventBus(token: token)
+        if receiveState == true {
+            self.newStateEventBus = EventBus(token: token)
+        }
         super.init(nibName: nil, bundle: nil)
-        
         newStateEventBus?.on { [weak self] (event) in
             guard let strongSelf = self else { return }
             switch event {

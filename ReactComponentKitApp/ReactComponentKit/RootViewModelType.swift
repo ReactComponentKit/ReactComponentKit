@@ -29,4 +29,8 @@ open class RootViewModelType<S: State>: ViewModelType<S> {
             }
         }
     }
+    
+    public func send(_ newState: State) {
+        eventBus.post(event: .on(state: newState))
+    }
 }

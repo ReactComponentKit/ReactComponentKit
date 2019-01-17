@@ -64,6 +64,8 @@
 		4E8A6950212665820074EBBA /* TodoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A694F212665820074EBBA /* TodoReducer.swift */; };
 		4E8A69522126659A0074EBBA /* AddTodoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A69512126659A0074EBBA /* AddTodoAction.swift */; };
 		4E8A6954212666FC0074EBBA /* ConsoleLogPostware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A6953212666FC0074EBBA /* ConsoleLogPostware.swift */; };
+		4EB0A26D21F0D99900A1BBA5 /* ColorNibComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB0A26C21F0D99900A1BBA5 /* ColorNibComponent.swift */; };
+		4EB0A26F21F0D9BA00A1BBA5 /* ColorNibComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB0A26E21F0D9BA00A1BBA5 /* ColorNibComponent.xib */; };
 		4EBD8A8A210C70C3009CD480 /* RandomColorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */; };
 		4EBD8A8C210C7178009CD480 /* ColorReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD8A8B210C7178009CD480 /* ColorReducer.swift */; };
 		79B9653E4885DCD51731F478 /* Pods_ReactComponentKitAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00C93DC7C8FF383E142E029 /* Pods_ReactComponentKitAppTests.framework */; };
@@ -142,6 +144,8 @@
 		4E8A694F212665820074EBBA /* TodoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoReducer.swift; sourceTree = "<group>"; };
 		4E8A69512126659A0074EBBA /* AddTodoAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoAction.swift; sourceTree = "<group>"; };
 		4E8A6953212666FC0074EBBA /* ConsoleLogPostware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogPostware.swift; sourceTree = "<group>"; };
+		4EB0A26C21F0D99900A1BBA5 /* ColorNibComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorNibComponent.swift; sourceTree = "<group>"; };
+		4EB0A26E21F0D9BA00A1BBA5 /* ColorNibComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorNibComponent.xib; sourceTree = "<group>"; };
 		4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColorAction.swift; sourceTree = "<group>"; };
 		4EBD8A8B210C7178009CD480 /* ColorReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorReducer.swift; sourceTree = "<group>"; };
 		59031C46F7FC4D5FF2C2ACC0 /* Pods_ReactComponentKitApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactComponentKitApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -354,6 +358,7 @@
 		4E4AD6F8211093F100973D60 /* CounterScene */ = {
 			isa = PBXGroup;
 			children = (
+				4EB0A26B21F0D97800A1BBA5 /* Components */,
 				4E464A302108C1AF00D0C4DE /* Middlewares */,
 				4E464A352108CEA100D0C4DE /* Postwares */,
 				4E568BD7210616F000652321 /* Reducers */,
@@ -483,6 +488,15 @@
 			path = Reducers;
 			sourceTree = "<group>";
 		};
+		4EB0A26B21F0D97800A1BBA5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4EB0A26C21F0D99900A1BBA5 /* ColorNibComponent.swift */,
+				4EB0A26E21F0D9BA00A1BBA5 /* ColorNibComponent.xib */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		4FE55BCC412CB31C704CEAC5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,6 +602,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E3E01AA21056B9700DDB93C /* LaunchScreen.storyboard in Resources */,
+				4EB0A26F21F0D9BA00A1BBA5 /* ColorNibComponent.xib in Resources */,
 				4E3E01A721056B9700DDB93C /* Assets.xcassets in Resources */,
 				4E3E01A521056B9700DDB93C /* Main.storyboard in Resources */,
 			);
@@ -679,6 +694,7 @@
 				4E4FEC2C212071A30077924F /* UICollectionViewComponent.swift in Sources */,
 				4E5CFC17212BFD35002261F6 /* IndexPathConverter.swift in Sources */,
 				4E3E05BA21134E5400D6DBB5 /* MessageViewComponent.swift in Sources */,
+				4EB0A26D21F0D99900A1BBA5 /* ColorNibComponent.swift in Sources */,
 				4E4AD700211097FD00973D60 /* RedViewController.swift in Sources */,
 				4E44CDE22115E72A00AB4FCF /* UIViewControllerComponent.swift in Sources */,
 				4E3E05BD2113504800D6DBB5 /* TextReducer.swift in Sources */,

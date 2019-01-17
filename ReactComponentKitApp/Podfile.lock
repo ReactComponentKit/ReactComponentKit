@@ -1,6 +1,6 @@
 PODS:
-  - BKEventBus (1.0.8)
-  - BKRedux (1.2.0):
+  - BKEventBus (1.0.9)
+  - BKRedux (1.2.1):
     - RxCocoa (>= 4.2.0)
     - RxSwift (>= 4.2.0)
   - RxAtomic (4.4.0)
@@ -27,8 +27,8 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
-  BKEventBus: b6ec629c0581c98a9c798f930aadd92b751a3f6b
-  BKRedux: fa0030fb7f3add308ed43af6b6639fa318ba29d8
+  BKEventBus: c18a022d313e766f65fcbec073b254db4ac555b7
+  BKRedux: 98566aa52ccc971ff3f406ac996689d36aebc083
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
