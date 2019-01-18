@@ -44,7 +44,7 @@ class ViewModel: RootViewModelType<CounterSceneState> {
     override func on(newState: CounterSceneState) {
         rx_count.accept(String(newState.count))
         rx_color.accept(newState.color)
-        send(newState)
+        propagate(state: newState)
     }
     
     override func on(error: Error, action: Action, onState: CounterSceneState) {
