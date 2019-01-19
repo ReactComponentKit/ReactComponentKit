@@ -9,8 +9,10 @@
 import UIKit
 
 class LoadingComponent: UIViewControllerComponent {
-    override class func viewControllerComponent() -> UIViewControllerComponent {
+    static func viewControllerComponent() -> UIViewControllerComponent {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         return viewControllerComponent(identifier: "LoadingComponent", storyboard: storyboard)
     }
+    
+    
 }
