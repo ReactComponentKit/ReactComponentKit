@@ -17,6 +17,14 @@ open class UIViewControllerComponent: UIViewController, ReactComponent {
     
     public var token: Token
     
+    public static func viewControllerComponent(identifier: String, storyboard: UIStoryboard) -> UIViewControllerComponent {
+        return storyboard.instantiateViewController(withIdentifier: identifier) as! UIViewControllerComponent
+    }
+    
+    public class func viewControllerComponent() -> UIViewControllerComponent {
+        fatalError("viewController has not been implemented. Override it if you needed")
+    }
+    
     public required init(token: Token, receiveState: Bool = true) {
         self.token = token
         self.dispatchEventBus = EventBus(token: token)
@@ -34,7 +42,10 @@ open class UIViewControllerComponent: UIViewController, ReactComponent {
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.token = Token.empty
+        dispatchEventBus = EventBus(token: Token.empty)
+        newStateEventBus = nil
+        super.init(coder: aDecoder)
     }
     
     // Used for nib view controller

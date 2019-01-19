@@ -50,7 +50,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6OY-aE-4fL">
-                                <rect key="frame" x="137" y="288.5" width="101" height="90"/>
+                                <rect key="frame" x="137" y="273.5" width="101" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3s-PN-p4t">
                                         <rect key="frame" x="0.0" y="0.0" width="101" height="30"/>
@@ -73,10 +73,17 @@
                                             <segue destination="Wta-z5-Uce" kind="show" id="AVl-I1-pdT"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ji2-Gm-e2u" userLabel="Storyboard">
+                                        <rect key="frame" x="0.0" y="90" width="101" height="30"/>
+                                        <state key="normal" title="Storyboard"/>
+                                        <connections>
+                                            <segue destination="vQh-PP-UFx" kind="show" id="RrZ-bq-7Zm"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GrD-jZ-U4A" customClass="ColorNibComponent" customModule="ReactComponentKitApp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="172" width="343" height="108.5"/>
+                                <rect key="frame" x="16" y="172" width="343" height="93.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -124,6 +131,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8BV-8a-FEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="884" y="-40"/>
+        </scene>
+        <!--Loading Component-->
+        <scene sceneID="HRz-gM-Zca">
+            <objects>
+                <viewController storyboardIdentifier="LoadingComponent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tcY-mK-4i2" customClass="LoadingComponent" customModule="ReactComponentKitApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qgJ-gS-rXf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xRO-LK-3uM">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xRO-LK-3uM" firstAttribute="centerY" secondItem="qgJ-gS-rXf" secondAttribute="centerY" id="nSx-XG-cMZ"/>
+                            <constraint firstItem="xRO-LK-3uM" firstAttribute="centerX" secondItem="qgJ-gS-rXf" secondAttribute="centerX" id="pjB-d7-daV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DY9-tI-FMP"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WTS-D2-3HT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1666" y="-43"/>
+        </scene>
+        <!--Story Board View Controller-->
+        <scene sceneID="I7D-FD-8YV">
+            <objects>
+                <viewController id="vQh-PP-UFx" customClass="StoryBoardViewController" customModule="ReactComponentKitApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Tm-0n-3nH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="z7x-6K-wKI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jh9-Oe-Ct5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="884" y="1351"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="NmF-hw-XGE">

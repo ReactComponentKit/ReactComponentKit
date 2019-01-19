@@ -68,6 +68,9 @@
 		4EB0A26F21F0D9BA00A1BBA5 /* ColorNibComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB0A26E21F0D9BA00A1BBA5 /* ColorNibComponent.xib */; };
 		4EBD8A8A210C70C3009CD480 /* RandomColorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */; };
 		4EBD8A8C210C7178009CD480 /* ColorReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD8A8B210C7178009CD480 /* ColorReducer.swift */; };
+		4EE973EF21F372E7001039B7 /* LoadingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE973EE21F372E7001039B7 /* LoadingComponent.swift */; };
+		4EE973F121F37423001039B7 /* StoryBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE973F021F37423001039B7 /* StoryBoardViewController.swift */; };
+		4EE973F321F37441001039B7 /* StoryBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE973F221F37441001039B7 /* StoryBoardViewModel.swift */; };
 		79B9653E4885DCD51731F478 /* Pods_ReactComponentKitAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00C93DC7C8FF383E142E029 /* Pods_ReactComponentKitAppTests.framework */; };
 		84E2BBF849FCA5DB1E4F8235 /* Pods_ReactComponentKitApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59031C46F7FC4D5FF2C2ACC0 /* Pods_ReactComponentKitApp.framework */; };
 /* End PBXBuildFile section */
@@ -148,6 +151,9 @@
 		4EB0A26E21F0D9BA00A1BBA5 /* ColorNibComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorNibComponent.xib; sourceTree = "<group>"; };
 		4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColorAction.swift; sourceTree = "<group>"; };
 		4EBD8A8B210C7178009CD480 /* ColorReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorReducer.swift; sourceTree = "<group>"; };
+		4EE973EE21F372E7001039B7 /* LoadingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingComponent.swift; sourceTree = "<group>"; };
+		4EE973F021F37423001039B7 /* StoryBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardViewController.swift; sourceTree = "<group>"; };
+		4EE973F221F37441001039B7 /* StoryBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardViewModel.swift; sourceTree = "<group>"; };
 		59031C46F7FC4D5FF2C2ACC0 /* Pods_ReactComponentKitApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactComponentKitApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1D52EECDA19B350342BA65 /* Pods-ReactComponentKitApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactComponentKitApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactComponentKitApp/Pods-ReactComponentKitApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9C0DDB80135374A100D59E7E /* Pods-ReactComponentKitAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactComponentKitAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactComponentKitAppTests/Pods-ReactComponentKitAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -285,6 +291,7 @@
 				4E8A6948212661760074EBBA /* TableScene */,
 				4E4AD6FB2110974F00973D60 /* StackScene */,
 				4E4AD6F8211093F100973D60 /* CounterScene */,
+				4EE973EC21F372BF001039B7 /* StoryboardScene */,
 				4E3E019F21056B9700DDB93C /* AppDelegate.swift */,
 				4E3E01A321056B9700DDB93C /* Main.storyboard */,
 				4E3E01A621056B9700DDB93C /* Assets.xcassets */,
@@ -497,6 +504,24 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		4EE973EC21F372BF001039B7 /* StoryboardScene */ = {
+			isa = PBXGroup;
+			children = (
+				4EE973ED21F372D8001039B7 /* Components */,
+				4EE973F021F37423001039B7 /* StoryBoardViewController.swift */,
+				4EE973F221F37441001039B7 /* StoryBoardViewModel.swift */,
+			);
+			path = StoryboardScene;
+			sourceTree = "<group>";
+		};
+		4EE973ED21F372D8001039B7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4EE973EE21F372E7001039B7 /* LoadingComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		4FE55BCC412CB31C704CEAC5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +717,7 @@
 				4E3E05C02113517100D6DBB5 /* TextAction.swift in Sources */,
 				4E17CBCB21299B5200F0B2A3 /* CollectionViewController.swift in Sources */,
 				4E4FEC2C212071A30077924F /* UICollectionViewComponent.swift in Sources */,
+				4EE973F121F37423001039B7 /* StoryBoardViewController.swift in Sources */,
 				4E5CFC17212BFD35002261F6 /* IndexPathConverter.swift in Sources */,
 				4E3E05BA21134E5400D6DBB5 /* MessageViewComponent.swift in Sources */,
 				4EB0A26D21F0D99900A1BBA5 /* ColorNibComponent.swift in Sources */,
@@ -702,6 +728,7 @@
 				4E5CFC1C212BFD35002261F6 /* WagnerFischer.swift in Sources */,
 				4E3E01A221056B9700DDB93C /* ViewController.swift in Sources */,
 				4E464A392108CF3700D0C4DE /* PrintCacheValue.swift in Sources */,
+				4EE973EF21F372E7001039B7 /* LoadingComponent.swift in Sources */,
 				4E0A6F14212697AD00A3E0E6 /* UITableViewAdapter.swift in Sources */,
 				4E17CBCD21299B6D00F0B2A3 /* CollectionViewModel.swift in Sources */,
 				4E568BDF2106175100652321 /* CountReducer.swift in Sources */,
@@ -711,6 +738,7 @@
 				4E44CDE42115E97B00AB4FCF /* ButtonComponent.swift in Sources */,
 				4E8A6950212665820074EBBA /* TodoReducer.swift in Sources */,
 				4EBD8A8C210C7178009CD480 /* ColorReducer.swift in Sources */,
+				4EE973F321F37441001039B7 /* StoryBoardViewModel.swift in Sources */,
 				4E8A694A212661AC0074EBBA /* TableViewController.swift in Sources */,
 				4E8A694C212661FE0074EBBA /* TableViewModel.swift in Sources */,
 				4E8A69522126659A0074EBBA /* AddTodoAction.swift in Sources */,
