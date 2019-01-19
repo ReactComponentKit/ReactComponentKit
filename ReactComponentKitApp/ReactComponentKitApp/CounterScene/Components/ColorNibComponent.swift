@@ -13,11 +13,7 @@ class ColorNibComponent: UIViewComponent {
     @IBOutlet weak var colorA: UIImageView!
     @IBOutlet weak var colorB: UIImageView!
     @IBOutlet weak var colorC: UIImageView!
-    
-    override var useNib: Bool {
-        return true
-    }
-        
+            
     override func on(state: State) {
         guard let state = state as? CounterSceneState else { return }
         colorA.backgroundColor = state.color.withAlphaComponent(0.9)

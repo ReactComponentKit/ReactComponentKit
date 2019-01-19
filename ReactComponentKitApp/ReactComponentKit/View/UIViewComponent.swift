@@ -25,10 +25,6 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
         return .zero
     }
     
-    open var useNib: Bool {
-        return false
-    }
-    
     override open var intrinsicContentSize: CGSize {
         return contentSize
     }
@@ -56,6 +52,11 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
         self.token = Token.empty
         self.dispatchEventBus = EventBus(token: Token.empty)
         super.init(coder: aDecoder)
+        loadNibView()
+    }
+    
+    open override func awakeFromNib() {
+        super.awakeFromNib()
         setupView()
         invalidateIntrinsicContentSize()
     }
@@ -77,21 +78,24 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
         }
     }
     
+    private func loadNibView() {
+        let nib = UINib(nibName: self.classNameString, bundle: Bundle(for: type(of: self)))
+        let rootView = nib.instantiate(withOwner: self, options: nil).first { (obj) -> Bool in
+            return obj is UIView
+        }
+        guard let v = rootView as? UIView else { return }
+        addSubview(v)
+        nibContentView = v
+        v.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            v.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            v.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            v.topAnchor.constraint(equalTo: self.topAnchor),
+            v.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+    }
     // Override it to layout sub views.
     open func setupView() {
-        if useNib {
-            let nib = UINib(nibName: self.classNameString, bundle: Bundle(for: type(of: self)))
-            guard let v = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
-            addSubview(v)
-            nibContentView = v
-            v.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                v.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                v.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                v.topAnchor.constraint(equalTo: self.topAnchor),
-                v.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-            ])
-        }
     }
         
     // It is only called when the component is in UITableView's cell or UICollectionView's cell.
