@@ -37,6 +37,23 @@ open class UIViewControllerComponent: UIViewController, ReactComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Used for nib view controller
+    public func reset(token: Token, receiveState: Bool = true) {
+        guard token != Token.empty else { return }
+        self.token = token
+        self.dispatchEventBus = EventBus(token: token)
+        if receiveState == true {
+            self.newStateEventBus = EventBus(token: token)
+        }
+        newStateEventBus?.on { [weak self] (event) in
+            guard let strongSelf = self else { return }
+            switch event {
+            case let .on(state):
+                strongSelf.applyNew(state: state)
+            }
+        }
+    }
+    
     private func applyNew(state: State) {
         on(state: state)
     }

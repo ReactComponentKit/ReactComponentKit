@@ -76,13 +76,16 @@ open class UITableViewComponent: UIViewComponent {
     
     private let disposeBag = DisposeBag()
     public let tableView: UITableView
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    
     
     public required init(token: Token, receiveState: Bool = false) {
         self.tableView = UITableView(frame: .zero, style: .plain)
         super.init(token: token, receiveState: receiveState)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        self.tableView = UITableView(frame: .zero, style: .plain)
+        super.init(coder: aDecoder)
     }
     
     open override func setupView() {

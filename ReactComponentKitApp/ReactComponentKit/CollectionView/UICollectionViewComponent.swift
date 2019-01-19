@@ -43,15 +43,18 @@ open class UICollectionViewComponent: UIViewComponent {
         }
     }
     
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     public required init(token: Token, receiveState: Bool = false) {
         let defaultLayout = UICollectionViewFlowLayout()
         defaultLayout.scrollDirection = .vertical
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: defaultLayout)
         super.init(token: token, receiveState: receiveState)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        let defaultLayout = UICollectionViewFlowLayout()
+        defaultLayout.scrollDirection = .vertical
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: defaultLayout)
+        super.init(coder: aDecoder)
     }
     
     open override func setupView() {
