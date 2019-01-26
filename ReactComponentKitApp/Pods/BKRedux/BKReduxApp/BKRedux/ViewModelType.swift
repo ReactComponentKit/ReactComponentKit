@@ -44,7 +44,7 @@ open class ViewModelType<S: State> {
                 return self.store.dispatch(action: action)
             }
             .observeOn(MainScheduler.asyncInstance)
-            .map({ (state: State) -> S? in
+            .map({ (state: State?) -> S? in
                 return state as? S
             })
             .subscribe(onNext: { [weak self] (state: S?) in
