@@ -9,5 +9,6 @@
 import Foundation
 
 public protocol State {
+    init()
     var error: (Error, Action)? { get set }
 }

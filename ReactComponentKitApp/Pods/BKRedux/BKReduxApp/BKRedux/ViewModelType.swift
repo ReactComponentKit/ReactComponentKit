@@ -40,14 +40,11 @@ open class ViewModelType<S: State> {
                 return self?.beforeDispatch(action: action) ?? VoidAction()
             })
             .filter { type(of: $0) != VoidAction.self }
-            .flatMap { [weak self] (action)  in
-                return self?.store.dispatch(action: action) ?? Single.create(subscribe: { (single) -> Disposable in
-                    single(.success(nil))
-                    return Disposables.create()
-                })
+            .flatMap { [unowned self] (action)  in
+                return self.store.dispatch(action: action)
             }
             .observeOn(MainScheduler.asyncInstance)
-            .map({ (state: State?) -> S? in
+            .map({ (state: State) -> S? in
                 return state as? S
             })
             .subscribe(onNext: { [weak self] (state: S?) in
@@ -59,7 +56,7 @@ open class ViewModelType<S: State> {
             .subscribe(onNext: { [weak self] (newState: S?) in
                 guard let newState = newState else { return }
                 if let (error, action) = newState.error {
-                    self?.on(error: error, action: action, onState: newState)
+                    self?.on(error: error, action: action)
                 } else {
                     if let (nextAction, apply) = self?.actionQueue.dequeue() {
                         if apply == true {
@@ -94,7 +91,7 @@ open class ViewModelType<S: State> {
         
     }
     
-    open func on(error: Error, action: Action, onState: S) {
+    open func on(error: Error, action: Action) {
         
     }
 }

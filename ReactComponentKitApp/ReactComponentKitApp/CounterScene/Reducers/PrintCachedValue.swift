@@ -9,7 +9,7 @@
 import BKRedux
 import RxSwift
 
-func printCacheValue(state: State, action: Action) -> Observable<State> {
+func printCachedValue(state: State, action: Action) -> Observable<State> {
     print("[## CACHED ##] value: \(UserDefaults.standard.integer(forKey: "count"))")
     return  Observable.just(state)
 }

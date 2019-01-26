@@ -22,11 +22,9 @@ class CollectionViewModel: RootViewModelType<TableViewState> {
         store.set(
             initialState: TableViewState(),
             reducers: [
-                todoReducer
-            ],
-            postwares: [
+                todoReducer,
                 makeTodoSectionModels,
-                consoleLogPostware
+                consoleLog
             ])
     }
     

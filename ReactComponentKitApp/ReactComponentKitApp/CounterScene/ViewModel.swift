@@ -27,18 +27,13 @@ class ViewModel: RootViewModelType<CounterSceneState> {
         // STORE
         store.set(
             initialState: CounterSceneState(),
-            middlewares: [
-                printCacheValue,
-                consoleLogMiddleware
-            ],
             reducers: [
+                printCachedValue,
+                consoleLog,
                 countReducer,
-                colorReducer
-            ],
-            postwares: [
-                cachePostware
-            ]
-        )
+                colorReducer,
+                cacheCountValue
+            ])
     }
     
     override func on(newState: CounterSceneState) {
@@ -47,8 +42,8 @@ class ViewModel: RootViewModelType<CounterSceneState> {
         propagate(state: newState)
     }
     
-    override func on(error: Error, action: Action, onState: CounterSceneState) {
-        
+    override func on(error: Error, action: Action) {
+
     }
     
     deinit {

@@ -34,9 +34,9 @@
 		4E44CDE02115E67300AB4FCF /* UIViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDDF2115E67300AB4FCF /* UIViewComponent.swift */; };
 		4E44CDE22115E72A00AB4FCF /* UIViewControllerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDE12115E72A00AB4FCF /* UIViewControllerComponent.swift */; };
 		4E44CDE42115E97B00AB4FCF /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44CDE32115E97B00AB4FCF /* ButtonComponent.swift */; };
-		4E464A322108C1C600D0C4DE /* ConsoleLogMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A312108C1C600D0C4DE /* ConsoleLogMiddleware.swift */; };
-		4E464A372108CEB400D0C4DE /* CachePostware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A362108CEB400D0C4DE /* CachePostware.swift */; };
-		4E464A392108CF3700D0C4DE /* PrintCacheValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A382108CF3700D0C4DE /* PrintCacheValue.swift */; };
+		4E464A322108C1C600D0C4DE /* ConsoleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A312108C1C600D0C4DE /* ConsoleLog.swift */; };
+		4E464A372108CEB400D0C4DE /* CacheCountValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A362108CEB400D0C4DE /* CacheCountValue.swift */; };
+		4E464A392108CF3700D0C4DE /* PrintCachedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E464A382108CF3700D0C4DE /* PrintCachedValue.swift */; };
 		4E4AD6F421108F7500973D60 /* ReactComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AD6F321108F7500973D60 /* ReactComponent.swift */; };
 		4E4AD6FA211095F600973D60 /* UIViewController+Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AD6F9211095F600973D60 /* UIViewController+Component.swift */; };
 		4E4AD6FD2110977100973D60 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AD6FC2110977100973D60 /* StackViewController.swift */; };
@@ -63,7 +63,6 @@
 		4E8A694C212661FE0074EBBA /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A694B212661FE0074EBBA /* TableViewModel.swift */; };
 		4E8A6950212665820074EBBA /* TodoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A694F212665820074EBBA /* TodoReducer.swift */; };
 		4E8A69522126659A0074EBBA /* AddTodoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A69512126659A0074EBBA /* AddTodoAction.swift */; };
-		4E8A6954212666FC0074EBBA /* ConsoleLogPostware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A6953212666FC0074EBBA /* ConsoleLogPostware.swift */; };
 		4EB0A26D21F0D99900A1BBA5 /* ColorNibComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB0A26C21F0D99900A1BBA5 /* ColorNibComponent.swift */; };
 		4EB0A26F21F0D9BA00A1BBA5 /* ColorNibComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB0A26E21F0D9BA00A1BBA5 /* ColorNibComponent.xib */; };
 		4EBD8A8A210C70C3009CD480 /* RandomColorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */; };
@@ -117,9 +116,9 @@
 		4E44CDDF2115E67300AB4FCF /* UIViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewComponent.swift; sourceTree = "<group>"; };
 		4E44CDE12115E72A00AB4FCF /* UIViewControllerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerComponent.swift; sourceTree = "<group>"; };
 		4E44CDE32115E97B00AB4FCF /* ButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
-		4E464A312108C1C600D0C4DE /* ConsoleLogMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogMiddleware.swift; sourceTree = "<group>"; };
-		4E464A362108CEB400D0C4DE /* CachePostware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachePostware.swift; sourceTree = "<group>"; };
-		4E464A382108CF3700D0C4DE /* PrintCacheValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintCacheValue.swift; sourceTree = "<group>"; };
+		4E464A312108C1C600D0C4DE /* ConsoleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLog.swift; sourceTree = "<group>"; };
+		4E464A362108CEB400D0C4DE /* CacheCountValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheCountValue.swift; sourceTree = "<group>"; };
+		4E464A382108CF3700D0C4DE /* PrintCachedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintCachedValue.swift; sourceTree = "<group>"; };
 		4E4AD6F321108F7500973D60 /* ReactComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactComponent.swift; sourceTree = "<group>"; };
 		4E4AD6F9211095F600973D60 /* UIViewController+Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Component.swift"; sourceTree = "<group>"; };
 		4E4AD6FC2110977100973D60 /* StackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
@@ -146,7 +145,6 @@
 		4E8A694B212661FE0074EBBA /* TableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
 		4E8A694F212665820074EBBA /* TodoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoReducer.swift; sourceTree = "<group>"; };
 		4E8A69512126659A0074EBBA /* AddTodoAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoAction.swift; sourceTree = "<group>"; };
-		4E8A6953212666FC0074EBBA /* ConsoleLogPostware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogPostware.swift; sourceTree = "<group>"; };
 		4EB0A26C21F0D99900A1BBA5 /* ColorNibComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorNibComponent.swift; sourceTree = "<group>"; };
 		4EB0A26E21F0D9BA00A1BBA5 /* ColorNibComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorNibComponent.xib; sourceTree = "<group>"; };
 		4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColorAction.swift; sourceTree = "<group>"; };
@@ -226,14 +224,6 @@
 				4E0A6F1E2126C97E00A3E0E6 /* UIViewComponentClassProvider.swift */,
 			);
 			path = CollectionModels;
-			sourceTree = "<group>";
-		};
-		4E0A6F202126E00A00A3E0E6 /* Postwares */ = {
-			isa = PBXGroup;
-			children = (
-				4E0A6F212126E01800A3E0E6 /* MakeTodoSectionModels.swift */,
-			);
-			path = Postwares;
 			sourceTree = "<group>";
 		};
 		4E0A6F232126E29100A3E0E6 /* Models */ = {
@@ -335,24 +325,6 @@
 			path = Actions;
 			sourceTree = "<group>";
 		};
-		4E464A302108C1AF00D0C4DE /* Middlewares */ = {
-			isa = PBXGroup;
-			children = (
-				4E464A312108C1C600D0C4DE /* ConsoleLogMiddleware.swift */,
-				4E464A382108CF3700D0C4DE /* PrintCacheValue.swift */,
-			);
-			path = Middlewares;
-			sourceTree = "<group>";
-		};
-		4E464A352108CEA100D0C4DE /* Postwares */ = {
-			isa = PBXGroup;
-			children = (
-				4E464A362108CEB400D0C4DE /* CachePostware.swift */,
-				4E8A6953212666FC0074EBBA /* ConsoleLogPostware.swift */,
-			);
-			path = Postwares;
-			sourceTree = "<group>";
-		};
 		4E4AD6F521108F9300973D60 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,8 +338,6 @@
 			isa = PBXGroup;
 			children = (
 				4EB0A26B21F0D97800A1BBA5 /* Components */,
-				4E464A302108C1AF00D0C4DE /* Middlewares */,
-				4E464A352108CEA100D0C4DE /* Postwares */,
 				4E568BD7210616F000652321 /* Reducers */,
 				4E568BD8210616FB00652321 /* Actions */,
 				4E3E01A121056B9700DDB93C /* ViewController.swift */,
@@ -408,8 +378,11 @@
 		4E568BD7210616F000652321 /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
+				4E464A312108C1C600D0C4DE /* ConsoleLog.swift */,
+				4E464A382108CF3700D0C4DE /* PrintCachedValue.swift */,
 				4E568BDE2106175100652321 /* CountReducer.swift */,
 				4EBD8A8B210C7178009CD480 /* ColorReducer.swift */,
+				4E464A362108CEB400D0C4DE /* CacheCountValue.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -470,7 +443,6 @@
 			children = (
 				4E0A6F26212700CC00A3E0E6 /* Components */,
 				4E0A6F232126E29100A3E0E6 /* Models */,
-				4E0A6F202126E00A00A3E0E6 /* Postwares */,
 				4E8A694E212663FF0074EBBA /* Reducers */,
 				4E8A694D212663F50074EBBA /* Actions */,
 				4E8A6949212661AC0074EBBA /* TableViewController.swift */,
@@ -491,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				4E8A694F212665820074EBBA /* TodoReducer.swift */,
+				4E0A6F212126E01800A3E0E6 /* MakeTodoSectionModels.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -724,10 +697,10 @@
 				4E4AD700211097FD00973D60 /* RedViewController.swift in Sources */,
 				4E44CDE22115E72A00AB4FCF /* UIViewControllerComponent.swift in Sources */,
 				4E3E05BD2113504800D6DBB5 /* TextReducer.swift in Sources */,
-				4E464A322108C1C600D0C4DE /* ConsoleLogMiddleware.swift in Sources */,
+				4E464A322108C1C600D0C4DE /* ConsoleLog.swift in Sources */,
 				4E5CFC1C212BFD35002261F6 /* WagnerFischer.swift in Sources */,
 				4E3E01A221056B9700DDB93C /* ViewController.swift in Sources */,
-				4E464A392108CF3700D0C4DE /* PrintCacheValue.swift in Sources */,
+				4E464A392108CF3700D0C4DE /* PrintCachedValue.swift in Sources */,
 				4EE973EF21F372E7001039B7 /* LoadingComponent.swift in Sources */,
 				4E0A6F14212697AD00A3E0E6 /* UITableViewAdapter.swift in Sources */,
 				4E17CBCD21299B6D00F0B2A3 /* CollectionViewModel.swift in Sources */,
@@ -757,12 +730,11 @@
 				4E0A6F252126E2A300A3E0E6 /* TodoItem.swift in Sources */,
 				4E5CFC1A212BFD35002261F6 /* Array+Extensions.swift in Sources */,
 				4E5CFC19212BFD35002261F6 /* UICollectionView+Extensions.swift in Sources */,
-				4E8A6954212666FC0074EBBA /* ConsoleLogPostware.swift in Sources */,
 				4E58F2622111F35F005373EF /* RootViewModelType.swift in Sources */,
 				4E0A6F19212698F600A3E0E6 /* ItemModel.swift in Sources */,
 				4E5CFC20212BFD35002261F6 /* Change.swift in Sources */,
 				4E5CFC1D212BFD35002261F6 /* DiffAware.swift in Sources */,
-				4E464A372108CEB400D0C4DE /* CachePostware.swift in Sources */,
+				4E464A372108CEB400D0C4DE /* CacheCountValue.swift in Sources */,
 				4E019D3A210E16A100ABD37A /* CollectionViewComponentCell.swift in Sources */,
 				4E44CDE02115E67300AB4FCF /* UIViewComponent.swift in Sources */,
 				4E4AD6F421108F7500973D60 /* ReactComponent.swift in Sources */,
