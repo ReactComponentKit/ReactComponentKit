@@ -67,6 +67,7 @@
 		4EB0A26F21F0D9BA00A1BBA5 /* ColorNibComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB0A26E21F0D9BA00A1BBA5 /* ColorNibComponent.xib */; };
 		4EBD8A8A210C70C3009CD480 /* RandomColorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */; };
 		4EBD8A8C210C7178009CD480 /* ColorReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD8A8B210C7178009CD480 /* ColorReducer.swift */; };
+		4ECD183C2209CD60005FA347 /* ActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD183B2209CD60005FA347 /* ActionDispatcher.swift */; };
 		4EE973EF21F372E7001039B7 /* LoadingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE973EE21F372E7001039B7 /* LoadingComponent.swift */; };
 		4EE973F121F37423001039B7 /* StoryBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE973F021F37423001039B7 /* StoryBoardViewController.swift */; };
 		4EE973F321F37441001039B7 /* StoryBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE973F221F37441001039B7 /* StoryBoardViewModel.swift */; };
@@ -149,6 +150,7 @@
 		4EB0A26E21F0D9BA00A1BBA5 /* ColorNibComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorNibComponent.xib; sourceTree = "<group>"; };
 		4EBD8A89210C70C3009CD480 /* RandomColorAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColorAction.swift; sourceTree = "<group>"; };
 		4EBD8A8B210C7178009CD480 /* ColorReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorReducer.swift; sourceTree = "<group>"; };
+		4ECD183B2209CD60005FA347 /* ActionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDispatcher.swift; sourceTree = "<group>"; };
 		4EE973EE21F372E7001039B7 /* LoadingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingComponent.swift; sourceTree = "<group>"; };
 		4EE973F021F37423001039B7 /* StoryBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardViewController.swift; sourceTree = "<group>"; };
 		4EE973F221F37441001039B7 /* StoryBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardViewModel.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		4E019D31210E16A100ABD37A /* ReactComponentKit */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD183A2209CD4C005FA347 /* ActionDispatcher */,
 				4E5CFC09212BFD1F002261F6 /* DeepDiff */,
 				4E4AD70521109C2400973D60 /* View */,
 				4E4AD6F521108F9300973D60 /* ViewController */,
@@ -477,6 +480,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		4ECD183A2209CD4C005FA347 /* ActionDispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD183B2209CD60005FA347 /* ActionDispatcher.swift */,
+			);
+			path = ActionDispatcher;
+			sourceTree = "<group>";
+		};
 		4EE973EC21F372BF001039B7 /* StoryboardScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +715,7 @@
 				4EE973EF21F372E7001039B7 /* LoadingComponent.swift in Sources */,
 				4E0A6F14212697AD00A3E0E6 /* UITableViewAdapter.swift in Sources */,
 				4E17CBCD21299B6D00F0B2A3 /* CollectionViewModel.swift in Sources */,
+				4ECD183C2209CD60005FA347 /* ActionDispatcher.swift in Sources */,
 				4E568BDF2106175100652321 /* CountReducer.swift in Sources */,
 				4E0A6F222126E01800A3E0E6 /* MakeTodoSectionModels.swift in Sources */,
 				4E0A6F17212698B500A3E0E6 /* SectionModel.swift in Sources */,
