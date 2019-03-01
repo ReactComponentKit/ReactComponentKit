@@ -144,13 +144,17 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
                     let oldHashable = oldSection.items.map { $0.id }
                     let newHashable = newSection.items.map { $0.id }
                     let changes = diff(old: oldHashable, new: newHashable)
-                    self.sections[section] = newSection
-                    self.tableViewComponent?.tableView.reload(changes: changes,
-                                                              section: section,
-                                                              insertionAnimation: animation,
-                                                              deletionAnimation: animation,
-                                                              replacementAnimation: animation,
-                                                              completion: nil)
+                    
+                    self.tableViewComponent?
+                        .tableView
+                        .reload(changes: changes,
+                                section: section,
+                                insertionAnimation: animation,
+                                deletionAnimation: animation,
+                                replacementAnimation: animation,
+                                updateData: {
+                                    self.sections[section] = newSection
+                                }, completion: nil)
                     section += 1
                 }
             }
