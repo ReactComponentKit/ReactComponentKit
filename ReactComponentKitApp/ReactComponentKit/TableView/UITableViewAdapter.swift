@@ -130,6 +130,13 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
     }
     
     open func set(sections: [SectionModel], with animation: UITableView.RowAnimation = UITableView.RowAnimation.none) {
+        self.set(sections: sections, insertionAnimation: animation, deletionAnimation: animation, replacementAnimation: animation)
+    }
+    
+    open func set(sections: [SectionModel],
+                  insertionAnimation: UITableView.RowAnimation,
+                  deletionAnimation: UITableView.RowAnimation,
+                  replacementAnimation: UITableView.RowAnimation) {
         if useDiff == false {
             self.sections = sections
             self.tableViewComponent?.reloadData()
@@ -149,12 +156,12 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
                         .tableView
                         .reload(changes: changes,
                                 section: section,
-                                insertionAnimation: animation,
-                                deletionAnimation: animation,
-                                replacementAnimation: animation,
+                                insertionAnimation: insertionAnimation,
+                                deletionAnimation: deletionAnimation,
+                                replacementAnimation: replacementAnimation,
                                 updateData: {
                                     self.sections[section] = newSection
-                                }, completion: nil)
+                        }, completion: nil)
                     section += 1
                 }
             }
