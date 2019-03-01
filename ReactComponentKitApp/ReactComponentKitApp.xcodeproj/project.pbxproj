@@ -55,7 +55,6 @@
 		4E5CFC1A212BFD35002261F6 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CFC0F212BFD35002261F6 /* Array+Extensions.swift */; };
 		4E5CFC1B212BFD35002261F6 /* DeepDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CFC10212BFD35002261F6 /* DeepDiff.swift */; };
 		4E5CFC1C212BFD35002261F6 /* WagnerFischer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CFC12212BFD35002261F6 /* WagnerFischer.swift */; };
-		4E5CFC1D212BFD35002261F6 /* DiffAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CFC13212BFD35002261F6 /* DiffAware.swift */; };
 		4E5CFC1E212BFD35002261F6 /* Heckel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CFC14212BFD35002261F6 /* Heckel.swift */; };
 		4E5CFC1F212BFD35002261F6 /* MoveReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CFC15212BFD35002261F6 /* MoveReducer.swift */; };
 		4E5CFC20212BFD35002261F6 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CFC16212BFD35002261F6 /* Change.swift */; };
@@ -71,6 +70,7 @@
 		4EE973EF21F372E7001039B7 /* LoadingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE973EE21F372E7001039B7 /* LoadingComponent.swift */; };
 		4EE973F121F37423001039B7 /* StoryBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE973F021F37423001039B7 /* StoryBoardViewController.swift */; };
 		4EE973F321F37441001039B7 /* StoryBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE973F221F37441001039B7 /* StoryBoardViewModel.swift */; };
+		4EF6E2C1222976BF00977430 /* DiffAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6E2C0222976BF00977430 /* DiffAware.swift */; };
 		79B9653E4885DCD51731F478 /* Pods_ReactComponentKitAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00C93DC7C8FF383E142E029 /* Pods_ReactComponentKitAppTests.framework */; };
 		84E2BBF849FCA5DB1E4F8235 /* Pods_ReactComponentKitApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59031C46F7FC4D5FF2C2ACC0 /* Pods_ReactComponentKitApp.framework */; };
 /* End PBXBuildFile section */
@@ -138,7 +138,6 @@
 		4E5CFC0F212BFD35002261F6 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		4E5CFC10212BFD35002261F6 /* DeepDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepDiff.swift; sourceTree = "<group>"; };
 		4E5CFC12212BFD35002261F6 /* WagnerFischer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WagnerFischer.swift; sourceTree = "<group>"; };
-		4E5CFC13212BFD35002261F6 /* DiffAware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffAware.swift; sourceTree = "<group>"; };
 		4E5CFC14212BFD35002261F6 /* Heckel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heckel.swift; sourceTree = "<group>"; };
 		4E5CFC15212BFD35002261F6 /* MoveReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveReducer.swift; sourceTree = "<group>"; };
 		4E5CFC16212BFD35002261F6 /* Change.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Change.swift; sourceTree = "<group>"; };
@@ -154,6 +153,7 @@
 		4EE973EE21F372E7001039B7 /* LoadingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingComponent.swift; sourceTree = "<group>"; };
 		4EE973F021F37423001039B7 /* StoryBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardViewController.swift; sourceTree = "<group>"; };
 		4EE973F221F37441001039B7 /* StoryBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardViewModel.swift; sourceTree = "<group>"; };
+		4EF6E2C0222976BF00977430 /* DiffAware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffAware.swift; sourceTree = "<group>"; };
 		59031C46F7FC4D5FF2C2ACC0 /* Pods_ReactComponentKitApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactComponentKitApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1D52EECDA19B350342BA65 /* Pods-ReactComponentKitApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactComponentKitApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactComponentKitApp/Pods-ReactComponentKitApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9C0DDB80135374A100D59E7E /* Pods-ReactComponentKitAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactComponentKitAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactComponentKitAppTests/Pods-ReactComponentKitAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -425,6 +425,7 @@
 				4E5CFC11212BFD35002261F6 /* Algorithms */,
 				4E5CFC0F212BFD35002261F6 /* Array+Extensions.swift */,
 				4E5CFC10212BFD35002261F6 /* DeepDiff.swift */,
+				4EF6E2C0222976BF00977430 /* DiffAware.swift */,
 				4E5CFC15212BFD35002261F6 /* MoveReducer.swift */,
 				4E5CFC16212BFD35002261F6 /* Change.swift */,
 			);
@@ -435,7 +436,6 @@
 			isa = PBXGroup;
 			children = (
 				4E5CFC12212BFD35002261F6 /* WagnerFischer.swift */,
-				4E5CFC13212BFD35002261F6 /* DiffAware.swift */,
 				4E5CFC14212BFD35002261F6 /* Heckel.swift */,
 			);
 			path = Algorithms;
@@ -735,6 +735,7 @@
 				4EBD8A8A210C70C3009CD480 /* RandomColorAction.swift in Sources */,
 				4E5CFC1F212BFD35002261F6 /* MoveReducer.swift in Sources */,
 				4E0A6F2A2127015200A3E0E6 /* TodoSectionHeaderModel.swift in Sources */,
+				4EF6E2C1222976BF00977430 /* DiffAware.swift in Sources */,
 				4E58F2602111F232005373EF /* StackViewModel.swift in Sources */,
 				4E0A6F1F2126C97E00A3E0E6 /* UIViewComponentClassProvider.swift in Sources */,
 				4E5CFC1E212BFD35002261F6 /* Heckel.swift in Sources */,
@@ -745,7 +746,6 @@
 				4E58F2622111F35F005373EF /* RootViewModelType.swift in Sources */,
 				4E0A6F19212698F600A3E0E6 /* ItemModel.swift in Sources */,
 				4E5CFC20212BFD35002261F6 /* Change.swift in Sources */,
-				4E5CFC1D212BFD35002261F6 /* DiffAware.swift in Sources */,
 				4E464A372108CEB400D0C4DE /* CacheCountValue.swift in Sources */,
 				4E019D3A210E16A100ABD37A /* CollectionViewComponentCell.swift in Sources */,
 				4E44CDE02115E67300AB4FCF /* UIViewComponent.swift in Sources */,
