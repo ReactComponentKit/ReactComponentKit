@@ -130,6 +130,13 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
     }
     
     open func set(sections: [SectionModel], with animation: UITableView.RowAnimation = UITableView.RowAnimation.none) {
+        self.set(sections: sections, insertionAnimation: animation, deletionAnimation: animation, replacementAnimation: animation)
+    }
+    
+    open func set(sections: [SectionModel],
+                  insertionAnimation: UITableView.RowAnimation,
+                  deletionAnimation: UITableView.RowAnimation,
+                  replacementAnimation: UITableView.RowAnimation) {
         if useDiff == false {
             self.sections = sections
             self.tableViewComponent?.reloadData()
@@ -144,13 +151,17 @@ open class UITableViewAdapter: NSObject, UITableViewDelegate, UITableViewDataSou
                     let oldHashable = oldSection.items.map { $0.id }
                     let newHashable = newSection.items.map { $0.id }
                     let changes = diff(old: oldHashable, new: newHashable)
-                    self.sections[section] = newSection
-                    self.tableViewComponent?.tableView.reload(changes: changes,
-                                                              section: section,
-                                                              insertionAnimation: animation,
-                                                              deletionAnimation: animation,
-                                                              replacementAnimation: animation,
-                                                              completion: nil)
+                    
+                    self.tableViewComponent?
+                        .tableView
+                        .reload(changes: changes,
+                                section: section,
+                                insertionAnimation: insertionAnimation,
+                                deletionAnimation: deletionAnimation,
+                                replacementAnimation: replacementAnimation,
+                                updateData: {
+                                    self.sections[section] = newSection
+                        }, completion: nil)
                     section += 1
                 }
             }
