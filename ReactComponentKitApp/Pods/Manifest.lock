@@ -3,11 +3,9 @@ PODS:
   - BKRedux (1.3.3):
     - RxCocoa (>= 4.2.0)
     - RxSwift (>= 4.2.0)
-  - RxAtomic (4.4.0)
-  - RxCocoa (4.4.0):
-    - RxSwift (~> 4.0)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
@@ -21,7 +19,6 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BKEventBus
     - BKRedux
-    - RxAtomic
     - RxCocoa
     - RxSwift
     - SnapKit
@@ -29,11 +26,10 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   BKEventBus: c18a022d313e766f65fcbec073b254db4ac555b7
   BKRedux: bdb0e5bf15a516a946d67dbee6727ae45a9954f2
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
 PODFILE CHECKSUM: 85098da86cf942690ba8b1e94e4c13c63f2d16f5
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.6.1
