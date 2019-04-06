@@ -23,7 +23,7 @@ class CollectionViewController: UIViewController {
     }()
     
     private lazy var adapter: UICollectionViewAdapter = {
-        let adapter = UICollectionViewAdapter(collectionViewComponent: self.collectionViewComponent)
+        let adapter = UICollectionViewAdapter(collectionViewComponent: self.collectionViewComponent, useDiff: true)
         let section = DefaultSectionModel(items: [])
         adapter.set(section: section)
         return adapter

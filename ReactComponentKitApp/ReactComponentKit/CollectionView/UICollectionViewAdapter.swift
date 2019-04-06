@@ -141,15 +141,16 @@ open class UICollectionViewAdapter: NSObject, UICollectionViewDataSource, UIColl
                     let oldHashable = oldSection.items.map { $0.id }
                     let newHashable = newSection.items.map { $0.id }
                     let changes = diff(old: oldHashable, new: newHashable)
-                    
-                    self.collectionViewComponent?
-                        .collectionView
-                        .reload(changes: changes,
-                                section: section,
-                                updateData: {
-                                    self.sections[section] = newSection
-                                },
-                                completion: nil)
+                    if changes.isEmpty == false {
+                        self.collectionViewComponent?
+                            .collectionView
+                            .reload(changes: changes,
+                                    section: section,
+                                    updateData: {
+                                        self.sections[section] = newSection
+                                    },
+                                    completion: nil)
+                    }
                     section += 1
                 }
             }
