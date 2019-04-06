@@ -4,7 +4,7 @@
 
 <div align="center">
 	<img src="https://img.shields.io/badge/iOS-%3E%3D%209.0-green.svg" />
-	<img src="https://img.shields.io/badge/Swift-%3E%3D%204.1-orange.svg" />
+	<img src="https://img.shields.io/badge/Swift-%3E%3D%204.2-orange.svg" />
 	<img src="https://img.shields.io/cocoapods/v/ReactComponentKit.svg" />
 	<img src="https://img.shields.io/github/license/ReactComponentKit/ReactComponentKit.svg" />
 </div>
