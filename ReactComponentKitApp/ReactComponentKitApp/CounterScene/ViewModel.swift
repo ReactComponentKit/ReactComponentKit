@@ -10,7 +10,7 @@ import BKRedux
 import RxSwift
 import RxCocoa
 
-struct CounterSceneState: State {
+struct CounterSceneState: State, ColorNibComponentState {
     var count: Int = 0
     var color: UIColor = .white
     var error: (Error, Action)? = nil
@@ -18,8 +18,8 @@ struct CounterSceneState: State {
 
 class ViewModel: RootViewModelType<CounterSceneState> {
     
-    let rx_count =  BehaviorRelay<String>(value: "0")
-    let rx_color = BehaviorRelay<UIColor>(value: UIColor.white)
+    let count = Output<String>(value: "0")
+    let color = Output<UIColor>(value: UIColor.white)
     
     override init() {
         super.init()
@@ -37,8 +37,8 @@ class ViewModel: RootViewModelType<CounterSceneState> {
     }
     
     override func on(newState: CounterSceneState) {
-        rx_count.accept(String(newState.count))
-        rx_color.accept(newState.color)
+        count.accept(String(newState.count))
+        color.accept(newState.color)
         propagate(state: newState)
     }
     

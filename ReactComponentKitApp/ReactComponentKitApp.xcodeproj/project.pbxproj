@@ -40,7 +40,7 @@
 		4E4AD6F421108F7500973D60 /* ReactComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AD6F321108F7500973D60 /* ReactComponent.swift */; };
 		4E4AD6FA211095F600973D60 /* UIViewController+Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AD6F9211095F600973D60 /* UIViewController+Component.swift */; };
 		4E4AD6FD2110977100973D60 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AD6FC2110977100973D60 /* StackViewController.swift */; };
-		4E4AD700211097FD00973D60 /* RedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AD6FF211097FD00973D60 /* RedViewController.swift */; };
+		4E4AD700211097FD00973D60 /* RedViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AD6FF211097FD00973D60 /* RedViewComponent.swift */; };
 		4E4FEC2A21206FF20077924F /* UITableViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FEC2921206FF20077924F /* UITableViewComponent.swift */; };
 		4E4FEC2C212071A30077924F /* UICollectionViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FEC2B212071A30077924F /* UICollectionViewComponent.swift */; };
 		4E568BD62106168100652321 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E568BD52106168100652321 /* ViewModel.swift */; };
@@ -123,7 +123,7 @@
 		4E4AD6F321108F7500973D60 /* ReactComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactComponent.swift; sourceTree = "<group>"; };
 		4E4AD6F9211095F600973D60 /* UIViewController+Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Component.swift"; sourceTree = "<group>"; };
 		4E4AD6FC2110977100973D60 /* StackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
-		4E4AD6FF211097FD00973D60 /* RedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedViewController.swift; sourceTree = "<group>"; };
+		4E4AD6FF211097FD00973D60 /* RedViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedViewComponent.swift; sourceTree = "<group>"; };
 		4E4FEC2921206FF20077924F /* UITableViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewComponent.swift; sourceTree = "<group>"; };
 		4E4FEC2B212071A30077924F /* UICollectionViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewComponent.swift; sourceTree = "<group>"; };
 		4E568BD52106168100652321 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -365,7 +365,7 @@
 		4E4AD6FE211097D700973D60 /* ChildViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4E4AD6FF211097FD00973D60 /* RedViewController.swift */,
+				4E4AD6FF211097FD00973D60 /* RedViewComponent.swift */,
 			);
 			path = ChildViewController;
 			sourceTree = "<group>";
@@ -703,7 +703,7 @@
 				4E5CFC17212BFD35002261F6 /* IndexPathConverter.swift in Sources */,
 				4E3E05BA21134E5400D6DBB5 /* MessageViewComponent.swift in Sources */,
 				4EB0A26D21F0D99900A1BBA5 /* ColorNibComponent.swift in Sources */,
-				4E4AD700211097FD00973D60 /* RedViewController.swift in Sources */,
+				4E4AD700211097FD00973D60 /* RedViewComponent.swift in Sources */,
 				4E44CDE22115E72A00AB4FCF /* UIViewControllerComponent.swift in Sources */,
 				4E3E05BD2113504800D6DBB5 /* TextReducer.swift in Sources */,
 				4E464A322108C1C600D0C4DE /* ConsoleLog.swift in Sources */,

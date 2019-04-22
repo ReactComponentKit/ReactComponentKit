@@ -13,6 +13,4 @@ class LoadingComponent: UIViewControllerComponent {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         return viewControllerComponent(identifier: "LoadingComponent", storyboard: storyboard)
     }
-    
-    
 }

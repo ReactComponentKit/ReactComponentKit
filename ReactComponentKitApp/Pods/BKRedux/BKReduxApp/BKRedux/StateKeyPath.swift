@@ -32,8 +32,8 @@ public struct StateKeyPath<S: State>: Hashable {
         return applicator(value, state)
     }
     
-    public var hashValue: Int {
-        return id
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
     
     public static func == (lhs: StateKeyPath<S>, rhs: StateKeyPath<S>) -> Bool {

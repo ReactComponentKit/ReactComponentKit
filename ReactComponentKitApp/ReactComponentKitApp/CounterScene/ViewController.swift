@@ -28,7 +28,8 @@ class ViewController: UIViewController {
         minusButton.rx.tap.map { DecreaseAction() }.bind(onNext: viewModel.dispatch).disposed(by: disposeBag)
         colorButton.rx.tap.map { RandomColorAction() }.bind(onNext: viewModel.dispatch).disposed(by: disposeBag)
 
-        viewModel.rx_color
+        viewModel
+            .color
             .asDriver()
             .drive(onNext: { [weak self] (color) in
                 if self?.view.backgroundColor != color {
@@ -37,7 +38,8 @@ class ViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.rx_count
+        viewModel
+            .count
             .asDriver()
             .drive(onNext: { [weak self] (countString) in
                 self?.countLabel.text = countString
