@@ -19,7 +19,7 @@ struct TableViewState: State {
 
 class TableViewModel: RootViewModelType<TableViewState> {
     
-    let rx_sections =  BehaviorRelay<[DefaultSectionModel]>(value: [])
+    let sections =  Output<[DefaultSectionModel]>(value: [])
     
     override init() {
         super.init()
@@ -33,6 +33,6 @@ class TableViewModel: RootViewModelType<TableViewState> {
     }
     
     override func on(newState: TableViewState) {
-        rx_sections.accept(newState.sections)
+        sections.accept(newState.sections)
     }
 }

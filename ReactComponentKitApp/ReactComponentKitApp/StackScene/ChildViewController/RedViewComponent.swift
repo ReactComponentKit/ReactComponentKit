@@ -10,10 +10,14 @@ import UIKit
 import BKEventBus
 import BKRedux
 
-class RedViewController: UIViewControllerComponent {
+protocol RedViewComponentState {
+    var color: UIColor { get }
+}
+
+class RedViewComponent: UIViewControllerComponent {
     
     static func viewController(token: Token) -> UIViewController {
-        return RedViewController(token: token)
+        return RedViewComponent(token: token)
     }
     
     override func viewDidLoad() {
@@ -26,7 +30,9 @@ class RedViewController: UIViewControllerComponent {
     }
     
     override func on(state: State) {
-        guard let stackViewState = state as? StackViewState else { return }
-        view.backgroundColor = stackViewState.color
+        guard let componentState = state as? RedViewComponentState else { return }
+        if view.backgroundColor != componentState.color {
+            view.backgroundColor = componentState.color
+        }
     }
 }

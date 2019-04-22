@@ -43,7 +43,9 @@ class CollectionViewController: UIViewController {
         setupCollectionViewComponent()
         setupButtons()
         
-        viewModel.rx_sections.asDriver()
+        viewModel
+            .sections
+            .asDriver()
             .drive(onNext: { [weak self] (sections) in
                 guard let strongSelf = self else { return }
                 strongSelf.adapter.set(sections: sections)

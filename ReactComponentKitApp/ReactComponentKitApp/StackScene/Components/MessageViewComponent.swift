@@ -11,8 +11,11 @@ import BKRedux
 import BKEventBus
 import SnapKit
 
+protocol MessageViewComponentState {
+    var text: String { get }
+}
+
 class MessageViewComponent: UIViewComponent {
-    
     private lazy var label: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
@@ -31,13 +34,17 @@ class MessageViewComponent: UIViewComponent {
     }
     
     override func on(state: State) {
-        guard let stackViewState = state as? StackViewState else { return }
-        label.text = stackViewState.text
+        guard let componentState = state as? MessageViewComponentState else { return }
+        if label.text != componentState.text {
+            label.text = componentState.text
+        }
     }
     
     override func configure<Item>(item: Item, at indexPath: IndexPath) {
         guard let todoItem = item as? TodoItem else { return }
-        label.text = todoItem.item
+        if label.text != todoItem.item {
+            label.text = todoItem.item
+        }
     }
 }
 

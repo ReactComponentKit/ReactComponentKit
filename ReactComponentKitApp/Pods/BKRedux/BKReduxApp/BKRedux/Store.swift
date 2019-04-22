@@ -23,7 +23,7 @@ public final class Store<S: State> {
     private let disposeBag = DisposeBag()
     
     public init() {
-        state = S()
+        self.state = S()
         self.middlewares = []
         self.reducers = []
         self.postwares = []

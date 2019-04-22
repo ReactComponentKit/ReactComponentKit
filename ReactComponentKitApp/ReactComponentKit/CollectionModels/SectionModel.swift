@@ -29,7 +29,7 @@ extension SectionModel {
     }
 }
 
-public class DefaultSectionModel: SectionModel {
+public class DefaultSectionModel: SectionModel, Equatable {
     public var items: [ItemModel]
     
     public var header: ItemModel?
@@ -43,5 +43,19 @@ public class DefaultSectionModel: SectionModel {
         self.items = items
         self.header = header
         self.footer = footer
+    }
+    
+    public static func == (lhs: DefaultSectionModel, rhs: DefaultSectionModel) -> Bool {
+        guard lhs.items.count == rhs.items.count else { return false }
+        let equalsAllItems = zip(lhs.items, rhs.items).allSatisfy { (left, right) -> Bool in
+            return left.id == right.id
+        }
+        
+        return equalsAllItems == true &&
+            lhs.header?.id == rhs.header?.id &&
+            lhs.footer?.id == rhs.footer?.id &&
+            lhs.inset == rhs.inset &&
+            lhs.minimumLineSpacing == rhs.minimumLineSpacing &&
+            lhs.minimumInteritemSpacing == rhs.minimumInteritemSpacing
     }
 }
