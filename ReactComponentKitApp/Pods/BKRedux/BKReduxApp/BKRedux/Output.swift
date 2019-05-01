@@ -13,7 +13,6 @@ import RxCocoa
 /// Like as `BehaviorRelay` it can't terminate with error or completed.
 /// Output only accepts new value when the current value is not equal to the new value.
 public final class Output<Element: Equatable>: ObservableType {
-    public typealias E = Element
     
     private let _relay: BehaviorRelay<Element>
     
@@ -36,7 +35,7 @@ public final class Output<Element: Equatable>: ObservableType {
     }
     
     /// Subscribes observer
-    public func subscribe<O: ObserverType>(_ observer: O) -> Disposable where O.E == E {
+    public func subscribe<O: ObserverType>(_ observer: O) -> Disposable where O.Element == Element {
         return self._relay.subscribe(observer)
     }
     
