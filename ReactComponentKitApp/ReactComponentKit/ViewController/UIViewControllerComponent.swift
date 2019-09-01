@@ -7,58 +7,29 @@
 //
 
 import UIKit
-import BKEventBus
-import BKRedux
 
 open class UIViewControllerComponent: UIViewController, ReactComponent {
-    
-    public var newStateEventBus: EventBus<ComponentNewStateEvent>? = nil
-    public var dispatchEventBus: EventBus<ComponentDispatchEvent>
-    
+        
     public var token: Token
     
     public static func viewControllerComponent(identifier: String, storyboard: UIStoryboard) -> UIViewControllerComponent {
         return storyboard.instantiateViewController(withIdentifier: identifier) as! UIViewControllerComponent
     }
         
-    public required init(token: Token, receiveState: Bool = true) {
+    public required init(token: Token) {
         self.token = token
-        self.dispatchEventBus = EventBus(token: token)
-        if receiveState == true {
-            self.newStateEventBus = EventBus(token: token)
-        }
         super.init(nibName: nil, bundle: nil)
-        newStateEventBus?.on { [weak self] (event) in
-            guard let strongSelf = self else { return }
-            switch event {
-            case let .on(state):
-                strongSelf.applyNew(state: state)
-            }
-        }
     }
     
     public required init?(coder aDecoder: NSCoder) {
         self.token = Token.empty
-        dispatchEventBus = EventBus(token: Token.empty)
-        newStateEventBus = nil
         super.init(coder: aDecoder)
     }
     
     // Used for nib view controller
-    public func reset(token: Token, receiveState: Bool = true) {
+    public func reset(token: Token) {
         guard token != Token.empty else { return }
         self.token = token
-        self.dispatchEventBus = EventBus(token: token)
-        if receiveState == true {
-            self.newStateEventBus = EventBus(token: token)
-        }
-        newStateEventBus?.on { [weak self] (event) in
-            guard let strongSelf = self else { return }
-            switch event {
-            case let .on(state):
-                strongSelf.applyNew(state: state)
-            }
-        }
     }
     
     private func applyNew(state: State) {
@@ -70,6 +41,6 @@ open class UIViewControllerComponent: UIViewController, ReactComponent {
     }
     
     public func dispatch(action: Action) {
-        dispatchEventBus.post(event: .dispatch(action: action))
+        
     }
 }

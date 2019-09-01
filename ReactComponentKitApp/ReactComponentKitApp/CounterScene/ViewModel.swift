@@ -6,17 +6,16 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import BKRedux
 import RxSwift
 import RxCocoa
 
 struct CounterSceneState: State, ColorNibComponentState {
     var count: Int = 0
     var color: UIColor = .white
-    var error: (Error, Action)? = nil
+    var error: RCKError? = nil
 }
 
-class ViewModel: RootViewModelType<CounterSceneState> {
+class ViewModel: RCKViewModel<CounterSceneState> {
     
     let count = Output<String>(value: "0")
     let color = Output<UIColor>(value: UIColor.white)
@@ -39,11 +38,11 @@ class ViewModel: RootViewModelType<CounterSceneState> {
     override func on(newState: CounterSceneState) {
         count.accept(String(newState.count))
         color.accept(newState.color)
-        propagate(state: newState)
+        //propagate(state: newState)
     }
     
-    override func on(error: Error, action: Action) {
-
+    override func on(error: RCKError) {
+        
     }
     
     deinit {

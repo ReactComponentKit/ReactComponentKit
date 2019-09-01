@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BKEventBus
 
 struct TodoItem: ItemModel {
     var id: Int {

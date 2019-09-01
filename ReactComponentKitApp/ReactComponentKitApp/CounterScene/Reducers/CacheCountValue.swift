@@ -6,7 +6,6 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import BKRedux
 import RxSwift
 
 func cacheCountValue(state: State, action: Action) -> Observable<State> {

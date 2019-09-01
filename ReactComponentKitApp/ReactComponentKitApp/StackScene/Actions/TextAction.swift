@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import BKRedux
 
 struct TextAction: Action {
     let payload = "Hello"

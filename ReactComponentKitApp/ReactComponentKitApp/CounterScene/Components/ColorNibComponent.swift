@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BKRedux
 
 protocol ColorNibComponentState {
     var color: UIColor { get }

@@ -9,12 +9,9 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import BKRedux
-import BKEventBus
 
 
-
-class CollectionViewModel: RootViewModelType<TableViewState> {
+class CollectionViewModel: RCKViewModel<TableViewState> {
     let sections =  Output<[DefaultSectionModel]>(value: [])
     
     override init() {

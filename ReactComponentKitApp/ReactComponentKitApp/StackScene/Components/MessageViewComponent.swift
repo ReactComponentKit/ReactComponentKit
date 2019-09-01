@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import BKRedux
-import BKEventBus
 import SnapKit
 
 protocol MessageViewComponentState {

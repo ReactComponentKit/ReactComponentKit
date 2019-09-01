@@ -7,17 +7,14 @@
 //
 
 import Foundation
-import BKRedux
-import BKEventBus
-import RxCocoa
 
 struct TableViewState: State {
     var todo: [String] = []
     var sections: [DefaultSectionModel] = []
-    var error: (Error, Action)? = nil
+    var error: RCKError? = nil
 }
 
-class TableViewModel: RootViewModelType<TableViewState> {
+class TableViewModel: RCKViewModel<TableViewState> {
     
     let sections =  Output<[DefaultSectionModel]>(value: [])
     
