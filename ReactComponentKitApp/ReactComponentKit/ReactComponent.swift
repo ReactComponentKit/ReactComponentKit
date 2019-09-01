@@ -9,8 +9,12 @@
 import Foundation
 import UIKit
 
+public protocol StateSubscriber {
+    func on(state: State)
+}
+
 // Component that can listen to events & dispatch actions
-public protocol ReactComponent {
+public protocol ReactComponent: StateSubscriber {
     var token: Token { get set }
     init(token: Token)
 }
@@ -18,4 +22,10 @@ public protocol ReactComponent {
 // Component's content size provider
 public protocol ContentSizeProvider {
     var contentSize: CGSize { get }
+}
+
+extension ReactComponent {
+    func on(state: State) {
+        // ignore
+    }
 }

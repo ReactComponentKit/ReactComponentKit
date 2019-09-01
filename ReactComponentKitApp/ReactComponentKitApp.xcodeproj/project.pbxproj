@@ -19,16 +19,15 @@
 		4E0A6F28212700F700A3E0E6 /* SectionHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F27212700F700A3E0E6 /* SectionHeaderComponent.swift */; };
 		4E0A6F2A2127015200A3E0E6 /* TodoSectionHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F292127015200A3E0E6 /* TodoSectionHeaderModel.swift */; };
 		4E0A6F2C2127087B00A3E0E6 /* TodoSectionFooterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0A6F2B2127087B00A3E0E6 /* TodoSectionFooterModel.swift */; };
-		4E0D35BA231BC959009CBC94 /* Postware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35AF231BC959009CBC94 /* Postware.swift */; };
-		4E0D35BB231BC959009CBC94 /* StateKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35B0231BC959009CBC94 /* StateKeyPath.swift */; };
+		4E0C405D231BD71F00E97A0D /* RCK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C405C231BD71F00E97A0D /* RCK.swift */; };
+		4E0C405F231BEC8800E97A0D /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C405E231BEC8800E97A0D /* Effect.swift */; };
+		4E0C4061231BEDC700E97A0D /* ScheduleQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C4060231BEDC700E97A0D /* ScheduleQ.swift */; };
 		4E0D35BC231BC959009CBC94 /* RCKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35B1231BC959009CBC94 /* RCKViewModel.swift */; };
-		4E0D35BD231BC959009CBC94 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35B2231BC959009CBC94 /* Middleware.swift */; };
 		4E0D35BE231BC959009CBC94 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35B3231BC959009CBC94 /* State.swift */; };
 		4E0D35BF231BC959009CBC94 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35B4231BC959009CBC94 /* Reducer.swift */; };
 		4E0D35C0231BC959009CBC94 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35B5231BC959009CBC94 /* Action.swift */; };
 		4E0D35C1231BC959009CBC94 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35B6231BC959009CBC94 /* Output.swift */; };
 		4E0D35C2231BC959009CBC94 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35B7231BC959009CBC94 /* Queue.swift */; };
-		4E0D35C3231BC959009CBC94 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35B8231BC959009CBC94 /* ViewModelType.swift */; };
 		4E0D35C4231BC959009CBC94 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35B9231BC959009CBC94 /* Store.swift */; };
 		4E0D35C6231BC988009CBC94 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35C5231BC988009CBC94 /* Async.swift */; };
 		4E0D35CB231BCA4C009CBC94 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D35CA231BCA4C009CBC94 /* Token.swift */; };
@@ -110,16 +109,15 @@
 		4E0A6F27212700F700A3E0E6 /* SectionHeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderComponent.swift; sourceTree = "<group>"; };
 		4E0A6F292127015200A3E0E6 /* TodoSectionHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSectionHeaderModel.swift; sourceTree = "<group>"; };
 		4E0A6F2B2127087B00A3E0E6 /* TodoSectionFooterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSectionFooterModel.swift; sourceTree = "<group>"; };
-		4E0D35AF231BC959009CBC94 /* Postware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postware.swift; sourceTree = "<group>"; };
-		4E0D35B0231BC959009CBC94 /* StateKeyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateKeyPath.swift; sourceTree = "<group>"; };
+		4E0C405C231BD71F00E97A0D /* RCK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCK.swift; sourceTree = "<group>"; };
+		4E0C405E231BEC8800E97A0D /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
+		4E0C4060231BEDC700E97A0D /* ScheduleQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleQ.swift; sourceTree = "<group>"; };
 		4E0D35B1231BC959009CBC94 /* RCKViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCKViewModel.swift; sourceTree = "<group>"; };
-		4E0D35B2231BC959009CBC94 /* Middleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		4E0D35B3231BC959009CBC94 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		4E0D35B4231BC959009CBC94 /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		4E0D35B5231BC959009CBC94 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		4E0D35B6231BC959009CBC94 /* Output.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
 		4E0D35B7231BC959009CBC94 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
-		4E0D35B8231BC959009CBC94 /* ViewModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		4E0D35B9231BC959009CBC94 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		4E0D35C5231BC988009CBC94 /* Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		4E0D35CA231BCA4C009CBC94 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
@@ -219,6 +217,7 @@
 				4E019D32210E16A100ABD37A /* TableView */,
 				4E019D37210E16A100ABD37A /* CollectionView */,
 				4E4AD6F321108F7500973D60 /* ReactComponent.swift */,
+				4E0C405C231BD71F00E97A0D /* RCK.swift */,
 			);
 			path = ReactComponentKit;
 			sourceTree = "<group>";
@@ -276,17 +275,15 @@
 			isa = PBXGroup;
 			children = (
 				4E0D35B5231BC959009CBC94 /* Action.swift */,
-				4E0D35B2231BC959009CBC94 /* Middleware.swift */,
-				4E0D35AF231BC959009CBC94 /* Postware.swift */,
 				4E0D35B4231BC959009CBC94 /* Reducer.swift */,
 				4E0D35B9231BC959009CBC94 /* Store.swift */,
-				4E0D35B8231BC959009CBC94 /* ViewModelType.swift */,
 				4E0D35B3231BC959009CBC94 /* State.swift */,
-				4E0D35B0231BC959009CBC94 /* StateKeyPath.swift */,
 				4E0D35B7231BC959009CBC94 /* Queue.swift */,
 				4E0D35B6231BC959009CBC94 /* Output.swift */,
 				4E0D35C5231BC988009CBC94 /* Async.swift */,
 				4E0D35CC231BCA73009CBC94 /* RCKError.swift */,
+				4E0C405E231BEC8800E97A0D /* Effect.swift */,
+				4E0C4060231BEDC700E97A0D /* ScheduleQ.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -745,13 +742,13 @@
 				4E4FEC2C212071A30077924F /* UICollectionViewComponent.swift in Sources */,
 				4EE973F121F37423001039B7 /* StoryBoardViewController.swift in Sources */,
 				4E5CFC17212BFD35002261F6 /* IndexPathConverter.swift in Sources */,
+				4E0C4061231BEDC700E97A0D /* ScheduleQ.swift in Sources */,
 				4E3E05BA21134E5400D6DBB5 /* MessageViewComponent.swift in Sources */,
 				4E0D35CD231BCA73009CBC94 /* RCKError.swift in Sources */,
 				4EB0A26D21F0D99900A1BBA5 /* ColorNibComponent.swift in Sources */,
 				4E4AD700211097FD00973D60 /* RedViewComponent.swift in Sources */,
 				4E44CDE22115E72A00AB4FCF /* UIViewControllerComponent.swift in Sources */,
 				4E3E05BD2113504800D6DBB5 /* TextReducer.swift in Sources */,
-				4E0D35C3231BC959009CBC94 /* ViewModelType.swift in Sources */,
 				4E464A322108C1C600D0C4DE /* ConsoleLog.swift in Sources */,
 				4E5CFC1C212BFD35002261F6 /* WagnerFischer.swift in Sources */,
 				4E3E01A221056B9700DDB93C /* ViewController.swift in Sources */,
@@ -759,7 +756,7 @@
 				4EE973EF21F372E7001039B7 /* LoadingComponent.swift in Sources */,
 				4E0A6F14212697AD00A3E0E6 /* UITableViewAdapter.swift in Sources */,
 				4E17CBCD21299B6D00F0B2A3 /* CollectionViewModel.swift in Sources */,
-				4E0D35BB231BC959009CBC94 /* StateKeyPath.swift in Sources */,
+				4E0C405F231BEC8800E97A0D /* Effect.swift in Sources */,
 				4E568BDF2106175100652321 /* CountReducer.swift in Sources */,
 				4E0A6F222126E01800A3E0E6 /* MakeTodoSectionModels.swift in Sources */,
 				4E0A6F17212698B500A3E0E6 /* SectionModel.swift in Sources */,
@@ -769,7 +766,6 @@
 				4E8A6950212665820074EBBA /* TodoReducer.swift in Sources */,
 				4EBD8A8C210C7178009CD480 /* ColorReducer.swift in Sources */,
 				4EE973F321F37441001039B7 /* StoryBoardViewModel.swift in Sources */,
-				4E0D35BD231BC959009CBC94 /* Middleware.swift in Sources */,
 				4E8A694A212661AC0074EBBA /* TableViewController.swift in Sources */,
 				4E0D35C2231BC959009CBC94 /* Queue.swift in Sources */,
 				4E8A694C212661FE0074EBBA /* TableViewModel.swift in Sources */,
@@ -785,7 +781,6 @@
 				4E0A6F2A2127015200A3E0E6 /* TodoSectionHeaderModel.swift in Sources */,
 				4E0D35BE231BC959009CBC94 /* State.swift in Sources */,
 				4EF6E2C1222976BF00977430 /* DiffAware.swift in Sources */,
-				4E0D35BA231BC959009CBC94 /* Postware.swift in Sources */,
 				4E58F2602111F232005373EF /* StackViewModel.swift in Sources */,
 				4E0A6F1F2126C97E00A3E0E6 /* UIViewComponentClassProvider.swift in Sources */,
 				4E5CFC1E212BFD35002261F6 /* Heckel.swift in Sources */,
@@ -799,6 +794,7 @@
 				4E464A372108CEB400D0C4DE /* CacheCountValue.swift in Sources */,
 				4E019D3A210E16A100ABD37A /* CollectionViewComponentCell.swift in Sources */,
 				4E44CDE02115E67300AB4FCF /* UIViewComponent.swift in Sources */,
+				4E0C405D231BD71F00E97A0D /* RCK.swift in Sources */,
 				4E4AD6F421108F7500973D60 /* ReactComponent.swift in Sources */,
 				4E568BDA2106170600652321 /* IncreaseAction.swift in Sources */,
 				4E0D35CB231BCA4C009CBC94 /* Token.swift in Sources */,

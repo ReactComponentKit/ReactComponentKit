@@ -16,14 +16,15 @@ open class RCKViewModel<S: State> {
     // rx port
     private let rx_action = BehaviorRelay<Action>(value: VoidAction())
     private let rx_state = BehaviorRelay<S?>(value: nil)
-    
-    public let store = Store<S>()
-    public let disposeBag = DisposeBag()
-    private var applyNewState: Bool = false
-    private var actionQueue = Queue<(Action, Bool)>()
+    private let store = Store<S>()
+    private let disposeBag = DisposeBag()
+    private var subscribers: [StateSubscriber] = []
+    private let writeLock = DispatchSemaphore(value: 1) // Allow only one thread.
+    private let readLock = DispatchSemaphore(value: 1) // Allow only one thread.
     
     public init() {
         setupRxStream()
+        setupStore()
     }
     
     /// If you use ViewModel as a namespce for middleware, reducer and postware,
@@ -31,68 +32,113 @@ open class RCKViewModel<S: State> {
     /// Because the array for middleware, reducer and postware has strong reference to
     /// ViewModel's instance method(ex: middleware, reducer, postware)
     public func deinitialize() {
+        subscribers.removeAll()
+        subscribers = []
         store.deinitialize()
+        RCK.instance.unregisterViewModel(token: token)
     }
     
     private func setupRxStream() {
         rx_action
             .filter { type(of: $0) != VoidAction.self }
-            .map({ [weak self] (action) in
-                return self?.beforeDispatch(action: action) ?? VoidAction()
-            })
-            .filter { type(of: $0) != VoidAction.self }
             .flatMap { [unowned self] (action)  in
                 return self.store.dispatch(action: action)
             }
             .observeOn(MainScheduler.asyncInstance)
+            .do(afterNext: { _ in
+                
+            })
             .map({ (state: State?) -> S? in
                 return state as? S
             })
-            .subscribe(onNext: { [weak self] (state: S?) in
-                self?.rx_state.accept(state)
-            })
-            .disposed(by: disposeBag)
-        
-        rx_state
             .subscribe(onNext: { [weak self] (newState: S?) in
                 guard let newState = newState else { return }
                 if let error = newState.error {
                     self?.on(error: error)
                 } else {
-                    if let (nextAction, apply) = self?.actionQueue.dequeue() {
-                        if apply == true {
-                            self?.on(newState: newState)
-                        }
-                        self?.rx_action.accept(nextAction)
-                    } else {
-                        self?.on(newState: newState)
-                    }
+                    self?.dispatchStateToSubscribers(state: newState)
                 }
             })
             .disposed(by: disposeBag)
     }
     
-    public func dispatch(action: Action) {
-        if actionQueue.isEmpty {
-            rx_action.accept(action)
-        } else {
-            actionQueue.enqueue(item: (action, true))
+    private func dispatchStateToSubscribers(state: S) {
+        on(newState: state)
+        subscribers.forEach { (subscriber) in
+            subscriber.on(state: state)
         }
     }
     
-    public func nextDispatch(action: Action, applyNewState: Bool = false) {
-        actionQueue.enqueue(item: (action, applyNewState))
+    public func registerSubscriber(subscriber: StateSubscriber) {
+        subscribers.append(subscriber)
     }
     
-    open func beforeDispatch(action: Action) -> Action {
-        return action
+    public final func dispatch<A: Action>(action: A) {
+        rx_action.accept(action)
     }
-    
+            
     open func on(newState: S) {
-        
     }
     
     open func on(error: RCKError) {
+    }
+    
+    open func setupStore() {
+    }
+    
+    public final func initStore(block: (Store<S>) -> Swift.Void) {
+        RCK.instance.registerViewModel(token: token, viewModel: self)
+        block(self.store)
+    }
+    
+ 
+    func setState(block: (S) -> S) -> S {
+        writeLock.wait()
+        defer {
+            writeLock.signal()
+        }
         
+        let newState = block(self.store.state)
+        DispatchQueue.main.sync {
+            on(newState: newState)
+        }
+        return newState
+    }
+    
+    func withState<R>(block: (S) -> R) -> R {
+        readLock.wait()
+        defer {
+            readLock.signal()
+        }
+        return block(self.store.state)
+    }
+    
+    func asyncReducer<A: Action>(state: S, action: A, block: @escaping (A) -> Observable<S>) -> S {
+        asyncFlow(block: block)(state, action)
+        return state
+    }
+    
+    @discardableResult
+    func asyncFlow<A: Action>(block: @escaping (A) -> Observable<S>) -> Reducer<S, A> {
+        return { [weak self] (state: S, action: A) in
+            guard let strongSelf = self else { return state }
+            block(action)
+                .subscribeOn(Q.serialQ)
+                .observeOn(MainScheduler.asyncInstance)
+                .subscribe(
+                    onNext: { newState in
+                        guard let strongSelf = self else { return }
+                        strongSelf.writeLock.wait()
+                        strongSelf.store.state = newState
+                        strongSelf.dispatchStateToSubscribers(state: newState)
+                        strongSelf.writeLock.signal()
+                    },
+                    onError: { (error) in
+                        strongSelf.on(error: RCKError(error: error, action: action))
+                    }
+                )
+                .disposed(by: strongSelf.disposeBag)
+            return state
+        }
     }
 }

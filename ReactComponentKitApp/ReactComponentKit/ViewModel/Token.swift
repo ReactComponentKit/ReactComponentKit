@@ -17,4 +17,7 @@ public struct Token: Equatable {
         token = value
     }
     public static let empty = Token(value: "")
+    internal func toString() -> String {
+        return token
+    }
 }

@@ -6,6 +6,6 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-struct DecreaseAction: Action {
+class DecreaseAction: Action {
     let payload = -1
 }

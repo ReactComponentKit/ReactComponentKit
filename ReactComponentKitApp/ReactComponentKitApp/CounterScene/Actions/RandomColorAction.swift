@@ -9,7 +9,7 @@
 
 import UIKit
 
-struct RandomColorAction: Action {
+class RandomColorAction: Action {
     private static let colors = [
         UIColor.blue,
         UIColor.yellow,

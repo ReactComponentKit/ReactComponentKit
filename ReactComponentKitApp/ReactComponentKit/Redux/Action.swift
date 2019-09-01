@@ -8,11 +8,11 @@
 
 import Foundation
 
-public protocol Action {
+public class Action: NSObject {
     
 }
 
-public struct VoidAction: Action {
-    public init() {
+public class VoidAction: Action {
+    public override init() {
     }
 }

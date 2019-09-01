@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct TextAction: Action {
+class TextAction: Action {
     let payload = "Hello"
 }

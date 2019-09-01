@@ -8,7 +8,7 @@
 
 import RxSwift
 
-func printCachedValue(state: State, action: Action) -> Observable<State> {
+func printCachedValue(state: CounterSceneState, action: Action) -> CounterSceneState {
     print("[## CACHED ##] value: \(UserDefaults.standard.integer(forKey: "count"))")
-    return  Observable.just(state)
+    return  state
 }

@@ -14,15 +14,18 @@ import RxCocoa
 class CollectionViewModel: RCKViewModel<TableViewState> {
     let sections =  Output<[DefaultSectionModel]>(value: [])
     
-    override init() {
-        super.init()
-        store.set(
-            initialState: TableViewState(),
-            reducers: [
-                todoReducer,
-                makeTodoSectionModels,
-                consoleLog
-            ])
+    override func setupStore() {
+        initStore { (store) in
+            store.initial(state: TableViewState())
+            
+//            store.set(
+//                initialState: TableViewState(),
+//                reducers: [
+//                    todoReducer,
+//                    makeTodoSectionModels,
+//                    consoleLog
+//                ])
+        }
     }
     
     override func on(newState: TableViewState) {

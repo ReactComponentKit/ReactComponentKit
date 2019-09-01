@@ -20,13 +20,17 @@ class TableViewModel: RCKViewModel<TableViewState> {
     
     override init() {
         super.init()
-        store.set(
-            initialState: TableViewState(),
-            reducers: [
-                todoReducer,
-                makeTodoSectionModels,
-                consoleLog
-            ])
+        
+        initStore { store in
+            store.initial(state: TableViewState())
+//            store.set(
+//                initialState: TableViewState(),
+//                reducers: [
+//                    todoReducer,
+//                    makeTodoSectionModels,
+//                    consoleLog
+//                ])
+        }
     }
     
     override func on(newState: TableViewState) {

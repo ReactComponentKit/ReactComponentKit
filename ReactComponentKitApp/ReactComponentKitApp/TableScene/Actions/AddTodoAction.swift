@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct AddTodoAction: Action {
+class AddTodoAction: Action {
     let payload = "  Todo : \(Date().description)"
 }

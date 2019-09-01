@@ -9,37 +9,104 @@
 import Foundation
 import RxSwift
 
-private enum Q {
-    fileprivate static let serialQ = SerialDispatchQueueScheduler(qos: .background)
-    fileprivate static let concurrentQ = ConcurrentDispatchQueueScheduler(qos: .background)
+private class RFunctor<S: State, A: Action> {
+    private let reducer: Reducer<S, A>
+    init(reducer: @escaping Reducer<S, A>) {
+        self.reducer = reducer
+    }
+    
+    func invoke(state: State, action: Action) -> State {
+        guard let ss = state as? S else { return state }
+        guard let aa = action as? A else { return state }
+        return reducer(ss, aa)
+    }
+}
+
+private class Flow<S: State> {
+    private var reducerList: [RFunctor<S,Action>]
+    private weak var weakStore: Store<S>? = nil
+    
+    init(store: Store<S>) {
+        self.weakStore = store
+        self.reducerList = []
+    }
+        
+    func registerReducers(_ rlist: [RFunctor<S, Action>]) {
+        self.reducerList = rlist
+    }
+    
+    func flow<A: Action>(action: A) -> Single<S> {
+        return Single.create { [weak self] single -> Disposable in
+            guard
+                let strongSelf = self
+            else {
+                return Disposables.create()
+            }
+            
+            strongSelf.reducerList.forEach { (anyValue) in
+                guard let storeState = strongSelf.weakStore?.state else { return }
+                guard let reducer = anyValue as? RFunctor<S, A> else {
+                    print("Fuck!!!")
+                    return
+                }
+                let newState = reducer.invoke(state: storeState, action: action) as? S
+                if let newState = newState {
+                    strongSelf.weakStore?.state = newState
+                }
+            }
+            
+            if let newState = strongSelf.weakStore?.state {
+                single(.success(newState))
+            }
+            
+            return Disposables.create()
+        }
+    }
 }
 
 public final class Store<S: State> {
-    
-    public private(set) var state: S
-    private(set) var reducers: [Reducer]
-    private(set) var middlewares: [Middleware]
-    private(set) var postwares: [Postware]
+    var state: S
+    private var actionFlowMap: [String: Flow<S>]
+    private var effects: [Effect<S>]
     private let disposeBag = DisposeBag()
     
     public init() {
         self.state = S()
-        self.middlewares = []
-        self.reducers = []
-        self.postwares = []
+        self.actionFlowMap = [:]
+        self.effects = []
+    }
+    
+    public func initial(state: S) {
+        self.state = state
+        self.actionFlowMap = [:]
+        self.effects = []
     }
     
     public func deinitialize() {
-        self.middlewares.removeAll()
-        self.reducers.removeAll()
-        self.postwares.removeAll()
+        self.actionFlowMap.removeAll()
+        self.effects.removeAll()
+    }
+        
+    public func flow<A: Action>(action: A.Type, _ reducers: Reducer<S, Action>...) {
+        
+        let rfunctors = reducers.compactMap { RFunctor<S, Action>(reducer: $0) }
+        
+        let flow = Flow<S>(store: self)
+        flow.registerReducers(rfunctors)
+        let actiionClassName = NSStringFromClass(A.classForCoder())
+        actionFlowMap[actiionClassName] = flow
     }
     
-    public func set(initialState: S, middlewares:[Middleware] = [], reducers:[Reducer] = [], postwares:[Postware] = []) {
-        self.state = initialState
-        self.reducers = reducers
-        self.middlewares = middlewares
-        self.postwares = postwares
+    public func afterFlow(_ effects: Effect<S>...) {
+        self.effects = effects
+    }
+    
+    func doAfterEffects() {
+        var mutatedState = state
+        effects.forEach { (effect) in
+            mutatedState = effect(mutatedState)
+        }
+        state = mutatedState
     }
     
     public func dispatch(action: Action) -> Single<State> {
@@ -53,147 +120,21 @@ public final class Store<S: State> {
             strongSelf.state.error = nil
             let disposeBag = strongSelf.disposeBag
             
-            strongSelf.middleware(state: strongSelf.state, action: action)
-                .subscribeOn(Q.serialQ)
-                .observeOn(Q.serialQ)
-                .flatMap({ [weak self] (middlewareState) -> Observable<State> in
-                    guard let strongSelf = self else { return Observable.just(middlewareState) }
-                    return strongSelf.reduce(state: middlewareState, action: action)
-                })
-                .flatMap({ [weak self] (reducesState) -> Observable<State> in
-                    guard let strongSelf = self else { return Observable.just(reducesState) }
-                    return strongSelf.postware(state: reducesState, action: action)
-                })
-                .observeOn(MainScheduler.asyncInstance)
-                .subscribe(onNext: { (newState) in
-                    if let newS = newState as? S {
-                        strongSelf.state = newS
-                    }
-                    single(.success(strongSelf.state))
-                }, onError: { (error) in
-                    // 오류 발생시에는 액션에 따라 오류를 처리할지 말지 결정하기 위해서 오류와 액션을 동시에 넣어준다.
-                    strongSelf.state.error = RCKError(error: error, action: action)
-                    single(.success(strongSelf.state))
-                })
-                .disposed(by: disposeBag)
-            
+            let actionClassName = NSStringFromClass(action.classForCoder)
+            let actionFlow = strongSelf.actionFlowMap[actionClassName]
+            if let actionFlow = actionFlow {
+                actionFlow.flow(action: action)
+                    .subscribeOn(Q.serialQ)
+                    .observeOn(Q.serialQ)
+                    .subscribe(onSuccess: { (newState) in
+                        single(.success(newState))
+                    }, onError: { error in
+                        strongSelf.state.error = RCKError(error: error, action: action)
+                        single(.success(strongSelf.state))
+                    })
+                    .disposed(by: disposeBag)
+            }
             return Disposables.create()
         })
-    }    
-    
-    private func middleware(state: State, action: Action) -> Observable<State> {
-        guard middlewares.isEmpty == false else { return .just(state) }
-        return Single.create(subscribe: { [weak self] (single) -> Disposable in
-            guard let strongSelf = self else {
-                single(.success(state))
-                return Disposables.create()
-            }
-
-            Observable.from(strongSelf.middlewares)
-                .subscribeOn(Q.serialQ)
-                .observeOn(Q.serialQ)
-                .flatMap({ (m: Middleware) -> Observable<State> in
-                    return m(strongSelf.state, action)
-                })
-                .do(onNext: { (modifiedState) in
-                    if let modifiedS = modifiedState as? S {
-                        strongSelf.state = modifiedS
-                    }
-                })
-                .reduce(strongSelf.state, accumulator: { (ignore, nextState) -> State in
-                    return nextState
-                })
-                .subscribe(onNext: { (finalState) in
-                    if let finalS = finalState as? S {
-                        strongSelf.state = finalS
-                    }
-                    single(.success(strongSelf.state))
-                }, onError: { (error) in
-                    // 오류 발생시에는 액션에 따라 오류를 처리할지 말지 결정하기 위해서 오류와 액션을 동시에 넣어준다.
-                    strongSelf.state.error = RCKError(error: error, action: action)
-                    single(.success(strongSelf.state))
-                })
-                .disposed(by: strongSelf.disposeBag)
-
-            return Disposables.create()
-        }).asObservable()
-    }
-    
-    private func reduce(state: State, action: Action) -> Observable<State> {
-        guard reducers.isEmpty == false, state.error == nil else { return .just(state) }
-        
-        return Single.create(subscribe: { [weak self] (single) -> Disposable in
-            guard let strongSelf = self else {
-                single(.success(state))
-                return Disposables.create()
-            }
-            
-            Observable.from(strongSelf.reducers)
-                .subscribeOn(Q.serialQ)
-                .observeOn(Q.serialQ)
-                .flatMap({ (r: Reducer) -> Observable<State> in
-                    return r(strongSelf.state, action)
-                })
-                .do(onNext: { (modifiedState) in
-                    if let modifiedS = modifiedState as? S {
-                        strongSelf.state = modifiedS
-                    }
-                })
-                .reduce(strongSelf.state, accumulator: { (ignore, nextState) -> State in
-                    return nextState
-                })
-                .subscribe(onNext: { (finalState) in
-                    if let finalS = finalState as? S {
-                        strongSelf.state = finalS
-                    }
-                    single(.success(strongSelf.state))
-                }, onError: { (error) in
-                    // 오류 발생시에는 액션에 따라 오류를 처리할지 말지 결정하기 위해서 오류와 액션을 동시에 넣어준다.
-                    strongSelf.state.error = RCKError(error: error, action: action)
-                    single(.success(strongSelf.state))
-                })
-                .disposed(by: strongSelf.disposeBag)
-            
-            return Disposables.create()
-        }).asObservable()
-    }
-    
-    private func postware(state: State, action: Action) -> Observable<State> {
-        guard postwares.isEmpty == false, state.error == nil else { return .just(state) }
-        
-        return Single.create(subscribe: { [weak self] (single) -> Disposable in
-            guard let strongSelf = self else {
-                single(.success(state))
-                return Disposables.create()
-            }
-            
-            Observable.from(strongSelf.postwares)
-                .subscribeOn(Q.serialQ)
-                .observeOn(Q.serialQ)
-                .flatMap({ (p: Postware) -> Observable<State> in
-                    return p(strongSelf.state, action)
-                })
-                .do(onNext: { (modifiedState) in
-                    if let modifiedS = modifiedState as? S {
-                        strongSelf.state = modifiedS
-                    }
-                })
-                .reduce(strongSelf.state, accumulator: { (ignore, nextState) -> State in
-                    return nextState
-                })
-                .subscribe(onNext: { (finalState) in
-                    if let finalS = finalState as? S {
-                        strongSelf.state = finalS
-                    }
-                    single(.success(strongSelf.state))
-                }, onError: { (error) in
-                    // 오류 발생시에는 액션에 따라 오류를 처리할지 말지 결정하기 위해서 오류와 액션을 동시에 넣어준다.
-                    strongSelf.state.error = RCKError(error: error, action: action)
-                    single(.success(strongSelf.state))
-                })
-                .disposed(by: strongSelf.disposeBag)
-            
-            return Disposables.create()
-        }).asObservable()
     }
 }

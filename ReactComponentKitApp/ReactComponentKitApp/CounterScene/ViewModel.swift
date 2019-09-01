@@ -20,19 +20,29 @@ class ViewModel: RCKViewModel<CounterSceneState> {
     let count = Output<String>(value: "0")
     let color = Output<UIColor>(value: UIColor.white)
     
-    override init() {
-        super.init()
-
-        // STORE
-        store.set(
-            initialState: CounterSceneState(),
-            reducers: [
+    override func setupStore() {
+        initStore { (store) in
+            store.initial(state: CounterSceneState())
+            store.flow(
+                action: IncreaseAction.self,
                 printCachedValue,
-                consoleLog,
-                countReducer,
-                colorReducer,
-                cacheCountValue
-            ])
+                increaseCount,
+                { state, action in
+                    print("TEST")
+                    return state
+                })
+            store.flow(action: DecreaseAction.self, printCachedValue, decreaseCount)
+//            store.set(
+//                initialState: CounterSceneState(),
+//            
+//                reducers: [
+//                    printCachedValue,
+//                    consoleLog,
+//                    countReducer,
+//                    colorReducer,
+//                    cacheCountValue
+//                ])
+        }
     }
     
     override func on(newState: CounterSceneState) {

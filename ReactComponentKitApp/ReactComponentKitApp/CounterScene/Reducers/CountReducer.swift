@@ -6,19 +6,19 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import RxSwift
+import Foundation
 
-func countReducer(state: State, action: Action) -> Observable<State> {
-    guard var mutableState = state as? CounterSceneState else { return .just(state) }
-    
-    switch action {
-    case let act as IncreaseAction:
-        mutableState.count += act.payload
-    case let act as DecreaseAction:
-        mutableState.count += act.payload
-    default:
-        break
-    }
-    
-    return .just(mutableState)
+func increaseCount(state: CounterSceneState, action: Action) -> CounterSceneState {
+    guard let act = action as? IncreaseAction else { return state }
+    var mutableState = state
+    mutableState.count += act.payload
+    return mutableState
+}
+
+
+func decreaseCount(state: CounterSceneState, action: Action) -> CounterSceneState {
+    guard let act = action as? DecreaseAction else { return state }
+    var mutableState = state
+    mutableState.count += act.payload
+    return mutableState
 }

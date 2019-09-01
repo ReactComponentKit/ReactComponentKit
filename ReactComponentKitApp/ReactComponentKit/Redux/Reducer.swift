@@ -9,5 +9,4 @@
 //
 import RxSwift
 
-public typealias Reducer = (State, Action) -> Observable<State>
-public typealias Reducer2<S: State, A: Action> = (S, A) -> S
+public typealias Reducer<S: State, A: Action> = (S, A) -> S

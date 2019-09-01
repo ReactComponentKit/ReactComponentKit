@@ -16,14 +16,17 @@ struct StackViewState: State, MessageViewComponentState, RedViewComponentState {
 }
 
 class StackViewModel: RCKViewModel<StackViewState> {
-    override init() {
-        super.init()
-        store.set(
-            initialState: StackViewState(),
-            reducers: [
-                colorReducer,
-                textReducer
-            ])
+    
+    override func setupStore() {
+        initStore { (store) in
+            store.initial(state: StackViewState())
+//            store.set(
+//                initialState: StackViewState(),
+//                reducers: [
+//                    colorReducer,
+//                    textReducer
+//                ])
+        }
     }
     
     override func on(newState: StackViewState) {
