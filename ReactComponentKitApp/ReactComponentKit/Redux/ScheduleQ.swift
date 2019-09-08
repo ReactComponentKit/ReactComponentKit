@@ -11,5 +11,6 @@ import RxSwift
 
 internal enum Q {
     internal static let serialQ = SerialDispatchQueueScheduler(qos: .background)
+    internal static let serialDispatchQ = SerialDispatchQueueScheduler(qos: .background)
     internal static let concurrentQ = ConcurrentDispatchQueueScheduler(qos: .background)
 }

@@ -12,6 +12,14 @@ class Queue<T> {
     private var items: [T] = []
     private let semaphore = DispatchSemaphore(value: 1) // Allow only one thread.
     
+    func peek() -> T? {
+        semaphore.wait()
+        defer {
+            semaphore.signal()
+        }
+        return items.last
+    }
+    
     func enqueue(item: T) {
         semaphore.wait()
         defer {
@@ -28,6 +36,15 @@ class Queue<T> {
         return items.popLast()
     }
     
+    func clear() {
+        semaphore.wait()
+        defer {
+            semaphore.signal()
+        }
+        items.removeAll()
+        items = []
+    }
+    
     var count: Int {
         semaphore.wait()
         defer {
@@ -42,5 +59,13 @@ class Queue<T> {
             semaphore.signal()
         }
         return items.isEmpty
+    }
+    
+    var isNotEmpty: Bool {
+        semaphore.wait()
+        defer {
+            semaphore.signal()
+        }
+        return !items.isEmpty
     }
 }

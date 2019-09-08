@@ -9,56 +9,53 @@
 import Foundation
 import RxSwift
 
-private class RFunctor<S: State, A: Action> {
-    private let reducer: Reducer<S, A>
-    init(reducer: @escaping Reducer<S, A>) {
-        self.reducer = reducer
-    }
-    
-    func invoke(state: State, action: Action) -> State {
-        guard let ss = state as? S else { return state }
-        guard let aa = action as? A else { return state }
-        return reducer(ss, aa)
+public class ActionWrapper {
+    fileprivate let action: Action
+    fileprivate init(action: Action) {
+        self.action = action
     }
 }
 
-private class Flow<S: State> {
-    private var reducerList: [RFunctor<S,Action>]
+public class Flowable<S: State> {
+    fileprivate func flow(_ action: ActionWrapper) -> Single<S>? {
+        return nil
+    }
+}
+
+public class Flow<S: State, A: Action>: Flowable<S> {
+    private var reducerList: [Reducer<S, A>]
     private weak var weakStore: Store<S>? = nil
     
-    init(store: Store<S>) {
+    internal init(store: Store<S>) {
         self.weakStore = store
         self.reducerList = []
     }
-        
-    func registerReducers(_ rlist: [RFunctor<S, Action>]) {
-        self.reducerList = rlist
+            
+    public func flow(_ reducers: Reducer<S, A>...) {
+        reducerList.append(contentsOf: reducers)
     }
-    
-    func flow<A: Action>(action: A) -> Single<S> {
+        
+   fileprivate override func flow(_ action: ActionWrapper) -> Single<S>? {
         return Single.create { [weak self] single -> Disposable in
             guard
                 let strongSelf = self
             else {
                 return Disposables.create()
             }
-            
-            strongSelf.reducerList.forEach { (anyValue) in
+
+            strongSelf.reducerList.forEach { (reducer) in
                 guard let storeState = strongSelf.weakStore?.state else { return }
-                guard let reducer = anyValue as? RFunctor<S, A> else {
-                    print("Fuck!!!")
-                    return
-                }
-                let newState = reducer.invoke(state: storeState, action: action) as? S
+                guard let typedAction = action.action as? A else { return }
+                let newState = reducer(storeState, typedAction)
                 if let newState = newState {
                     strongSelf.weakStore?.state = newState
                 }
             }
-            
+
             if let newState = strongSelf.weakStore?.state {
                 single(.success(newState))
             }
-            
+
             return Disposables.create()
         }
     }
@@ -66,12 +63,14 @@ private class Flow<S: State> {
 
 public final class Store<S: State> {
     var state: S
-    private var actionFlowMap: [String: Flow<S>]
+    private var beforeActionFlow: ((Action) -> Action)? = nil
+    private var actionFlowMap: [String: Flowable<S>] = [:]
     private var effects: [Effect<S>]
     private let disposeBag = DisposeBag()
     
     public init() {
         self.state = S()
+        self.beforeActionFlow = nil
         self.actionFlowMap = [:]
         self.effects = []
     }
@@ -86,22 +85,26 @@ public final class Store<S: State> {
         self.actionFlowMap.removeAll()
         self.effects.removeAll()
     }
+    
+    public func beforeActionFlow(_ actionFlow: @escaping (Action) -> Action) {
+        self.beforeActionFlow = actionFlow
+    }
         
-    public func flow<A: Action>(action: A.Type, _ reducers: Reducer<S, Action>...) {
-        
-        let rfunctors = reducers.compactMap { RFunctor<S, Action>(reducer: $0) }
-        
-        let flow = Flow<S>(store: self)
-        flow.registerReducers(rfunctors)
-        let actiionClassName = NSStringFromClass(A.classForCoder())
-        actionFlowMap[actiionClassName] = flow
+    public func flow<A: Action>(action: A.Type) -> Flow<S, A> {
+        let flow = Flow<S, A>(store: self)
+        actionFlowMap[action.name] = flow
+        return flow
     }
     
-    public func afterFlow(_ effects: Effect<S>...) {
+    public func afterStateFlow(_ effects: Effect<S>...) {
         self.effects = effects
     }
     
-    func doAfterEffects() {
+    internal func startFlow(action: Action) -> Action {
+        return beforeActionFlow?(action) ?? action
+    }
+    
+    internal func doAfterEffects() {
         var mutatedState = state
         effects.forEach { (effect) in
             mutatedState = effect(mutatedState)
@@ -109,7 +112,7 @@ public final class Store<S: State> {
         state = mutatedState
     }
     
-    public func dispatch(action: Action) -> Single<State> {
+    public func dispatch(action: Action) -> Single<S> {
         let immutableState = self.state
         return Single.create(subscribe: { [weak self] (single) -> Disposable in
             guard let strongSelf = self else {
@@ -120,19 +123,22 @@ public final class Store<S: State> {
             strongSelf.state.error = nil
             let disposeBag = strongSelf.disposeBag
             
-            let actionClassName = NSStringFromClass(action.classForCoder)
-            let actionFlow = strongSelf.actionFlowMap[actionClassName]
-            if let actionFlow = actionFlow {
-                actionFlow.flow(action: action)
-                    .subscribeOn(Q.serialQ)
-                    .observeOn(Q.serialQ)
-                    .subscribe(onSuccess: { (newState) in
-                        single(.success(newState))
-                    }, onError: { error in
-                        strongSelf.state.error = RCKError(error: error, action: action)
-                        single(.success(strongSelf.state))
-                    })
-                    .disposed(by: disposeBag)
+            let actionName = type(of: action.self).name
+            let actionFlowQ = strongSelf.actionFlowMap[actionName]
+            if let actionFlow = actionFlowQ {
+                let actionWrapper = ActionWrapper(action: action)
+                if let flowResult = actionFlow.flow(actionWrapper) {
+                    flowResult
+                        .subscribeOn(Q.concurrentQ)
+                        .observeOn(Q.concurrentQ)
+                        .subscribe(onSuccess: { (newState) in
+                            single(.success(newState))
+                        }, onError: { error in
+                            strongSelf.state.error = RCKError(error: error, action: action)
+                            single(.success(strongSelf.state))
+                        })
+                        .disposed(by: disposeBag)
+                }
             }
             return Disposables.create()
         })

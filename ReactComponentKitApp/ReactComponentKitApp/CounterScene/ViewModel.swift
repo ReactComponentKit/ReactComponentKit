@@ -23,32 +23,42 @@ class ViewModel: RCKViewModel<CounterSceneState> {
     override func setupStore() {
         initStore { (store) in
             store.initial(state: CounterSceneState())
-            store.flow(
-                action: IncreaseAction.self,
-                printCachedValue,
-                increaseCount,
-                { state, action in
-                    print("TEST")
-                    return state
-                })
-            store.flow(action: DecreaseAction.self, printCachedValue, decreaseCount)
-//            store.set(
-//                initialState: CounterSceneState(),
-//            
-//                reducers: [
-//                    printCachedValue,
-//                    consoleLog,
-//                    countReducer,
-//                    colorReducer,
-//                    cacheCountValue
-//                ])
+            
+            store.beforeActionFlow { (action) -> Action in
+                logAction(action: action)
+            }
+                        
+            store.flow(action: IncreaseAction.self)
+                .flow(
+                    increaseCount,
+                    cacheCountValue,
+                    printCachedValue
+                )
+                    
+            store.flow(action: DecreaseAction.self)
+                .flow(
+                    awaitFlow({ [unowned self] (action) -> Observable<CounterSceneState> in
+                        return Single.create { single in
+                            Thread.sleep(forTimeInterval: 3)
+                            self.withState { state in
+                                single(.success(state))
+                            }
+                            return Disposables.create()
+                        }.asObservable()
+                    }),
+                    decreaseCount,
+                    cacheCountValue,
+                    printCachedValue
+                )
+                
+            store.flow(action: RandomColorAction.self)
+                .flow(colorReducer)
         }
     }
     
     override func on(newState: CounterSceneState) {
         count.accept(String(newState.count))
         color.accept(newState.color)
-        //propagate(state: newState)
     }
     
     override func on(error: RCKError) {

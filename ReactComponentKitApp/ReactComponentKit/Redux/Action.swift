@@ -8,11 +8,16 @@
 
 import Foundation
 
-public class Action: NSObject {
-    
+public protocol Action {
+    static var name: String { get }
 }
 
-public class VoidAction: Action {
-    public override init() {
+extension Action {
+    public static var name: String {
+        return "\(type(of: self))"
     }
+}
+
+public struct VoidAction: Action {
+    
 }

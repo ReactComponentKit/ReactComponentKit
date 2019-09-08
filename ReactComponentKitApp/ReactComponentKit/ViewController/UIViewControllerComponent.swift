@@ -38,9 +38,5 @@ open class UIViewControllerComponent: UIViewController, ReactComponent {
     
     open func on(state: State) {
         
-    }
-    
-    public func dispatch(action: Action) {
-        
-    }
+    }    
 }

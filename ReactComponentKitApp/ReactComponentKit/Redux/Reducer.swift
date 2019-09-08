@@ -9,4 +9,5 @@
 //
 import RxSwift
 
-public typealias Reducer<S: State, A: Action> = (S, A) -> S
+public typealias Reducer<S: State, A: Action> = (S, A) -> S?
+public typealias AsyncReducer<S: State, A: Action> = (A) -> Observable<S>

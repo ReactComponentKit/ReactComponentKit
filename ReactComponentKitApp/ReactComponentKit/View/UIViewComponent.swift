@@ -94,12 +94,7 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
     // Override it to configure or update views
     open func configure<Item>(item: Item, at indexPath: IndexPath) {
     
-    }
-    
-    // Use it to dispatch actions
-    public func dispatch(action: Action) {
-
-    }
+    }    
 }
 
 extension NSObject {

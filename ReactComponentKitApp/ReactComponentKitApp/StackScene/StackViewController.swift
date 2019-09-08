@@ -23,7 +23,6 @@ class StackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //childVC = add(viewController: RedViewController.viewController(token: viewModel.token))
         self.view.addSubview(messageViewComponent)
         self.view.addSubview(buttonComponent)
         
@@ -46,8 +45,10 @@ class StackViewController: UIViewController {
     }
 
     @IBAction func clickedAddButton(_ sender: Any) {
-        //childVC = add(viewController: RedViewController.viewController(token: viewModel.token))
         self.viewModel.dispatch(action: TextAction())
     }
     
+    deinit {
+        viewModel.deinitialize()
+    }
 }

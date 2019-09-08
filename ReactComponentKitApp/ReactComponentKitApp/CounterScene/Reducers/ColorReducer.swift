@@ -9,11 +9,8 @@
 import RxSwift
 import UIKit
 
-func colorReducer(state: State, action: Action) -> Observable<State> {
-    guard var mutableState = state as? CounterSceneState else { return .just(state) }
-    
-    if let act = action as? RandomColorAction {
-        mutableState.color = act.payload
-    }
-    return .just(mutableState)
+func colorReducer(state: CounterSceneState, action: RandomColorAction) -> CounterSceneState {
+    var mutableState = state
+    mutableState.color = action.payload
+    return mutableState
 }

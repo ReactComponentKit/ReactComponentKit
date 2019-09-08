@@ -8,6 +8,7 @@ target 'ReactComponentKitApp' do
   # Pods for ReactComponentKitApp
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxBlocking'
   pod 'SnapKit'
   
   target 'ReactComponentKitAppTests' do

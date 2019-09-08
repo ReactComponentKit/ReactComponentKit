@@ -70,6 +70,9 @@
 		4E5CFC1E212BFD35002261F6 /* Heckel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CFC14212BFD35002261F6 /* Heckel.swift */; };
 		4E5CFC1F212BFD35002261F6 /* MoveReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CFC15212BFD35002261F6 /* MoveReducer.swift */; };
 		4E5CFC20212BFD35002261F6 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CFC16212BFD35002261F6 /* Change.swift */; };
+		4E63858F232549EA00D26E69 /* SubscriberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E63858E232549EA00D26E69 /* SubscriberExtension.swift */; };
+		4E63859123254BFB00D26E69 /* ActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E63859023254BFB00D26E69 /* ActionDispatcher.swift */; };
+		4E63859323254C6000D26E69 /* DispatchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E63859223254C6000D26E69 /* DispatchExtension.swift */; };
 		4E8A694A212661AC0074EBBA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A6949212661AC0074EBBA /* TableViewController.swift */; };
 		4E8A694C212661FE0074EBBA /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A694B212661FE0074EBBA /* TableViewModel.swift */; };
 		4E8A6950212665820074EBBA /* TodoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A694F212665820074EBBA /* TodoReducer.swift */; };
@@ -164,6 +167,9 @@
 		4E5CFC14212BFD35002261F6 /* Heckel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heckel.swift; sourceTree = "<group>"; };
 		4E5CFC15212BFD35002261F6 /* MoveReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveReducer.swift; sourceTree = "<group>"; };
 		4E5CFC16212BFD35002261F6 /* Change.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Change.swift; sourceTree = "<group>"; };
+		4E63858E232549EA00D26E69 /* SubscriberExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriberExtension.swift; sourceTree = "<group>"; };
+		4E63859023254BFB00D26E69 /* ActionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDispatcher.swift; sourceTree = "<group>"; };
+		4E63859223254C6000D26E69 /* DispatchExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchExtension.swift; sourceTree = "<group>"; };
 		4E8A6949212661AC0074EBBA /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		4E8A694B212661FE0074EBBA /* TableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
 		4E8A694F212665820074EBBA /* TodoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoReducer.swift; sourceTree = "<group>"; };
@@ -207,6 +213,7 @@
 		4E019D31210E16A100ABD37A /* ReactComponentKit */ = {
 			isa = PBXGroup;
 			children = (
+				4E63858D232549CB00D26E69 /* Subscriber */,
 				4E0D35C7231BCA1B009CBC94 /* ViewModel */,
 				4E0D35A8231BC918009CBC94 /* Redux */,
 				4ECD183A2209CD4C005FA347 /* ActionDispatcher */,
@@ -491,6 +498,14 @@
 			path = Algorithms;
 			sourceTree = "<group>";
 		};
+		4E63858D232549CB00D26E69 /* Subscriber */ = {
+			isa = PBXGroup;
+			children = (
+				4E63858E232549EA00D26E69 /* SubscriberExtension.swift */,
+			);
+			path = Subscriber;
+			sourceTree = "<group>";
+		};
 		4E8A6948212661760074EBBA /* TableScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,6 +548,8 @@
 		4ECD183A2209CD4C005FA347 /* ActionDispatcher */ = {
 			isa = PBXGroup;
 			children = (
+				4E63859023254BFB00D26E69 /* ActionDispatcher.swift */,
+				4E63859223254C6000D26E69 /* DispatchExtension.swift */,
 			);
 			path = ActionDispatcher;
 			sourceTree = "<group>";
@@ -774,6 +791,7 @@
 				4E568BDD2106173200652321 /* DecreaseAction.swift in Sources */,
 				4E0A6F2C2127087B00A3E0E6 /* TodoSectionFooterModel.swift in Sources */,
 				4E3E01A021056B9700DDB93C /* AppDelegate.swift in Sources */,
+				4E63859123254BFB00D26E69 /* ActionDispatcher.swift in Sources */,
 				4E568BD62106168100652321 /* ViewModel.swift in Sources */,
 				4E43A3AD212843B000897A14 /* UICollectionViewAdapter.swift in Sources */,
 				4EBD8A8A210C70C3009CD480 /* RandomColorAction.swift in Sources */,
@@ -795,6 +813,7 @@
 				4E019D3A210E16A100ABD37A /* CollectionViewComponentCell.swift in Sources */,
 				4E44CDE02115E67300AB4FCF /* UIViewComponent.swift in Sources */,
 				4E0C405D231BD71F00E97A0D /* RCK.swift in Sources */,
+				4E63858F232549EA00D26E69 /* SubscriberExtension.swift in Sources */,
 				4E4AD6F421108F7500973D60 /* ReactComponent.swift in Sources */,
 				4E568BDA2106170600652321 /* IncreaseAction.swift in Sources */,
 				4E0D35CB231BCA4C009CBC94 /* Token.swift in Sources */,
@@ -803,6 +822,7 @@
 				4E5CFC18212BFD35002261F6 /* UITableView+Extensions.swift in Sources */,
 				4E4FEC2A21206FF20077924F /* UITableViewComponent.swift in Sources */,
 				4E0A6F28212700F700A3E0E6 /* SectionHeaderComponent.swift in Sources */,
+				4E63859323254C6000D26E69 /* DispatchExtension.swift in Sources */,
 				4E4AD6FA211095F600973D60 /* UIViewController+Component.swift in Sources */,
 				4E0D35C1231BC959009CBC94 /* Output.swift in Sources */,
 				4E4AD6FD2110977100973D60 /* StackViewController.swift in Sources */,
@@ -898,13 +918,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -953,12 +973,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -978,7 +998,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.skyfe79.ReactComponentKitApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -998,7 +1018,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.skyfe79.ReactComponentKitApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1019,7 +1039,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.skyfe79.ReactComponentKitAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReactComponentKitApp.app/ReactComponentKitApp";
 			};
@@ -1041,7 +1061,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.skyfe79.ReactComponentKitAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReactComponentKitApp.app/ReactComponentKitApp";
 			};

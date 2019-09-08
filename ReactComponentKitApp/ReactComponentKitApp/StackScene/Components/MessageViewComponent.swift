@@ -29,6 +29,8 @@ class MessageViewComponent: UIViewComponent {
         label.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+        subscribeState()
     }
     
     override func on(state: State) {

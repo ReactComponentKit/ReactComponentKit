@@ -25,7 +25,7 @@ internal class RCK {
         map.removeValue(forKey: token.toString())
     }
     
-    internal func viewModel<S: State>(token: Token) -> RCKViewModel<S>? {
-        return map[token.toString()] as? RCKViewModel<S>
+    internal func viewModel(token: Token) -> RCKViewModelType? {
+        return map[token.toString()] as? RCKViewModelType
     }
 }

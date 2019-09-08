@@ -8,14 +8,8 @@
 
 import RxSwift
 
-func cacheCountValue(state: State, action: Action) -> Observable<State> {
-    guard let countState = state as? CounterSceneState else { return Observable.just(state) }
-    return Single.create(subscribe: { (single) -> Disposable in
-        
-        UserDefaults.standard.set(countState.count, forKey: "count")
-        UserDefaults.standard.synchronize()
-        single(.success(countState))
-        
-        return Disposables.create()
-    }).asObservable()
+func cacheCountValue(state: CounterSceneState, action: Action) -> CounterSceneState {
+    UserDefaults.standard.set(state.count, forKey: "count")
+    UserDefaults.standard.synchronize()    
+    return state
 }

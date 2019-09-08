@@ -23,13 +23,9 @@ class TableViewModel: RCKViewModel<TableViewState> {
         
         initStore { store in
             store.initial(state: TableViewState())
-//            store.set(
-//                initialState: TableViewState(),
-//                reducers: [
-//                    todoReducer,
-//                    makeTodoSectionModels,
-//                    consoleLog
-//                ])
+            store.beforeActionFlow { logAction(action: $0) }
+            store.flow(action: AddTodoAction.self)
+                .flow(todoReducer, makeTodoSectionModels)
         }
     }
     

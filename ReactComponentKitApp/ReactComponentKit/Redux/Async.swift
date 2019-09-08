@@ -12,5 +12,5 @@ public enum Async<T> {
     case uninitialized
     case loading
     case success(value: T)
-    case failed(error: Error)
+    case failed(error: RCKError)
 }
