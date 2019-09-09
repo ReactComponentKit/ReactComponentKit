@@ -10,7 +10,11 @@ import UIKit
 
 open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
     
-    public var token: Token
+    public var token: Token {
+        didSet {
+            onChangedToken()
+        }
+    }
     private weak var nibContentView: UIView? = nil
     public var contentView: UIView {
         return nibContentView ?? self
@@ -71,13 +75,17 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
         
     // It is only called when the component is in UITableView's cell or UICollectionView's cell.
     open func prepareForReuse() {
-        
     }
+    
     
     // It is called when the component is standalone.
     func applyNew(state: State) {
         on(state: state)
         invalidateIntrinsicContentSize()
+    }
+    
+    open func onChangedToken() {
+        
     }
     
     // Override it to configure or update views

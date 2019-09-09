@@ -17,6 +17,7 @@ extension ReactComponent {
 
 extension StateSubscriber {
     public func subscribeState(token: Token) {
+        guard token != Token.empty else { return }
         let viewModel = RCK.instance.viewModel(token: token)
         viewModel?.registerSubscriber(subscriber: self)
     }

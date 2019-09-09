@@ -10,7 +10,12 @@ import UIKit
 
 open class UIViewControllerComponent: UIViewController, ReactComponent {
         
-    public var token: Token
+    public var token: Token {
+        didSet {
+            onChangedToken()
+        }
+    }
+        
     
     public static func viewControllerComponent(identifier: String, storyboard: UIStoryboard) -> UIViewControllerComponent {
         return storyboard.instantiateViewController(withIdentifier: identifier) as! UIViewControllerComponent
@@ -30,6 +35,9 @@ open class UIViewControllerComponent: UIViewController, ReactComponent {
     public func reset(token: Token) {
         guard token != Token.empty else { return }
         self.token = token
+    }
+    
+    open func onChangedToken() {
     }
     
     private func applyNew(state: State) {
