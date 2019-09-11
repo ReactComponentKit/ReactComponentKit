@@ -153,10 +153,14 @@ open class RCKViewModel<S: State>: RCKViewModelType {
     
     public final func awaitFlow<A: Action>(_ asyncReducer: @escaping AsyncReducer<S, A>) -> Reducer<S, A> {
         return { (state: S, action: A) -> S? in
-            return try? asyncReducer(action)
+            do {
+                return try asyncReducer(action)
                 .subscribeOn(Q.concurrentQ)
                 .toBlocking()
                 .last()
+            } catch {
+                return nil
+            }
         }
     }
     
