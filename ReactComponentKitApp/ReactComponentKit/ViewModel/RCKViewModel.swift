@@ -123,7 +123,7 @@ open class RCKViewModel<S: State>: RCKViewModelType {
         block(self.store)
     }
     
- 
+    @discardableResult
     public final func setState(block: (S) -> S) -> S {
         writeLock.wait()
         defer {
@@ -143,6 +143,7 @@ open class RCKViewModel<S: State>: RCKViewModelType {
         return newState
     }
     
+    @discardableResult
     public final func withState<R>(block: (S) -> R) -> R {
         readLock.wait()
         defer {
