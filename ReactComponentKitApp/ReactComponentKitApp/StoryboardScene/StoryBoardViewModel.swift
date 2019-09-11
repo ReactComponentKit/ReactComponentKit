@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import BKRedux
 
 struct StoryBoardViewState: State {
-    var error: (Error, Action)?
+    var error: RCKError?
 }
 
-class StoryBoardViewModel: RootViewModelType<StoryBoardViewState> {
+class StoryBoardViewModel: RCKViewModel<StoryBoardViewState> {
 }

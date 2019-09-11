@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BKRedux
 
 protocol ColorNibComponentState {
     var color: UIColor { get }
@@ -17,6 +16,10 @@ class ColorNibComponent: UIViewComponent {
     @IBOutlet weak var colorA: UIImageView!
     @IBOutlet weak var colorB: UIImageView!
     @IBOutlet weak var colorC: UIImageView!
+    
+    override func onChangedToken() {
+        subscribeState()
+    }
             
     override func on(state: State) {
         guard let componentState = state as? ColorNibComponentState else { return }

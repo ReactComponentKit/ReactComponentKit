@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import BKEventBus
-import BKRedux
 
 protocol RedViewComponentState {
     var color: UIColor { get }

@@ -7,28 +7,20 @@
 //
 
 import Foundation
-import BKRedux
-import BKEventBus
+import UIKit
 
-struct StackViewState: State, MessageViewComponentState, RedViewComponentState {
-    var color: UIColor = .red
+struct StackViewState: State, MessageViewComponentState {
     var text: String = ""
-    var error: (Error, Action)? = nil
+    var error: RCKError? = nil
 }
 
-class StackViewModel: RootViewModelType<StackViewState> {
-    override init() {
-        super.init()
-        store.set(
-            initialState: StackViewState(),
-            reducers: [
-                colorReducer,
-                textReducer
-            ])
-    }
+class StackViewModel: RCKViewModel<StackViewState> {
     
-    override func on(newState: StackViewState) {
-        // 하위 커포넌트에게 새로운 상태를 전달함
-        propagate(state: newState)
-    }
+    override func setupStore() {
+        initStore { (store) in
+            store.initial(state: StackViewState())
+            store.flow(action: TextAction.self)
+                .flow(textReducer)
+        }
+    }    
 }

@@ -18,7 +18,7 @@ class StoryBoardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingComponent.reset(token: viewModel.token, receiveState: false)
+        loadingComponent.reset(token: viewModel.token)
         
         add(viewController: loadingComponent)
     }

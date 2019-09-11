@@ -6,8 +6,6 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import BKRedux
-
-struct IncreaseAction: Action {
+class IncreaseAction: Action {
     let payload = 1
 }

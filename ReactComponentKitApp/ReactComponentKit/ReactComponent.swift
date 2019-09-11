@@ -8,31 +8,24 @@
 
 import Foundation
 import UIKit
-import BKEventBus
-import BKRedux
 
-public enum ComponentNewStateEvent: EventType {
-    case on(state: State)
-}
-
-public enum ComponentDispatchEvent: EventType {
-    case dispatch(action: Action)
+public protocol StateSubscriber {
+    func on(state: State)
 }
 
 // Component that can listen to events & dispatch actions
-public protocol ReactComponent {
+public protocol ReactComponent: StateSubscriber {
     var token: Token { get set }
-    // ReactComponent only has newStateEventBus if it wants to receive the new state.
-    // If ReactComponent is in UITableView's cell or UICollectionView's cell,
-    // it doesn't receive the new state via newStateEventBus for the performance reason.
-    // If every cell component receive the new state via event bus, there are many copying state.
-    var newStateEventBus: EventBus<ComponentNewStateEvent>? { get }
-    // ReactComponent always has dispatchEventBus for dispatching actions.
-    var dispatchEventBus: EventBus<ComponentDispatchEvent> { get }
-    init(token: Token, receiveState: Bool)
+    init(token: Token)
 }
 
 // Component's content size provider
 public protocol ContentSizeProvider {
     var contentSize: CGSize { get }
+}
+
+extension ReactComponent {
+    func on(state: State) {
+        // ignore
+    }
 }

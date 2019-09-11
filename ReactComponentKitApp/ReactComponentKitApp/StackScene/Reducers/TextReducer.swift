@@ -6,15 +6,10 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import BKRedux
 import RxSwift
 
-func textReducer(state: State, action: Action) -> Observable<State> {
-    guard var mutableState = state as? StackViewState else { return .just(state) }
-    
-    if let act = action as? TextAction {
-        mutableState.text += " \(act.payload)"
-    }
-    
-    return .just(mutableState)
+func textReducer(state: StackViewState, action: TextAction) -> StackViewState {
+    var mutableState = state
+    mutableState.text += " \(action.payload)"
+    return mutableState
 }

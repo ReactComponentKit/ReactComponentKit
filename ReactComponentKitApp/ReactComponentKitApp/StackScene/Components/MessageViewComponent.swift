@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import BKRedux
-import BKEventBus
 import SnapKit
 
 protocol MessageViewComponentState {
@@ -31,6 +29,8 @@ class MessageViewComponent: UIViewComponent {
         label.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+        subscribeState()
     }
     
     override func on(state: State) {

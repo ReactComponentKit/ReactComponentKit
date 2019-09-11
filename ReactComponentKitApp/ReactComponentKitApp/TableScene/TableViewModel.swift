@@ -7,29 +7,26 @@
 //
 
 import Foundation
-import BKRedux
-import BKEventBus
-import RxCocoa
 
 struct TableViewState: State {
     var todo: [String] = []
     var sections: [DefaultSectionModel] = []
-    var error: (Error, Action)? = nil
+    var error: RCKError? = nil
 }
 
-class TableViewModel: RootViewModelType<TableViewState> {
+class TableViewModel: RCKViewModel<TableViewState> {
     
     let sections =  Output<[DefaultSectionModel]>(value: [])
     
     override init() {
         super.init()
-        store.set(
-            initialState: TableViewState(),
-            reducers: [
-                todoReducer,
-                makeTodoSectionModels,
-                consoleLog
-            ])
+        
+        initStore { store in
+            store.initial(state: TableViewState())
+            store.beforeActionFlow { logAction(action: $0) }
+            store.flow(action: AddTodoAction.self)
+                .flow(todoReducer, makeTodoSectionModels)
+        }
     }
     
     override func on(newState: TableViewState) {

@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import BKRedux
 
-struct AddTodoAction: Action {
+class AddTodoAction: Action {
     let payload = "  Todo : \(Date().description)"
 }

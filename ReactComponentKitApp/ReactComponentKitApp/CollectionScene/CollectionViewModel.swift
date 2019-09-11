@@ -9,23 +9,18 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import BKRedux
-import BKEventBus
 
 
-
-class CollectionViewModel: RootViewModelType<TableViewState> {
+class CollectionViewModel: RCKViewModel<TableViewState> {
     let sections =  Output<[DefaultSectionModel]>(value: [])
     
-    override init() {
-        super.init()
-        store.set(
-            initialState: TableViewState(),
-            reducers: [
-                todoReducer,
-                makeTodoSectionModels,
-                consoleLog
-            ])
+    override func setupStore() {
+        initStore { (store) in
+            store.initial(state: TableViewState())
+            store.beforeActionFlow { logAction(action: $0) }
+            store.flow(action: AddTodoAction.self)
+                .flow(todoReducer, makeTodoSectionModels)
+        }
     }
     
     override func on(newState: TableViewState) {

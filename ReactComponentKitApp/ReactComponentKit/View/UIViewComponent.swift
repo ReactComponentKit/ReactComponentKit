@@ -7,15 +7,14 @@
 //
 
 import UIKit
-import BKEventBus
-import BKRedux
 
 open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
     
-    public var token: Token
-    public var newStateEventBus: EventBus<ComponentNewStateEvent>? = nil
-    public var dispatchEventBus: EventBus<ComponentDispatchEvent>
-    
+    public var token: Token {
+        didSet {
+            onChangedToken()
+        }
+    }
     private weak var nibContentView: UIView? = nil
     public var contentView: UIView {
         return nibContentView ?? self
@@ -29,28 +28,15 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
         return contentSize
     }
     
-    public required init(token: Token, receiveState: Bool = true) {
+    public required init(token: Token) {
         self.token = token
-        self.dispatchEventBus = EventBus(token: token)
-        if receiveState == true {
-            self.newStateEventBus = EventBus(token: token)
-        }
         super.init(frame: .zero)
-        self.newStateEventBus?.on { [weak self] (event) in
-            guard let strongSelf = self else { return }
-            switch event {
-            case let .on(state):
-                strongSelf.applyNew(state: state)
-            }
-        }
-        
         self.setupView()
         invalidateIntrinsicContentSize()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         self.token = Token.empty
-        self.dispatchEventBus = EventBus(token: Token.empty)
         super.init(coder: aDecoder)
         loadNibView()
     }
@@ -62,20 +48,9 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
     }
     
     // Used for nib view component
-    public func reset(token: Token, receiveState: Bool = true) {
+    public func reset(token: Token) {
         guard token != Token.empty else { return }
         self.token = token
-        self.dispatchEventBus = EventBus(token: token)
-        if receiveState == true {
-            self.newStateEventBus = EventBus(token: token)
-        }
-        self.newStateEventBus?.on { [weak self] (event) in
-            guard let strongSelf = self else { return }
-            switch event {
-            case let .on(state):
-                strongSelf.applyNew(state: state)
-            }
-        }
     }
     
     private func loadNibView() {
@@ -100,13 +75,17 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
         
     // It is only called when the component is in UITableView's cell or UICollectionView's cell.
     open func prepareForReuse() {
-        
     }
+    
     
     // It is called when the component is standalone.
     func applyNew(state: State) {
         on(state: state)
         invalidateIntrinsicContentSize()
+    }
+    
+    open func onChangedToken() {
+        
     }
     
     // Override it to configure or update views
@@ -123,12 +102,7 @@ open class UIViewComponent: UIView, ReactComponent, ContentSizeProvider {
     // Override it to configure or update views
     open func configure<Item>(item: Item, at indexPath: IndexPath) {
     
-    }
-    
-    // Use it to dispatch actions
-    public func dispatch(action: Action) {
-        dispatchEventBus.post(event: .dispatch(action: action))
-    }
+    }    
 }
 
 extension NSObject {

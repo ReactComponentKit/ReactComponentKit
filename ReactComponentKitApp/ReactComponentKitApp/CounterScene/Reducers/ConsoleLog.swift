@@ -6,10 +6,9 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import BKRedux
 import RxSwift
 
-func consoleLog(state: State, action: Action) -> Observable<State> {
-    print("[## LOGGING ##] action: \(String(describing: action)) :: state: \(state)")
-    return Observable.just(state)
+func logAction(action: Action) -> Action {
+    print("[## LOGGING ##] action: \(type(of: action).name)")
+    return action
 }

@@ -7,10 +7,6 @@
 //
 
 import UIKit
-
-import BKRedux
-import BKEventBus
-
 import RxSwift
 import RxCocoa
 
@@ -78,9 +74,9 @@ open class UITableViewComponent: UIViewComponent {
     public let tableView: UITableView
     
     
-    public required init(token: Token, receiveState: Bool = false) {
+    public required init(token: Token) {
         self.tableView = UITableView(frame: .zero, style: .plain)
-        super.init(token: token, receiveState: receiveState)
+        super.init(token: token)
     }
     
     public required init?(coder aDecoder: NSCoder) {
