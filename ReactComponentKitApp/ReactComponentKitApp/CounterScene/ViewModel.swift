@@ -20,6 +20,12 @@ class ViewModel: RCKViewModel<CounterSceneState> {
     let count = Output<String>(value: "0")
     let color = Output<UIColor>(value: UIColor.white)
     
+    func increase() {
+        setState {
+            $0.copy { $0.count += 1 }
+        }
+    }
+    
     override func setupStore() {
         initStore { (store) in
             store.initial(state: CounterSceneState())

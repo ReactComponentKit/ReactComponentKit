@@ -45,6 +45,10 @@ class ViewController: UIViewController {
                 self?.countLabel.text = countString
             })
             .disposed(by: disposeBag)
+        
+        viewModel.increase()
+        viewModel.increase()
+        viewModel.increase()
     }
 
     override func didReceiveMemoryWarning() {
