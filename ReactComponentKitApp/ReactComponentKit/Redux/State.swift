@@ -12,3 +12,11 @@ public protocol State {
     init()
     var error: RCKError? { get set }
 }
+
+extension State {
+    public func copy(_ mutate: (_ mutableData: inout Self) -> Void) -> Self {
+        var mutableData = self
+        mutate(&mutableData)
+        return mutableData
+    }
+}
