@@ -19,5 +19,6 @@ extension Action {
 }
 
 public struct VoidAction: Action {
-    
+    public init() {
+    }
 }
