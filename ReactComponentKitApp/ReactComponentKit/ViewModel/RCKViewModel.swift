@@ -160,7 +160,7 @@ open class RCKViewModel<S: State>: RCKViewModelType {
                 .toBlocking()
                 .last()
             } catch {
-                return nil
+                return state.copy { $0.error = RCKError(error: error, action: action) }
             }
         }
     }
