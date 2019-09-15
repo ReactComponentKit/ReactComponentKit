@@ -35,29 +35,34 @@ public class Flow<S: State, A: Action>: Flowable<S> {
         reducerList.append(contentsOf: reducers)
     }
         
-   fileprivate override func flow(_ action: ActionWrapper) -> Single<S>? {
-        return Single.create { [weak self] single -> Disposable in
-            guard
-                let strongSelf = self
-            else {
-                return Disposables.create()
-            }
+    fileprivate override func flow(_ action: ActionWrapper) -> Single<S>? {
+       return Single.create { [weak self] single -> Disposable in
+           guard
+               let strongSelf = self
+           else {
+               return Disposables.create()
+           }
 
-            strongSelf.reducerList.forEach { (reducer) in
-                guard let storeState = strongSelf.weakStore?.state else { return }
-                guard let typedAction = action.action as? A else { return }
-                let newState = reducer(storeState, typedAction)
-                if let newState = newState {
-                    strongSelf.weakStore?.state = newState
-                }
-            }
+           strongSelf.reducerList.forEach { (reducer) in
+               guard let storeState = strongSelf.weakStore?.state else { return }
+               guard let typedAction = action.action as? A else { return }
+               let newState = reducer(storeState, typedAction)
+               if let newState = newState {
+                   strongSelf.weakStore?.state = newState
+                   if newState.error?.error != nil {
+                       return
+                   }
+               }
+           }
 
-            if let newState = strongSelf.weakStore?.state {
-                single(.success(newState))
-            }
+           if let error = strongSelf.weakStore?.state.error?.error {
+               single(.error(error))
+           } else if let newState = strongSelf.weakStore?.state {
+               single(.success(newState))
+           }
 
-            return Disposables.create()
-        }
+           return Disposables.create()
+       }
     }
 }
 
