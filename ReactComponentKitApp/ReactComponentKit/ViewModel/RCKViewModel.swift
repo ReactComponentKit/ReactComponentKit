@@ -54,9 +54,11 @@ open class RCKViewModel<S: State>: RCKViewModelType {
         rx_action
             .filter { type(of: $0) != VoidAction.self }
             .observeOn(MainScheduler.instance)
-            .filter { [unowned self] (action) in
-                let returnedAction = self.store.startFlow(action: action)
-                return type(of: returnedAction) != VoidAction.self
+            .map { [unowned self] (action) in
+                return self.store.startFlow(action: action)
+            }
+            .filter {
+                return type(of: $0) != VoidAction.self
             }
             .observeOn(Q.concurrentQ)
             .flatMap { [unowned self] (action)  in
