@@ -43,6 +43,7 @@ class ViewModel: RCKViewModel<CounterSceneState> {
                     
             store.flow(action: DecreaseAction.self)
                 .flow(
+                    /* For Testing
                     awaitFlow({ [unowned self] (action) -> Observable<CounterSceneState> in
                         return Single.create { single in
                             Thread.sleep(forTimeInterval: 3)
@@ -52,6 +53,7 @@ class ViewModel: RCKViewModel<CounterSceneState> {
                             return Disposables.create()
                         }.asObservable()
                     }),
+                    */
                     decreaseCount,
                     cacheCountValue,
                     printCachedValue
