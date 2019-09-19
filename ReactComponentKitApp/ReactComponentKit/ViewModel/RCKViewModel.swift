@@ -29,7 +29,6 @@ open class RCKViewModel<S: State>: RCKViewModelType {
     private var actionQueue: Queue<Action> = Queue()
     private var subscribers: [StateSubscriber] = []
     private let writeLock = DispatchSemaphore(value: 1) // Allow only one thread.
-    private let readLock = DispatchSemaphore(value: 1) // Allow only one thread.
     private let dispatchLock = DispatchSemaphore(value: 1) // Allow only one thread.
     
     public init() {
@@ -147,11 +146,14 @@ open class RCKViewModel<S: State>: RCKViewModelType {
     
     @discardableResult
     public final func withState<R>(block: (S) -> R) -> R {
-        readLock.wait()
-        defer {
-            readLock.signal()
-        }
-        return block(self.store.state)
+        return block(state())
+    }
+    
+    /**
+     * Copy Current State
+     */
+    public final func state() -> S {
+        return store.state
     }
     
     public final func awaitFlow<A: Action>(_ asyncReducer: @escaping AsyncReducer<S, A>) -> Reducer<S, A> {
